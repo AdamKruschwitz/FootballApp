@@ -7,5 +7,5 @@
 ##Class Diagram
 
 ##Sequence Diagrams
-[New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
-[Throw Card](https://drive.google.com/file/d/1K1nbavF0EvidozsNv7CByQKJwSqkGNyQ/view?usp=sharing)
+* [New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
+* [Throw Card](https://drive.google.com/file/d/1K1nbavF0EvidozsNv7CByQKJwSqkGNyQ/view?usp=sharing)
