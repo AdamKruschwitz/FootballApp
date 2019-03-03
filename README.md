@@ -16,4 +16,6 @@ Overall this application will help the overall league staging and maintenance be
 ##Sequence Diagrams
 * [New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
 * [Throw Card](https://drive.google.com/file/d/1K1nbavF0EvidozsNv7CByQKJwSqkGNyQ/view?usp=sharing)
+* [Add match](https://drive.google.com/file/d/1ljCwViUrgBSYvTJ24XT0TKmWmkrPjtro/view?usp=sharing)
+* [Add Team](https://drive.google.com/file/d/1Ejgw8vKkLt7A0L8f_9HDfg8WWCOxjjhM/view?usp=sharing)
 
