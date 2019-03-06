@@ -21,6 +21,4 @@ It will distribute relevant information to players and refs, and handle the mech
 * [Team Advance up](https://drive.google.com/file/d/1XpbwiTFikDDKadpD3FHzW2wIKBxqilZW/view?usp=sharing)
 
 
-## waffle link
-
-* [Waffle link](https://waffle.io/AdamKruschwitz/FootballApp/join)
+## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
