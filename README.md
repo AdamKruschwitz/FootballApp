@@ -34,12 +34,4 @@ The team will focus on communicating what each person on the team should be doin
 * Use slack to communicate or share ideas
 
 # Sprint Goal
-Sprint Backlog:
-* Create team
-* Add Roster
-* Build schedule
-* Create matches for schedule
-* Win loss tie
-* Create Leaderboard
-* Update Leaderboard
-* Show Leaderboard
+The goal is to be able to see a team within a league on the leaderboard and it also shows us how the advance up in rank on the leaderboard.
