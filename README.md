@@ -19,7 +19,7 @@ It will distribute relevant information to players and refs, and handle the mech
 * [Add Team](https://drive.google.com/file/d/1Ejgw8vKkLt7A0L8f_9HDfg8WWCOxjjhM/view?usp=sharing)
 * [Create Tournament](https://drive.google.com/file/d/1rGaChqs4Er1J3iHCDoN_yySPnCchGfQS/view?usp=sharing)
 * [Team Advance up](https://drive.google.com/file/d/1XpbwiTFikDDKadpD3FHzW2wIKBxqilZW/view?usp=sharing)
-* [Show Standings] (https://drive.google.com/file/d/1C899AAA4lptAOBu_xiqcG7Sn7B5exCaN/view?usp=sharing)
+* [Show Standings](https://drive.google.com/file/d/1C899AAA4lptAOBu_xiqcG7Sn7B5exCaN/view?usp=sharing)
 
 ## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
 
