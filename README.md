@@ -22,3 +22,13 @@ It will distribute relevant information to players and refs, and handle the mech
 
 
 ## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
+
+# Team work
+
+The team will focus on communicating what each person on the team should be doing and the person has to assign cards to themselves on the product backlog. Each sprint will be 1 week and the daily scrum meeting should be 1 hour or less.
+
+* Bullet list of what to do:
+* Work in smaller teams 
+* Ask for clarification
+* Daily scrum meetings
+* Use slack to communicate or share ideas
