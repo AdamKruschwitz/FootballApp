@@ -34,4 +34,4 @@ The team will focus on communicating what each person on the team should be doin
 * Use slack to communicate or share ideas
 
 # Sprint Goal
-The goal is to be able to see a team within a league on the leaderboard and it also shows us how the advance up in rank on the leaderboard.
+The goal is to be able to manage a team within a league on the leaderboard and it also shows us how the team advance up in rank on the leaderboard.
