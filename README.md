@@ -32,3 +32,14 @@ The team will focus on communicating what each person on the team should be doin
 * Ask for clarification
 * Daily scrum meetings
 * Use slack to communicate or share ideas
+
+# Sprint Goal
+Sprint Backlog:
+* Create team
+* Add Roster
+* Build schedule
+* Create matches for schedule
+* Win loss tie
+* Create Leaderboard
+* Update Leaderboard
+* Show Leaderboard
