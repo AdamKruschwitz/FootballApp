@@ -12,7 +12,7 @@ public class Team {
 
     public Team(Roster activeRoster, String teamName){
         if(activeRoster.isEligible() == false) {
-            throw new IllegalArgumentException("Entered team is not eligable to play");
+            throw new IllegalArgumentException("Entered team is not eligible to play");
         }
         else{
             this.activeRoster = activeRoster;
@@ -21,7 +21,13 @@ public class Team {
     }
 
     public void setActiveRoster(Roster activeRoster){
-        this.activeRoster = activeRoster;
+        if(activeRoster.isEligible() == false) {
+            throw new IllegalArgumentException("Entered team is not eligible to play");
+        }
+        else{
+            this.activeRoster = activeRoster;
+            this.teamName = teamName;
+        }
     }
 
     public void setBenchRoster(Roster benchRoster){
@@ -31,6 +37,8 @@ public class Team {
     public boolean isTeamEligible(){
         return activeRoster.isEligible();
     }
+
+
 
 
 }

@@ -8,7 +8,7 @@ public class Roster {
     private List<Player> players = new ArrayList<Player>();
     private int playerCount;
 
-    public Roster(boolean canPlay, int playerCount){
+    public Roster(boolean canPlay){
         this.canPlay = canPlay;
         this.playerCount = playerCount;
     }
