@@ -7,14 +7,16 @@ public class Team {
 
     private Roster activeRoster;
     private Roster benchRoster;
+    private String teamName;
 
 
-    public Team(Roster activeRoster){
+    public Team(Roster activeRoster, String teamName){
         if(activeRoster.isEligable() == false) {
             throw new IllegalArgumentException("Entered team is not eligable to play");
         }
         else{
             this.activeRoster = activeRoster;
+            this.teamName = teamName;
         }
     }
 
@@ -26,7 +28,7 @@ public class Team {
         this.benchRoster = benchRoster;
     }
 
-    public boolean isTeamElgable(){
+    public boolean isTeamEligible(){
         return activeRoster.isEligable();
     }
 
