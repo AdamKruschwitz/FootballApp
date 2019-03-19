@@ -1,0 +1,21 @@
+package ithaca.edu.footballTeam.footballApp;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class RosterTest {
+
+    @Test
+    void addRemovePlayerTest(){
+        Roster newRoster = new Roster(true, 0);
+        Player p = new Player();
+
+        newRoster.addPlayer(p);
+        assertEquals(1,newRoster.getPlayerCount());
+
+        newRoster.removePlayer();
+        assertEquals(0,newRoster.getPlayerCount());
+
+    }
+}

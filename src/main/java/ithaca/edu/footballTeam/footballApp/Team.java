@@ -11,7 +11,7 @@ public class Team {
 
 
     public Team(Roster activeRoster, String teamName){
-        if(activeRoster.isEligable() == false) {
+        if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligable to play");
         }
         else{
@@ -29,7 +29,7 @@ public class Team {
     }
 
     public boolean isTeamEligible(){
-        return activeRoster.isEligable();
+        return activeRoster.isEligible();
     }
 
 
