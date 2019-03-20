@@ -17,4 +17,11 @@ public class Match {
         this.teams = new ArrayList<>(teams);
         this.startTime = startTime;
     }
+
+    public void setWinner(Team winner) {
+        if(!teams.contains(winner)) throw new IllegalArgumentException("winner not in this match");
+        this.winner = winner;
+    }
+
+    public Team getWinner() { return winner; }
 }

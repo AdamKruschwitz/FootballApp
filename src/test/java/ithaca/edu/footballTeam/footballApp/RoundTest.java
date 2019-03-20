@@ -2,6 +2,7 @@ package ithaca.edu.footballTeam.footballApp;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -24,4 +25,5 @@ public class RoundTest {
 
         Round test = new Round(matches, null);
     }
+
 }
