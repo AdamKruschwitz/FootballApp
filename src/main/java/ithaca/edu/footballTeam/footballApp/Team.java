@@ -22,6 +22,17 @@ public class Team {
         }
     }
 
+    public Team(Roster activeRoster, String teamName, String tournamentID){
+        if(activeRoster.isEligible() == false) {
+            throw new IllegalArgumentException("Entered team is not eligible to play");
+        }
+        else{
+            this.activeRoster = activeRoster;
+            this.teamName = teamName;
+            this.tournamentID = tournamentID;
+        }
+    }
+
     public void setActiveRoster(Roster activeRoster){
         if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligible to play");
