@@ -9,6 +9,7 @@ public class Team {
     private Roster benchRoster;
     private String teamName;
     private int teamId;
+    private String tournamentID;
 
 
     public Team(Roster activeRoster, String teamName){
