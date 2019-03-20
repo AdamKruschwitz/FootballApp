@@ -8,7 +8,7 @@ public class RosterTest {
 
     @Test
     void addRemovePlayerTest(){
-        Roster newRoster = new Roster(true, 0);
+        Roster newRoster = new Roster(true);
         Player p = new Player();
 
         newRoster.addPlayer(p);

@@ -40,6 +40,10 @@ public class Team {
         return activeRoster.isEligible();
     }
 
+    public void setTournamentID(String tournamentID){
+        this.tournamentID = tournamentID;
+    }
+
 
 
 
