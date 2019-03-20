@@ -26,7 +26,7 @@ public class registerTeamTest {
         Team check = toCheck.getTeam(EvertonFC);
         assertEquals(EvertonFC,check);
         assertThrows(IllegalArgumentException.class, ()-> test.registerTeam(Testing,teamWaitlist));
-        assertThrows(NullPointerException.class, ()-> test.approveTeam(Testing.getTeamName,teamWaitlist,tournmentList));
+        assertThrows(NullPointerException.class, ()-> test.approveTeam(Testing.getTeamName,teamWaitlist,tournmentList m));
 
 
     }
