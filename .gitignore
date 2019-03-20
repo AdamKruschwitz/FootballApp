@@ -7,9 +7,6 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/**/misc.xml
-**.xml
-**.iml
 
 # Generated files
 .idea/**/contentModel.xml
@@ -34,7 +31,6 @@
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# */target/**
 
 # CMake
 cmake-build-*/
