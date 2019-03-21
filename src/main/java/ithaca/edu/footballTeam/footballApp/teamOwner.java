@@ -17,7 +17,16 @@ public class teamOwner {
     }
 
     public void registerTeam(Team team, Map teamsWaitlist){
+        // Team isValid just returns true regardless will update this when we write the proper function
+        if(team.isValid()) {
+            teamsWaitlist.put(team.getTeamName(), team);
+        }
+        else{
+            throw new IllegalArgumentException("Team is not valid");
+        }
+
 
         teamsWaitlist.put(team.getTeamName(), team);
+
     }
 }
