@@ -11,11 +11,11 @@ public class Commissioner {
 
     public void approveTeam(String teamName, Map teamsWaitlist, Map tournamentList){
 
-        Team teamToAdd = teamsWaitlist.get(teamName);
+        Team teamToAdd = (Team) teamsWaitlist.get(teamName);
         if(teamToAdd!=null) {
-            String desiredTournament = teamToAdd.getDesiredTournament();
+            String desiredTournament = teamToAdd.getTournamentID();
             //Map key = tournament name, value = tournament object
-            Tournament tournamentToUpdate = tournamentList.get(desiredTournament);
+            Tournament tournamentToUpdate = (Tournament) tournamentList.get(desiredTournament);
             if(tournamentToUpdate!=null){
                 tournamentToUpdate.addTeam(teamToAdd);
             }else{
