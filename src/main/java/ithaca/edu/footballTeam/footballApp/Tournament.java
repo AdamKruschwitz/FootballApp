@@ -1,5 +1,7 @@
 package edu.ithaca.footballTeam.FootballApp;
 
+import ithaca.edu.footballTeam.footballApp.Team;
+
 import java.util.HashMap;
 import java.util.Map;
 

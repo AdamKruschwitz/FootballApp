@@ -70,4 +70,8 @@ public class Team {
         this.tournamentID = tournamentID;
     }
 
+    public boolean isValid(){
+        return true;
+    }
+
 }
