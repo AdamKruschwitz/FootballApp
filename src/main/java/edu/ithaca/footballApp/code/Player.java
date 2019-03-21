@@ -42,4 +42,16 @@ public class Player {
 
     }
 
+    public boolean isEligible(){
+        if(redCards.size() > 0){
+            return false;
+        }
+        return true;
+    }
+
+    public void removeRedCard(){
+
+    }
+
+
 }

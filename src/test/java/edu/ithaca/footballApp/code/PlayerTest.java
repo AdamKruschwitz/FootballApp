@@ -58,4 +58,14 @@ public class PlayerTest {
 
     }
 
+    //Check that player eligibility works
+    @Test
+    public void eligibilityTest(){
+        //Create player and test before and after redcard
+        Player testPlayer = new Player("Bob", 5);
+        assertEquals(true, testPlayer.isEligible());
+        testPlayer.addRedCard(new RedCard(0, "R1"));
+        assertEquals(false, testPlayer.isEligible());
+    }
+
 }
