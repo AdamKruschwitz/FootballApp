@@ -14,4 +14,8 @@ public class Tournament {
     public Tournament(List<Round> rounds) {
         this.rounds = new ArrayList<>(rounds);
     }
+
+    public List<Round> getRounds() {
+        return rounds;
+    }
 }

@@ -41,6 +41,10 @@ public class Team {
         }
     }
 
+    public String getTeamName() {
+        return teamName;
+    }
+
     public void setBenchRoster(Roster benchRoster){
         this.benchRoster = benchRoster;
     }

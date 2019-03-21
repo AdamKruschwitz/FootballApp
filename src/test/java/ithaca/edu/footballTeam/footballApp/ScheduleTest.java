@@ -20,8 +20,8 @@ public class ScheduleTest {
         teams1.add(new Team(roster, "team2"));
 
         List<Team> teams2 = new ArrayList<>();
-        teams1.add(new Team(roster, "team3"));
-        teams1.add(new Team(roster, "team4"));
+        teams2.add(new Team(roster, "team3"));
+        teams2.add(new Team(roster, "team4"));
 
         List<Match> matches = new ArrayList<>();
         matches.add(new Match(teams1, new Date(10000)));
@@ -34,13 +34,14 @@ public class ScheduleTest {
 
         // Normal case
         Assert.assertEquals(
-                "team1 vs team2: 10000,\n team3 vs team4: 20000",
+                "team1 vs team2, Wed Dec 31 19:00:10 EST 1969\n" +
+                        "team3 vs team4, Wed Dec 31 19:00:20 EST 1969",
                 Schedule.getTournamentSchedule(tournament)
         );
 
         // Tournament with no rounds
         Tournament emptyTournament = new Tournament();
-        Assert.assertEquals("", Schedule.getTournamentSchedule(tournament));
+        Assert.assertEquals("", Schedule.getTournamentSchedule(emptyTournament));
 
     }
 }
