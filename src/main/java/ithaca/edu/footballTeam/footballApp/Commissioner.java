@@ -13,9 +13,9 @@ public class Commissioner {
 
         Team teamToAdd = (Team) teamsWaitlist.get(teamName);
         if(teamToAdd!=null) {
-            String desiredTournament = teamToAdd.getTournamentID();
+            String desiredTournamentID = teamToAdd.getTournamentID();
             //Map key = tournament name, value = tournament object
-            Tournament tournamentToUpdate = (Tournament) tournamentList.get(desiredTournament);
+            Tournament tournamentToUpdate = (Tournament) tournamentList.get(desiredTournamentID);
             if(tournamentToUpdate!=null){
                 tournamentToUpdate.addTeam(teamToAdd);
             }else{

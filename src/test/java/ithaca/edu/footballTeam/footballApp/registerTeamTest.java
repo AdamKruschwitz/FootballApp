@@ -2,7 +2,6 @@ package ithaca.edu.footballTeam.footballApp;
 
 import ithaca.edu.footballTeam.footballApp.Commissioner;
 import ithaca.edu.footballTeam.footballApp.teamOwner;
-
 import ithaca.edu.footballTeam.footballApp.Commissioner;
 import ithaca.edu.footballTeam.footballApp.teamOwner;
 
@@ -17,8 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class registerTeamTest {
+
     @Test
-    public static void main(String[] args) {
+    public void Test() {
         Map <String, Team> teamWaitlist = new HashMap<String, Team>();
         Map <String, Tournament> tournmentList = new HashMap<String, Tournament>();
 
@@ -29,19 +29,25 @@ public class registerTeamTest {
             activeRoster.addPlayer(p);
         }
 
-        Team validTeam = new Team(activeRoster,"EvertonFC");
+        Tournament t1 = new Tournament("T1");
+        Tournament t2 = new Tournament("T2");
+        tournmentList.put("T1",t1);
+        tournmentList.put("T2",t2);
+
+        Team validTeam = new Team(activeRoster,"EvertonFC","T1");
 
         teamOwner everton = new teamOwner("Everton",validTeam);
+        validTeam.setOwner(everton);
+
         Commissioner mainC= new Commissioner ("Admin");
         everton.registerTeam(validTeam,teamWaitlist);
-        mainC.approveTeam("EvertonFC",teamWaitlist,tournmentList);
+        assertEquals(validTeam,teamWaitlist.get(validTeam.getTeamName()));
 
+        mainC.approveTeam(validTeam.getTeamName(),teamWaitlist,tournmentList);
+        assertEquals(0,teamWaitlist.size());
         Tournament toCheck = tournmentList.get(validTeam.getTournamentID());
-        //Team toFind = toCheck.getTeam(EvertonFC.getTeamName());
-
-        assertEquals(validTeam,toCheck);
-        assertTrue(teamWaitlist.containsKey(validTeam.getTeamName()));
-
-
+        Team toFind = toCheck.getTeam(validTeam.getTeamName());
+        assertEquals(validTeam.getTeamName(),toFind.getTeamName());
+        assertThrows(NullPointerException.class, ()-> mainC.approveTeam(validTeam.getTeamName(),teamWaitlist, tournmentList));
     }
 }

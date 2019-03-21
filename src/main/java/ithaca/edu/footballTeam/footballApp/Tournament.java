@@ -28,5 +28,13 @@ public class Tournament {
             throw new NullPointerException("This team does not exist in this tournament");
         }
     }
+    public String getTournamentID(){
+        return tournamentName;
+    }
+
+    public Team getTeam(String teamName){
+        Team toReturn = teams.get(teamName);
+        return toReturn;
+    }
 
 }

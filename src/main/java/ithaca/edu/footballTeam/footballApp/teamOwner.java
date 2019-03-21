@@ -12,6 +12,10 @@ public class teamOwner {
         this.team = team;
     }
 
+    public teamOwner(String name){
+        this.name = name;
+    }
+
     public void registerTeam(Team team, Map teamsWaitlist){
 
         teamsWaitlist.put(team.getTeamName(), team);
