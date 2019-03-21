@@ -1,7 +1,9 @@
 package ithaca.edu.footballTeam.footballApp;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,21 +15,25 @@ public class registerTeamTest {
         Map <String, Team> teamWaitlist = new HashMap<String, Team>();
         Map <String, Tournament> tournmentList = new HashMap<String, Tournament>();
 
-        Team EvertonFC = new Team ("EvertonFC","Everton", "Desired Tournament");
-        Team Testing = new Team ("Testing");
+        Roster activeRoster = new Roster(true);
+        List<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<11; i++){
+            Player p = new Player();
+            activeRoster.addPlayer(p);
+        }
 
-        teamOwner everton = new teamOwner("Everton",EvertonFC);
+        Team validTeam = new Team(activeRoster,"EvertonFC");
+
+        teamOwner everton = new teamOwner("Everton",validTeam);
         Commissioner mainC= new Commissioner ("Admin");
-        everton.registerTeam(EvertonFC,teamWaitlist);
+        everton.registerTeam(validTeam,teamWaitlist);
         mainC.approveTeam("EvertonFC",teamWaitlist,tournmentList);
 
-        Tournament toCheck = tournmentList.get(EvertonFC.getDesiredTournament());
-        Team toFind = toCheck.getTeam(EvertonFC.getTeamName());
+        Tournament toCheck = tournmentList.get(validTeam.getTournamentID());
+        //Team toFind = toCheck.getTeam(EvertonFC.getTeamName());
 
-        assertEquals(EvertonFC,toCheck);
-        assertTrue(teamWaitlist.containsKey(EvertonFC.getTeamName()));
-        assertThrows(IllegalArgumentException.class, ()-> everton.registerTeam(Testing,teamWaitlist));
-        assertThrows(NullPointerException.class, ()-> mainC.approveTeam(Testing.getTeamName,teamWaitlist,tournmentList m));
+        assertEquals(validTeam,toCheck);
+        assertTrue(teamWaitlist.containsKey(validTeam.getTeamName()));
 
 
     }

@@ -15,12 +15,9 @@ public class Tournament {
     }
 
     public void addTeam(Team team){
-        if(team.isValid()) {
-            teams.put(team.getTeamName(), team);
-        }
-        else{
-            throw new IllegalArgumentException("This team is not valid");
-        }
+
+        teams.put(team.getTeamName(), team);
+
     }
 
     public void removeTeam(String teamName){
