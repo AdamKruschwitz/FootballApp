@@ -1,8 +1,5 @@
 package ithaca.edu.footballTeam.footballApp;
 
-
-
-
 public class Team {
 
     private Roster activeRoster;
@@ -54,8 +51,5 @@ public class Team {
     public void setTournamentID(String tournamentID){
         this.tournamentID = tournamentID;
     }
-
-
-
 
 }
