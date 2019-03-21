@@ -1,4 +1,4 @@
-package edu.ithaca.FootballApp;
+package edu.ithaca.footballTeam.FootballApp;
 
 import java.util.Map;
 
