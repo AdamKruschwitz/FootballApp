@@ -8,6 +8,7 @@ public class Team {
     private int teamId;
     private String tournamentID;
 
+    public Team() {}
 
     public Team(Roster activeRoster, String teamName){
         if(activeRoster.isEligible() == false) {
