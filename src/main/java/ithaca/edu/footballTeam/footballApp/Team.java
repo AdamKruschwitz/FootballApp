@@ -10,6 +10,7 @@ public class Team {
     private String teamName;
     private int teamId;
     private String tournamentID;
+    //private TeamOwner owner;
 
 
     public Team(Roster activeRoster, String teamName){
@@ -30,6 +31,7 @@ public class Team {
             this.activeRoster = activeRoster;
             this.teamName = teamName;
             this.tournamentID = tournamentID;
+
         }
     }
 
@@ -39,8 +41,23 @@ public class Team {
         }
         else{
             this.activeRoster = activeRoster;
-            this.teamName = teamName;
+
         }
+    }
+
+    public String getTeamName(){
+        return this.teamName;
+    }
+
+    public String getTournamentID(){
+        return this.tournamentID;
+    }
+    public void setTeamName(String teamName){
+        this.teamName = teamName;
+    }
+
+    public  void setTeamId(int teamId){
+        this.teamId = teamId;
     }
 
     public void setBenchRoster(Roster benchRoster){
