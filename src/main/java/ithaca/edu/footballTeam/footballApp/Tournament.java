@@ -1,4 +1,4 @@
-package edu.ithaca.footballTeam.FootballApp;
+package ithaca.edu.footballTeam.footballApp;
 
 import ithaca.edu.footballTeam.footballApp.Team;
 
@@ -17,12 +17,9 @@ public class Tournament {
     }
 
     public void addTeam(Team team){
-        if(team.isValid()) {
-            teams.put(team.getTeamName(), team);
-        }
-        else{
-            throw new IllegalArgumentException("This team is not valid");
-        }
+
+        teams.put(team.getTeamName(), team);
+
     }
 
     public void removeTeam(String teamName){
