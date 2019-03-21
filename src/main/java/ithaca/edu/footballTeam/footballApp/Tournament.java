@@ -1,4 +1,4 @@
-package edu.ithaca.footballTeam.FootballApp;
+package ithaca.edu.footballTeam.footballApp;
 
 import java.util.HashMap;
 import java.util.Map;

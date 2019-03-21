@@ -1,4 +1,4 @@
-package edu.ithaca.footballApp.code;
+package ithaca.edu.footballTeam.footballApp;
 
 public class YellowCard extends Card {
     public YellowCard(int match, String reason){

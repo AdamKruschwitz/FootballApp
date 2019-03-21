@@ -1,4 +1,4 @@
-package edu.ithaca.footballApp.code;
+package ithaca.edu.footballTeam.footballApp;
 import org.junit.Test;
 
 import java.util.List;
