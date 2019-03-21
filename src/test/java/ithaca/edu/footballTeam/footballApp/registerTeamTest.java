@@ -25,7 +25,7 @@ public class registerTeamTest {
         Roster activeRoster = new Roster(true);
         List<Player> players = new ArrayList<Player>();
         for(int i = 0; i<11; i++){
-            Player p = new Player();
+            Player p = new Player("player"+i,i);
             activeRoster.addPlayer(p);
         }
 
