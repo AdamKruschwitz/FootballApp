@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ScheduleTest {
     @Test
-    void GetPlayerScheduleTest() {
+    void GetTournamentScheduleTest() {
         Roster roster = new Roster(true);
         for(int i=0; i<11; i++) {
             roster.addPlayer(new Player());
