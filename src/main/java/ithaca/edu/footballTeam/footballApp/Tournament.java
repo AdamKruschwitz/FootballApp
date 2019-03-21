@@ -1,31 +1,23 @@
 package ithaca.edu.footballTeam.footballApp;
 
-import ithaca.edu.footballTeam.footballApp.Team;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Tournament {
 
     private Map<String, Team> teams;
-    private String tournamentID;
+    private String tournamentName;
 
-    public Tournament(String ID){
-        this.tournamentID= ID;
+    public Tournament(String name){
+        this.tournamentName = name;
         this.teams = new HashMap<String,Team>();
 
     }
-    public String getID(){
-        return tournamentID;
-    }
 
     public void addTeam(Team team){
-        if(team.isValid()) {
-            teams.put(team.getTeamName(), team);
-        }
-        else{
-            throw new IllegalArgumentException("This team is not valid");
-        }
+
+        teams.put(team.getTeamName(), team);
+
     }
 
     public void removeTeam(String teamName){
@@ -34,15 +26,6 @@ public class Tournament {
             teams.remove(teamName);
         }else{
             throw new NullPointerException("This team does not exist in this tournament");
-        }
-    }
-
-    public boolean getTeam(Team team){
-        Team toCheck = teams.get(team.getTeamName);
-        if(toCheck!=null){
-            return true;
-        }else{
-            return false;
         }
     }
 

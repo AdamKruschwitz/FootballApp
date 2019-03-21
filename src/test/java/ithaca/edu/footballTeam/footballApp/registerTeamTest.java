@@ -2,9 +2,9 @@ package ithaca.edu.footballTeam.footballApp;
 
 import ithaca.edu.footballTeam.footballApp.Commissioner;
 import ithaca.edu.footballTeam.footballApp.teamOwner;
+
 import ithaca.edu.footballTeam.footballApp.Commissioner;
 import ithaca.edu.footballTeam.footballApp.teamOwner;
-
 
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +21,6 @@ public class registerTeamTest {
     public static void main(String[] args) {
         Map <String, Team> teamWaitlist = new HashMap<String, Team>();
         Map <String, Tournament> tournmentList = new HashMap<String, Tournament>();
-        Tournament t1 = new Tournament("T1");
-        tournmentList.put("T1",t1);
 
         Roster activeRoster = new Roster(true);
         List<Player> players = new ArrayList<Player>();
@@ -31,8 +29,7 @@ public class registerTeamTest {
             activeRoster.addPlayer(p);
         }
 
-        Team validTeam = new Team(activeRoster,"EvertonFC","T1");
-
+        Team validTeam = new Team(activeRoster,"EvertonFC");
 
         teamOwner everton = new teamOwner("Everton",validTeam);
         Commissioner mainC= new Commissioner ("Admin");
@@ -40,12 +37,10 @@ public class registerTeamTest {
         mainC.approveTeam("EvertonFC",teamWaitlist,tournmentList);
 
         Tournament toCheck = tournmentList.get(validTeam.getTournamentID());
-        Team toFind = toCheck.getTeam(validTeam.getTeamName());
+        //Team toFind = toCheck.getTeam(EvertonFC.getTeamName());
 
         assertEquals(validTeam,toCheck);
         assertTrue(teamWaitlist.containsKey(validTeam.getTeamName()));
-        assertThrows(IllegalArgumentException.class, ()-> everton.registerTeam(Testing,teamWaitlist));
-        assertThrows(NullPointerException.class, ()-> mainC.approveTeam(Testing.getTeamName,teamWaitlist,tournmentList m));
 
 
     }

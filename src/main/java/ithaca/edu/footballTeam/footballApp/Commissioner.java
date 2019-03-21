@@ -1,7 +1,5 @@
 package ithaca.edu.footballTeam.footballApp;
 
-import ithaca.edu.footballTeam.footballApp.Team;
-
 import java.util.Map;
 
 public class Commissioner {
@@ -13,7 +11,6 @@ public class Commissioner {
 
     public void approveTeam(String teamName, Map teamsWaitlist, Map tournamentList){
 
-        //Team teamToAdd = teamsWaitlist.get(teamName);
         Team teamToAdd = (Team) teamsWaitlist.get(teamName);
         if(teamToAdd!=null) {
             String desiredTournament = teamToAdd.getTournamentID();
