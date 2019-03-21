@@ -15,6 +15,9 @@ public class Tournament {
         this.teams = new HashMap<String,Team>();
 
     }
+    public String getID(){
+        return tournamentID;
+    }
 
     public void addTeam(Team team){
         if(team.isValid()) {
@@ -31,6 +34,15 @@ public class Tournament {
             teams.remove(teamName);
         }else{
             throw new NullPointerException("This team does not exist in this tournament");
+        }
+    }
+
+    public boolean getTeam(Team team){
+        Team toCheck = teams.get(team.getTeamName);
+        if(toCheck!=null){
+            return true;
+        }else{
+            return false;
         }
     }
 

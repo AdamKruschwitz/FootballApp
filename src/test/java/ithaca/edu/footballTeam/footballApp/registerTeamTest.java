@@ -39,7 +39,7 @@ public class registerTeamTest {
         everton.registerTeam(validTeam,teamWaitlist);
         mainC.approveTeam("EvertonFC",teamWaitlist,tournmentList);
 
-        Tournament toCheck = tournmentList.get(validTeam.getDesiredTournament());
+        Tournament toCheck = tournmentList.get(validTeam.getTournamentID());
         Team toFind = toCheck.getTeam(validTeam.getTeamName());
 
         assertEquals(validTeam,toCheck);
