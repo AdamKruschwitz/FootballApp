@@ -1,4 +1,6 @@
-package edu.ithaca.footballTeam.FootballApp;
+package ithaca.edu.footballTeam.footballApp;
+
+import ithaca.edu.footballTeam.footballApp.Team;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,10 +8,10 @@ import java.util.Map;
 public class Tournament {
 
     private Map<String, Team> teams;
-    private String tournamentName;
+    private String tournamentID;
 
-    public Tournament(String name){
-        this.tournamentName = name;
+    public Tournament(String ID){
+        this.tournamentID= ID;
         this.teams = new HashMap<String,Team>();
 
     }
