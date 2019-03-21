@@ -1,7 +1,12 @@
-package edu.ithaca.footballTeam.FootballApp;
+package ithaca.edu.footballTeam.footballApp;
 
+<<<<<<< HEAD:src/test/java/ithaca/edu/footballTeam/footballApp/registerTeamTest.java
 import edu.ithaca.footballTeam.FootballApp.Commissioner;
 import edu.ithaca.footballTeam.FootballApp.teamOwner;
+=======
+import ithaca.edu.footballTeam.footballApp.Commissioner;
+import ithaca.edu.footballTeam.footballApp.teamOwner;
+>>>>>>> master:src/test/java/ithaca/edu/footballTeam/footballApp/registerTeamTest.java
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
