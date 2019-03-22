@@ -19,6 +19,7 @@ public class ReadingAndWritingIO {
         return input;
     }
 
+
     public void printToConsole(String input){
         System.out.println(input);
     }
