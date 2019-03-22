@@ -25,6 +25,7 @@ public class FootballMain {
         ReadingAndWritingIO io = new ReadingAndWritingIO();
         io.printToConsole("Here is a list of commands");
         io.printToConsole("run tournament");
+        io.printToConsole("card player");
     }
 
     public static void execution(String command){
@@ -115,6 +116,37 @@ public class FootballMain {
         }
         else if(command.equals("show leader board")){
             // to do for showing the current standings
+
+        }
+        else if(command.equals("card player")){
+            Player adam = new Player("Adam", 1);
+            Player liam = new Player("Liam", 2);
+            Player elvis = new Player("Elvis", 3);
+            io.printToConsole("Select player to give redcard to: ");
+            io.printToConsole("Adam ");
+            io.printToConsole("Liam ");
+            io.printToConsole("Elvis ");
+            String playerName = io.getUserInput();
+            io.printToConsole("Enter reason for redcard: ");
+            String redReason = io.getUserInput();
+            if(playerName.equals("Adam")){
+                io.printToConsole("Redcard added to: " + playerName);
+                adam.addRedCard(new RedCard(1, redReason));
+            }
+            if(playerName.equals("Liam")){
+                io.printToConsole("Redcard added to: " + playerName);
+                liam.addRedCard(new RedCard(1, redReason));
+            }
+            if(playerName.equals("Elvis")){
+                io.printToConsole("Redcard added to: " + playerName);
+                elvis.addRedCard(new RedCard(1, redReason));
+            }
+            io.printToConsole("New Player elegibility: ");
+            io.printToConsole("Adam: " + adam.isEligible());
+            io.printToConsole("Liam: " + liam.isEligible());
+            io.printToConsole("Elvis: " + elvis.isEligible());
+
+
 
         }
 
