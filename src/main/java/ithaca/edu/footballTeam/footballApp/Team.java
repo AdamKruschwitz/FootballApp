@@ -9,7 +9,8 @@ public class Team {
     private String tournamentID;
     private teamOwner owner;
 
-    public  Team(){}
+    public Team() {}
+
     public Team(Roster activeRoster, String teamName){
         if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligible to play");
@@ -42,7 +43,6 @@ public class Team {
 
         }
     }
-
 
     public void setActiveRoster(Roster activeRoster){
         if(activeRoster.isEligible() == false) {

@@ -1,7 +1,6 @@
 package ithaca.edu.footballTeam.footballApp;
-
-import ithaca.edu.footballTeam.footballApp.Team;
-
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +8,19 @@ public class Tournament {
 
     private Map<String, Team> teams;
     private String tournamentName;
+    private List<Round> rounds;
+
+    public Tournament() {
+        rounds = new ArrayList<>();
+    }
+
+    public Tournament(List<Round> rounds) {
+        this.rounds = new ArrayList<>(rounds);
+    }
+
+    public List<Round> getRounds() {
+        return rounds;
+    }
 
     public Tournament(String name){
         this.tournamentName = name;

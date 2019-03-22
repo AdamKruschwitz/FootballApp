@@ -26,4 +26,8 @@ public class Round {
         if(nextRound == null) throw new IllegalCallerException("There is no next round");
         // TODO: set up the next round from list of matches with winners.
     }
+
+    public List<Match> getCurrentMatches() {
+        return currentMatches;
+    }
 }
