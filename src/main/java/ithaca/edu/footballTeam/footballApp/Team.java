@@ -7,6 +7,7 @@ public class Team {
     private String teamName;
     private int teamId;
     private String tournamentID;
+    private teamOwner owner;
 
     public Team() {}
 
@@ -19,7 +20,6 @@ public class Team {
             this.teamName = teamName;
         }
     }
-
     public Team(Roster activeRoster, String teamName, String tournamentID){
         if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligible to play");
@@ -31,18 +31,42 @@ public class Team {
         }
     }
 
-    public void setActiveRoster(Roster activeRoster){
+    public Team(Roster activeRoster, String teamName, String tournamentID, teamOwner owner){
         if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligible to play");
         }
         else{
             this.activeRoster = activeRoster;
             this.teamName = teamName;
+            this.tournamentID = tournamentID;
+            this.owner = owner;
+
         }
     }
 
-    public String getTeamName() {
-        return teamName;
+    public void setActiveRoster(Roster activeRoster){
+        if(activeRoster.isEligible() == false) {
+            throw new IllegalArgumentException("Entered team is not eligible to play");
+        }
+        else{
+            this.activeRoster = activeRoster;
+
+        }
+    }
+
+    public String getTeamName(){
+        return this.teamName;
+    }
+
+    public String getTournamentID(){
+        return this.tournamentID;
+    }
+    public void setTeamName(String teamName){
+        this.teamName = teamName;
+    }
+
+    public  void setTeamId(int teamId){
+        this.teamId = teamId;
     }
 
     public void setBenchRoster(Roster benchRoster){
@@ -55,6 +79,14 @@ public class Team {
 
     public void setTournamentID(String tournamentID){
         this.tournamentID = tournamentID;
+    }
+
+    public void setOwner(teamOwner teamOwner){
+        this.owner = teamOwner;
+    }
+
+    public boolean isValid(){
+        return true;
     }
 
 }

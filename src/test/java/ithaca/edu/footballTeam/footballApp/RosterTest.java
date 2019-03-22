@@ -9,7 +9,7 @@ public class RosterTest {
     @Test
     void addRemovePlayerTest(){
         Roster newRoster = new Roster(true);
-        Player p = new Player();
+        Player p = new Player("player1",1);
 
         newRoster.addPlayer(p);
         assertEquals(1,newRoster.getPlayerCount());
