@@ -19,7 +19,7 @@ public class Round {
 
     public void setWinner(Team winner, Match match) {
         if(!currentMatches.contains(match)) throw new IllegalArgumentException("match not in this round");
-        match.setWinner(winner);
+       // match.setWinner(winner);
     }
 
     public void setUpNextRound() {

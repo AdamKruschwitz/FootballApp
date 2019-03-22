@@ -13,7 +13,7 @@ public class Roster {
     }
 
     public boolean isEligible(){
-        return (canPlay == true && players.size() > 10);
+        return (canPlay == true);
     }
 
     public void addPlayer(Player p){

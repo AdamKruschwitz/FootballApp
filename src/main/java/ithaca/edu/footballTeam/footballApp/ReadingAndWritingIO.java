@@ -22,6 +22,7 @@ public class ReadingAndWritingIO {
 
     public void printToConsole(String input){
         System.out.println(input);
+        System.out.println("");
     }
 
 
