@@ -13,22 +13,26 @@ public class FootballMain {
 
     }
 
+    public static void runRound(){
+
+    }
+
+
     public static void helpCommand(){
         ReadingAndWritingIO io = new ReadingAndWritingIO();
         io.printToConsole("Here is a list of commands");
-        io.printToConsole("show Schedule");
-        io.printToConsole("run round");
+        io.printToConsole("run tournament");
         io.printToConsole("show leader board");
     }
 
     public static void execution(String command){
         if(command.equals("help")){
-            helpCommand();
+              helpCommand();
         }
         else if(command.equals("show schedule")){
             //to do for showing a schedule
         }
-        else if(command.equals("run round")){
+        else if(command.equals("run tournament")){
             // to do for running all the matches in a schedule
             // setting up a schedule
             // selecting the first round
