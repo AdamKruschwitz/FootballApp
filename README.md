@@ -32,8 +32,13 @@ The team will focus on communicating what each person on the team should be doin
 * Ask for clarification
 * Daily scrum meetings
 * Use slack to communicate or share ideas
+* [Team procedures](https://docs.google.com/document/d/1JKrV09iAMUmfn5g1-gWyw268bm0zaJl6CWhwkzrtjMA/edit)
+
 
 # Sprint Goal
 The goal is to be able to manage a team within a league on the leaderboard and it also shows us how the team advance up in rank on the leaderboard.
 
-# [Sprint 1](https://docs.google.com/document/d/11f6nJzbSAUNfdDp4GlQwS9Mi5-Ba_cL7NF94_ZH6vRs/edit)
+## Sprint 1
+*[Sprint review](https://docs.google.com/document/d/11f6nJzbSAUNfdDp4GlQwS9Mi5-Ba_cL7NF94_ZH6vRs/edit)
+
+*[Sprint retrospective](https://docs.google.com/document/d/1FefEawx5QKX-E9mh0L_7NKYVdfd6L5HjogNOGQyZPps/edit)
