@@ -9,11 +9,11 @@ public class Commissioner {
         this.name = name;
     }
 
-    public void approveTeam(String teamName, Map teamsWaitlist, Map tournamentList){
+    public void approveTeam(String teamName, Map<String, Team> teamsWaitlist, Map<String, Tournament> tournamentList){
 
         Team teamToAdd = teamsWaitlist.get(teamName);
         if(teamToAdd!=null) {
-            String desiredTournament = teamToAdd.getDesiredTournament();
+            String desiredTournament = teamToAdd.getTournamentID();
             //Map key = tournament name, value = tournament object
             Tournament tournamentToUpdate = tournamentList.get(desiredTournament);
             if(tournamentToUpdate!=null){
