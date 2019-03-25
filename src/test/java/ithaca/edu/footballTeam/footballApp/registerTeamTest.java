@@ -1,12 +1,8 @@
 package ithaca.edu.footballTeam.footballApp;
 
-<<<<<<< HEAD:src/test/java/ithaca/edu/footballTeam/footballApp/registerTeamTest.java
-import edu.ithaca.footballTeam.FootballApp.Commissioner;
-import edu.ithaca.footballTeam.FootballApp.teamOwner;
-=======
+
 import ithaca.edu.footballTeam.footballApp.Commissioner;
 import ithaca.edu.footballTeam.footballApp.teamOwner;
->>>>>>> master:src/test/java/ithaca/edu/footballTeam/footballApp/registerTeamTest.java
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -22,7 +18,7 @@ public class registerTeamTest {
         Map <String, Tournament> tournmentList = new HashMap<String, Tournament>();
 
         Team EvertonFC = new Team ("EvertonFC","Everton", "Desired Tournament");
-        Team Testing = new Team ("Testing");
+        Team Testing = new Team ("Testing",);
 
         teamOwner everton = new teamOwner("Everton",EvertonFC);
         Commissioner mainC= new Commissioner ("Admin");

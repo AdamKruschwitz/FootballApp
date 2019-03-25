@@ -9,6 +9,7 @@ public class Team {
     private String tournamentID;
     private teamOwner owner;
 
+    public Team(){}
 
     /**
      *
