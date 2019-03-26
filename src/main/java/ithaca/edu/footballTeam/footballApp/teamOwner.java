@@ -18,6 +18,7 @@ public class teamOwner {
 
     public void registerTeam(Team team, Map teamsWaitlist){
         // Team isValid just returns true regardless will update this when we write the proper function
+
         if(team.isTeamEligible()) {
             teamsWaitlist.put(team.getTeamName(), team);
         }
