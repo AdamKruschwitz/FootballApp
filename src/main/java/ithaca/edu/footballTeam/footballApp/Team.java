@@ -10,6 +10,7 @@ public class Team {
     private teamOwner owner;
 
     public  Team(){}
+
     public Team(Roster activeRoster, String teamName){
         if(activeRoster.isEligible() == false) {
             throw new IllegalArgumentException("Entered team is not eligible to play");
