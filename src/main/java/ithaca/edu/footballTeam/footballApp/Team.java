@@ -136,14 +136,7 @@ public class Team {
         this.owner = teamOwner;
     }
 
-    /**
-     *
-     * @return true if the team has an eligible active roster
-     */
 
-    public boolean isValid(){
-        return true;
-    }
 
 
 }
