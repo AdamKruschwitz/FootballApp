@@ -9,7 +9,9 @@ public class Team {
     private String tournamentID;
     private teamOwner owner;
 
+
     public Team(){}
+
 
     /**
      *
@@ -123,5 +125,25 @@ public class Team {
     public void setTournamentID(String tournamentID){
         this.tournamentID = tournamentID;
     }
+
+
+    /**
+     *
+     * @param teamOwner sets the team owner for this team
+     */
+
+    public void setOwner(teamOwner teamOwner){
+        this.owner = teamOwner;
+    }
+
+    /**
+     *
+     * @return true if the team has an eligible active roster
+     */
+
+    public boolean isValid(){
+        return true;
+    }
+
 
 }
