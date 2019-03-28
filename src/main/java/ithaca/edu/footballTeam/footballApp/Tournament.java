@@ -3,6 +3,7 @@ package ithaca.edu.footballTeam.footballApp;
 import ithaca.edu.footballTeam.footballApp.Team;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Tournament {
@@ -14,11 +15,17 @@ public class Tournament {
     private Round r3;
     private Round currRound;
     private Leaderboard leaderboard;
+    private List<Match> matches;
 
     public Tournament(String name, Map<String, Team> teams){
         this.tournamentName = name;
-        this.teams = teams;
-        this.r1 = new Round();
+        for (Map.Entry<String,Team> entry : teams.entrySet()){
+            Team team = entry.getValue();
+            if(team.getRank() <= 8){
+                this.teams.put(team.getTeamName(),team);
+            }
+        }
+        this.r1 = new Round(teams);
         this.r2 = new Round();
         this.r3 = new Round();
         this.currRound = r1;
