@@ -8,6 +8,8 @@ public class Team {
     private int teamId;
     private String tournamentID;
     private teamOwner owner;
+    private int rank;
+
 
 
     public Team(){}
@@ -132,8 +134,30 @@ public class Team {
      * @param teamOwner sets the team owner for this team
      */
 
+
     public void setOwner(teamOwner teamOwner){
         this.owner = teamOwner;
+    }
+
+    /**
+     * Updates rank for team based on leaderboard
+     * @param num
+     */
+    public void updateRank(int num){
+        if(num>0) {
+            this.rank = num;
+        }
+        else{
+            throw new IllegalArgumentException("Value is invalid");
+        }
+    }
+
+    /**
+     * Gets the rank of team
+     * @return int
+     */
+    public int getRank(){
+        return this.rank;
     }
 
 
