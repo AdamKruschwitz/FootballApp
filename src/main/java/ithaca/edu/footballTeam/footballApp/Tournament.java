@@ -25,9 +25,22 @@ public class Tournament {
                 this.teams.put(team.getTeamName(),team);
             }
         }
-        this.r1 = new Round(teams);
-        this.r2 = new Round();
-        this.r3 = new Round();
+        this.r1 = new Round(matches,r2);
+        this.r2 = new Round(matches,r3);
+        this.r3 = new Round(matches,null);
+        this.currRound = r1;
+        this.leaderboard = new Leaderboard();
+    }
+
+    public Tournament(String name, List<Team> teams){
+        this.tournamentName = name;
+        for (int i = 0; i < teams.size(); i++) {
+            Team toAdd = teams.get(i);
+            this.teams.put(toAdd.getTeamName(),toAdd);
+            }
+        this.r1 = new Round(matches,r2);
+        this.r2 = new Round(matches,r3);
+        this.r3 = new Round(matches,null);
         this.currRound = r1;
         this.leaderboard = new Leaderboard();
     }
@@ -35,9 +48,9 @@ public class Tournament {
     public Tournament(String name){
         this.tournamentName = name;
         this.teams = new HashMap<String,Team>();
-        this.r1 = new Round();
-        this.r2 = new Round();
-        this.r3 = new Round();
+        this.r1 = new Round(matches,r2);
+        this.r2 = new Round(matches,r3);
+        this.r3 = new Round(matches,null);
         this.currRound = r1;
         this.leaderboard = new Leaderboard();
 
