@@ -17,7 +17,7 @@ public class tournamentTest {
     public void showTeamsTest(){
         List<Team> teams = new ArrayList<>();
 
-        Roster activeRoster = new Roster(true);
+        Roster activeRoster = new Roster();
         List<Player> players = new ArrayList<Player>();
         for(int i = 0; i<11; i++){
             Player p = new Player("Player"+i,i);
@@ -44,7 +44,7 @@ public class tournamentTest {
         List<Team> teams = new ArrayList<>();
         List<Team> teams2 = new ArrayList<>();
 
-        Roster activeRoster = new Roster(true);
+        Roster activeRoster = new Roster();
         List<Player> players = new ArrayList<Player>();
         for(int i = 0; i<11; i++){
             Player p = new Player("Player"+i,i);
