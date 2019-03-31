@@ -51,4 +51,14 @@ public class Roster {
     public int getPlayerCount(){
         return players.size();
     }
+
+    /**
+     * Helper method to fill a roster with valid players
+     */
+    public void fillWithValidPlayers(){
+        for(int i = 0; i < 11; i++){
+            Player p = new Player(Integer.toString(i),i);
+            addPlayer(p);
+        }
+    }
 }

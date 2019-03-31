@@ -4,27 +4,10 @@ The football Organizer application is an application that will help players, ref
 It will distribute relevant information to players and refs, and handle the mechanics of league tournament play. 
 
 
+## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
 ## [Narrative/Scenarios](https://docs.google.com/document/d/1pJjryltdAqhJ79q6lnIHu_jxpax6nsVEu5Zp9jSo44E/edit?usp=sharing)
 
-
-## [Use Case Diagram](https://drive.google.com/file/d/1_CDMW8pMBoVqUtl-oI18abHUYpedIa6q/view)
-
-
-## [Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
-
-## Sequence Diagrams
-* [New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
-* [Throw Card](https://drive.google.com/file/d/1K1nbavF0EvidozsNv7CByQKJwSqkGNyQ/view?usp=sharing)
-* [Add match](https://drive.google.com/file/d/1ljCwViUrgBSYvTJ24XT0TKmWmkrPjtro/view?usp=sharing)
-* [Add Team](https://drive.google.com/file/d/1Ejgw8vKkLt7A0L8f_9HDfg8WWCOxjjhM/view?usp=sharing)
-* [Create Tournament](https://drive.google.com/file/d/1rGaChqs4Er1J3iHCDoN_yySPnCchGfQS/view?usp=sharing)
-* [Team Advance up](https://drive.google.com/file/d/1XpbwiTFikDDKadpD3FHzW2wIKBxqilZW/view?usp=sharing)
-* [Show Standings](https://drive.google.com/file/d/1C899AAA4lptAOBu_xiqcG7Sn7B5exCaN/view?usp=sharing)
-
-## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
-
 # Team work
-
 The team will focus on communicating what each person on the team should be doing and the person has to assign cards to themselves on the product backlog. Each sprint will be 1 week and the daily scrum meeting should be 1 hour or less.
 
 * Bullet list of what to do:
@@ -35,10 +18,45 @@ The team will focus on communicating what each person on the team should be doin
 * [Team procedures](https://docs.google.com/document/d/1JKrV09iAMUmfn5g1-gWyw268bm0zaJl6CWhwkzrtjMA/edit)
 
 
-# Sprint Goal
+
+
+# Sprint 1
+## Sprint Goal
 The goal is to be able to manage a team within a league on the leaderboard and it also shows us how the team advance up in rank on the leaderboard.
 
-## Sprint 1
-*[Sprint review](https://docs.google.com/document/d/11f6nJzbSAUNfdDp4GlQwS9Mi5-Ba_cL7NF94_ZH6vRs/edit)
+##
 
-*[Sprint retrospective](https://docs.google.com/document/d/1FefEawx5QKX-E9mh0L_7NKYVdfd6L5HjogNOGQyZPps/edit)
+* [Use Case Diagram](https://drive.google.com/file/d/1_CDMW8pMBoVqUtl-oI18abHUYpedIa6q/view)
+* [Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
+
+## Sequence Diagrams
+* [New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
+* [Throw Card](https://drive.google.com/file/d/1K1nbavF0EvidozsNv7CByQKJwSqkGNyQ/view?usp=sharing)
+* [Add match](https://drive.google.com/file/d/1ljCwViUrgBSYvTJ24XT0TKmWmkrPjtro/view?usp=sharing)
+* [Add Team](https://drive.google.com/file/d/1Ejgw8vKkLt7A0L8f_9HDfg8WWCOxjjhM/view?usp=sharing)
+* [Create Tournament](https://drive.google.com/file/d/1rGaChqs4Er1J3iHCDoN_yySPnCchGfQS/view?usp=sharing)
+* [Team Advance up](https://drive.google.com/file/d/1XpbwiTFikDDKadpD3FHzW2wIKBxqilZW/view?usp=sharing)
+* [Show Standings](https://drive.google.com/file/d/1C899AAA4lptAOBu_xiqcG7Sn7B5exCaN/view?usp=sharing)
+
+## Sprint end 
+* [Sprint review](https://docs.google.com/document/d/11f6nJzbSAUNfdDp4GlQwS9Mi5-Ba_cL7NF94_ZH6vRs/edit)
+* [Sprint retrospective](https://docs.google.com/document/d/1FefEawx5QKX-E9mh0L_7NKYVdfd6L5HjogNOGQyZPps/edit)
+
+
+# Sprint 2  
+## Sprint goal: 
+Be able to run a league then a champions tourney  for a season ending with a leader board ranking of the best teams.
+
+##
+
+* [Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
+* [Use-Case Diagram](https://drive.google.com/file/d/1Uj2SwMh0pQaylAUbcmSgOZb3Etzxu0RR/view?usp=sharing)
+
+## Sequence Diagrams 
+
+## Sprint end 
+* [Sprint review](https://docs.google.com/document/d/1b4BQnYgwxP6m7yaWUFBPjvw-wAYksOG4yqns1TfdqZA/edit?usp=sharing)
+* [Sprint retrospective](https://docs.google.com/document/d/1sinGr5Ifghxr05N5jGi1rZHK-zH822fDUZpebMxv7vA/edit?usp=sharing)
+
+
+

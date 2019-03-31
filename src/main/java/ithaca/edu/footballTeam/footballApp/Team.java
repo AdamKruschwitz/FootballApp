@@ -152,12 +152,18 @@ public class Team {
         }
     }
 
+
     /**
      * Gets the rank of team
      * @return int
      */
-    public int getRank(){
+    public int getRank() {
         return this.rank;
+    }
+
+    public boolean isValid(){
+        return activeRoster.isEligible();
+
     }
 
 
