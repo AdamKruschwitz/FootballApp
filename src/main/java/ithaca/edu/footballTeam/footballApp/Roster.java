@@ -7,7 +7,6 @@ public class Roster {
     private boolean canPlay;
     private List<Player> players = new ArrayList<Player>();
 
-
     /**
      *
      * @param canPlay hard coded boolean that determines if the roster is a playable roster

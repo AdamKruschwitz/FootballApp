@@ -18,4 +18,16 @@ public class RosterTest {
         assertEquals(0,newRoster.getPlayerCount());
 
     }
+
+    @Test
+    void rosterIsValidTest(){
+        Roster validRoster = new Roster(true);
+        validRoster.fillWithValidPlayers();
+        assertEquals(true, validRoster.isEligible() );
+
+
+        Roster invalidRoster = new Roster(false);
+        assertEquals(false, invalidRoster.isEligible());
+
+    }
 }

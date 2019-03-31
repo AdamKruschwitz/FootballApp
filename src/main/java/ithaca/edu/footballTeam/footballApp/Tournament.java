@@ -1,6 +1,5 @@
 package ithaca.edu.footballTeam.footballApp;
 
-import ithaca.edu.footballTeam.footballApp.Team;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +16,12 @@ public class Tournament {
     }
 
     public void addTeam(Team team){
-
-        teams.put(team.getTeamName(), team);
-
+        if(team.isTeamEligible()) {
+            teams.put(team.getTeamName(), team);
+        }
+        else{
+            throw new IllegalArgumentException("This team is not valid");
+        }
     }
 
     public void removeTeam(String teamName){
