@@ -139,7 +139,7 @@ public class Team {
      */
 
     public boolean isValid(){
-        return true;
+        return activeRoster.isEligible();
     }
 
 }
