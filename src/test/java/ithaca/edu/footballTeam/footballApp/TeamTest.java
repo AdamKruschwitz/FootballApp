@@ -11,7 +11,7 @@ public class TeamTest {
 
     @Test
     void ValidTeamTest() {
-        Roster activeRoster = new Roster(true);
+        Roster activeRoster = new Roster();
         List<Player> players = new ArrayList<Player>();
         for(int i = 0; i<11; i++){
             Player p = new Player(Integer.toString(i), i);
@@ -21,7 +21,7 @@ public class TeamTest {
         Team validTeam = new Team(activeRoster,"valid Team");
         assertTrue(validTeam.isTeamEligible());
 
-        Roster inactiveRoster = new Roster(false);
+        Roster inactiveRoster = new Roster();
         assertThrows(IllegalArgumentException.class, () -> new Team(inactiveRoster, "inactiveTeam"));
     }
 

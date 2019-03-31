@@ -1,25 +1,27 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Roster {
     private boolean canPlay;
     private List<Player> players = new ArrayList<Player>();
 
-    /**
-     *
-     * @param canPlay hard coded boolean that determines if the roster is a playable roster
-     */
-    public Roster(boolean canPlay){
-        this.canPlay = canPlay;
-    }
+
 
     /**
      *
      * @return true if the roster has only eligible players and the roster count is greater than 10
      */
     public boolean isEligible(){
+        Iterator<Player> iterator = players.iterator();
+        while (iterator.hasNext()){
+            if(iterator.next().isEligible() != true){
+                canPlay = false;
+            }
+            canPlay = true;
+        }
         return (canPlay == true && players.size() > 10);
     }
 
