@@ -14,7 +14,7 @@ public class Tournament {
     private Round r2;
     private Round r3;
     private Round currRound;
-    private Leaderboard leaderboard;
+   // private Leaderboard leaderboard;
     private List<Match> matches;
 
     public Tournament(String name, Map<String, Team> teams){
@@ -29,20 +29,24 @@ public class Tournament {
         this.r2 = new Round(matches,r3);
         this.r3 = new Round(matches,null);
         this.currRound = r1;
-        this.leaderboard = new Leaderboard();
+        //this.leaderboard = new Leaderboard();
     }
 
-    public Tournament(String name, List<Team> teams){
-        this.tournamentName = name;
-        for (int i = 0; i < teams.size(); i++) {
-            Team toAdd = teams.get(i);
-            this.teams.put(toAdd.getTeamName(),toAdd);
+    public Tournament(String name, List<Team> teams) {
+        if (teams.size() < 8) {
+            throw new IllegalArgumentException("Not enough teams to start a tournament");
+        } else {
+            this.tournamentName = name;
+            for (int i = 0; i < teams.size(); i++) {
+                Team toAdd = teams.get(i);
+                this.teams.put(toAdd.getTeamName(), toAdd);
             }
-        this.r1 = new Round(matches,r2);
-        this.r2 = new Round(matches,r3);
-        this.r3 = new Round(matches,null);
-        this.currRound = r1;
-        this.leaderboard = new Leaderboard();
+            this.r1 = new Round(matches, r2);
+            this.r2 = new Round(matches, r3);
+            this.r3 = new Round(matches, null);
+            this.currRound = r1;
+            //this.leaderboard = new Leaderboard();
+        }
     }
 
     public Tournament(String name){
@@ -52,7 +56,7 @@ public class Tournament {
         this.r2 = new Round(matches,r3);
         this.r3 = new Round(matches,null);
         this.currRound = r1;
-        this.leaderboard = new Leaderboard();
+        //this.leaderboard = new Leaderboard();
 
     }
 
@@ -74,9 +78,12 @@ public class Tournament {
      * @param team
      */
     public void addTeam(Team team){
-
-        teams.put(team.getTeamName(), team);
-
+        if(team.isTeamEligible()) {
+            teams.put(team.getTeamName(), team);
+        }
+        else{
+            throw new IllegalArgumentException("Team is not eligible");
+        }
     }
 
     /**
@@ -100,9 +107,13 @@ public class Tournament {
         return tournamentName;
     }
 
-    public Team getTeam(String teamName){
-        Team toReturn = teams.get(teamName);
-        return toReturn;
+    public Team getTeam(String teamName) {
+        if (teams.get("teamName") == null) {
+            throw new IllegalArgumentException("Team does not exist");
+        } else {
+            Team toReturn = teams.get(teamName);
+            return toReturn;
+        }
     }
 
     /**
@@ -114,6 +125,13 @@ public class Tournament {
      * Updates the leaderboard for the tournament
      */
     public void updateLeaderboard() {}
+
+    public void showTeams() {
+        for (Map.Entry<String, Team> entry : teams.entrySet()) {
+            Team team = entry.getValue();
+            System.out.println("Tournament Name: "+tournamentName+"\n"+"Team Name: " + team.getTeamName() + "\n" + "Team Rank: " + team.getRank());
+        }
+    }
 
 
 
