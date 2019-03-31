@@ -12,4 +12,14 @@ public class League {
     public  League(String leagueName, int leagueID, List<Team> participants){
 
     }
+
+    public static boolean participantsValid(List<Team> participants){
+        for(int i = 0; i < participants.size(); i++){
+            if(participants.get(i).isTeamEligible()){
+                return false;
+            }
+        }
+        return true;
+
+    }
 }
