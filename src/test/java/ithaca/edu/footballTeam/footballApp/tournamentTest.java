@@ -63,7 +63,7 @@ public class tournamentTest {
         assertEquals("Team1",team.getTeamName());
         Tournament tournament2 = new Tournament("International Cup");
         assertEquals("International Cup",tournament2.getTournamentID());
-        
+
         assertThrows(NullPointerException.class, ()-> tournament2.removeTeam("EvertonFC"));
 
     }

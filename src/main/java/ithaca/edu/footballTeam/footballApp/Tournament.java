@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Tournament {
 
-    private Map<String, Team> teams;
+    private HashMap<String, Team> teams;
     private String tournamentName;
     private Round r1;
     private Round r2;
@@ -16,7 +16,7 @@ public class Tournament {
    // private Leaderboard leaderboard;
     private List<Match> matches;
 
-    public Tournament(String name, Map<String, Team> teams){
+    public Tournament(String name, HashMap<String, Team> teams){
         this.tournamentName = name;
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
@@ -32,18 +32,21 @@ public class Tournament {
     }
 
     public Tournament(String name, List<Team> teams) {
+        this.teams = new HashMap<String, Team>();
         if (teams.size() < 8) {
             throw new IllegalArgumentException("Not enough teams to start a tournament");
         } else {
             this.tournamentName = name;
             for (int i = 0; i < teams.size(); i++) {
                 Team toAdd = teams.get(i);
+
                 this.teams.put(toAdd.getTeamName(), toAdd);
             }
-            this.r1 = new Round(matches, r2);
-            this.r2 = new Round(matches, r3);
-            this.r3 = new Round(matches, null);
-            this.currRound = r1;
+
+//            this.r1 = new Round(matches, r2);
+  //          this.r2 = new Round(matches, r3);
+    //        this.r3 = new Round(matches, null);
+      //      this.currRound = r1;
             //this.leaderboard = new Leaderboard();
         }
     }
@@ -51,10 +54,10 @@ public class Tournament {
     public Tournament(String name){
         this.tournamentName = name;
         this.teams = new HashMap<String,Team>();
-        this.r1 = new Round(matches,r2);
-        this.r2 = new Round(matches,r3);
-        this.r3 = new Round(matches,null);
-        this.currRound = r1;
+       // this.r1 = new Round(matches,r2);
+        //this.r2 = new Round(matches,r3);
+        //this.r3 = new Round(matches,null);
+        //this.currRound = r1;
         //this.leaderboard = new Leaderboard();
 
     }
@@ -107,8 +110,8 @@ public class Tournament {
     }
 
     public Team getTeam(String teamName) {
-        if (teams.get("teamName") == null) {
-            throw new IllegalArgumentException("Team does not exist");
+        if (teams.get(teamName) == null) {
+            throw new NullPointerException("Team does not exist");
         } else {
             Team toReturn = teams.get(teamName);
             return toReturn;
