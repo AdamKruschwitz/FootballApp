@@ -37,9 +37,9 @@ public class Roster {
     /**
      * removes a player from the roster
      */
-    public void removePlayer(){
+    public void removePlayer(int i){
         if(players.size()>0) {
-            players.remove((players.size() - 1));
+            players.remove(i);
         }
         else{
             throw new IndexOutOfBoundsException("Roster is empty");
@@ -62,5 +62,10 @@ public class Roster {
             Player p = new Player(Integer.toString(i),i);
             addPlayer(p);
         }
+    }
+
+    public Player getPlayer(int id){
+        return players.get(id);
+
     }
 }
