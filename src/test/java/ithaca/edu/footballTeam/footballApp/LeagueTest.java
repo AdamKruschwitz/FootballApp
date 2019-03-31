@@ -12,6 +12,15 @@ public class LeagueTest {
     @Test
     void leagueConstructorTest(){
 
+        Roster initiallyActiveRoster = new Roster(true);
+        initiallyActiveRoster.fillWithValidPlayers();
+        Team validTeam = new Team(initiallyActiveRoster, "invalid Team");
+
+        
+
+        List<Team> invalidTeamList = new ArrayList<Team>();
+        assertFalse(League.participantsValid(invalidTeamList));
+
 
         Roster activeroster = new Roster(true);
         activeroster.fillWithValidPlayers();

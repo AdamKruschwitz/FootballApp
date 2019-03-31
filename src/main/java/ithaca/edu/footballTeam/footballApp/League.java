@@ -25,7 +25,7 @@ public class League {
             this.participants = participants;
         }
         else {
-            throw new IllegalArgumentException("invalid participants size");
+            throw new IllegalArgumentException("Invalid team in participants or invalid participants size");
         }
 
     }
