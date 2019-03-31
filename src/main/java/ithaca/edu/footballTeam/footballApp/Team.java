@@ -161,6 +161,10 @@ public class Team {
         return this.rank;
     }
 
+    /**
+     *
+     * @return whether a team is eligible or not based on whether a teams's active roster is eligible or not
+     */
     public boolean isValid(){
         return activeRoster.isEligible();
 
