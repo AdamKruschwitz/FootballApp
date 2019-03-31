@@ -14,7 +14,7 @@ public class RosterTest {
         newRoster.addPlayer(p);
         assertEquals(1,newRoster.getPlayerCount());
 
-        newRoster.removePlayer();
+        newRoster.removePlayer(0);
         assertEquals(0,newRoster.getPlayerCount());
 
     }

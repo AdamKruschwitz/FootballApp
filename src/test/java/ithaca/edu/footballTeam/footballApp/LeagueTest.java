@@ -12,17 +12,17 @@ public class LeagueTest {
     @Test
     void leagueConstructorTest(){
 
-        Roster initiallyActiveRoster = new Roster(true);
+        Roster initiallyActiveRoster = new Roster();
         initiallyActiveRoster.fillWithValidPlayers();
         Team validTeam = new Team(initiallyActiveRoster, "invalid Team");
-
-        
-
+        RedCard red = new RedCard(2,"attacked ref");
+        initiallyActiveRoster.getPlayer(1).addRedCard(red);
         List<Team> invalidTeamList = new ArrayList<Team>();
+        invalidTeamList.add(validTeam);
         assertFalse(League.participantsValid(invalidTeamList));
 
 
-        Roster activeroster = new Roster(true);
+        Roster activeroster = new Roster();
         activeroster.fillWithValidPlayers();
         List<Team> validTeams = new ArrayList<Team>();
         for(int i = 0; i < 4; i++){
@@ -33,6 +33,11 @@ public class LeagueTest {
 
 
 
+
+    }
+
+    @Test
+    void createRoundTest(){
 
     }
 }

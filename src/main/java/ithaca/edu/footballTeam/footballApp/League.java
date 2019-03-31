@@ -1,5 +1,7 @@
 package ithaca.edu.footballTeam.footballApp;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class League {
@@ -7,6 +9,7 @@ public class League {
     private int leagueID;
     private List<Team> participants;
     private List<Round> leagueRounds;
+    private boolean inSeason;
     //private Leaderboard scoreboard;
 
     /**
@@ -30,6 +33,12 @@ public class League {
 
     }
 
+    /**
+     *
+     * @param participants list of participating teams
+     * @return boolean if the participating teams are all valid
+     */
+
     public static boolean participantsValid(List<Team> participants){
         for(int i = 0; i < participants.size(); i++){
             if(participants.get(i).isTeamEligible()){
@@ -37,6 +46,26 @@ public class League {
             }
         }
         return true;
+
+    }
+
+    public void generateRound(){
+        int firstHalf = participants.size()/2;
+        List<Team> vs1 = participants.subList(0, firstHalf-1);
+        List<Team> vs2 = participants.subList(firstHalf,participants.size()-1);
+        List<Match> matches = new ArrayList<>();
+
+        for(int i = 0; i < vs1.size(); i++){
+           Match match = new Match(vs1.get(i),vs2.get(i), i);
+           matches.add(match);
+        }
+
+
+
+
+
+
+
 
     }
 }
