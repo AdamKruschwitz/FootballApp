@@ -41,7 +41,7 @@ public class FootballMain {
             //to do for showing a schedule
         }
         else if(command.equals("run tournament")){
-            Roster validRoster = new Roster(true);
+            Roster validRoster = new Roster();
 
 
             Team team1 = new Team(validRoster, "Manchester U");

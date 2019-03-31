@@ -170,7 +170,16 @@ public class Team {
 
     }
 
-
+    /**
+     *
+     * @param id id for the player you are trying to get
+     * @return the player
+     * player id will just correspond to index in list
+     * later player id will be a unique identifier for a player
+     */
+    public  Player getPlayer(int id){
+        return this.activeRoster.getPlayer(id);
+    }
 
 
 }
