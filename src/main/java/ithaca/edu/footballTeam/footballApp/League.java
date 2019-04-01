@@ -49,23 +49,29 @@ public class League {
 
     }
 
-    public void generateRound(){
-        int firstHalf = participants.size()/2;
-        List<Team> vs1 = participants.subList(0, firstHalf-1);
-        List<Team> vs2 = participants.subList(firstHalf,participants.size()-1);
-        List<Match> matches = new ArrayList<>();
+    /**
+     *
+     * @param participants participating teams for this round
+     * Teams must be valid and team numbers have to be even
+     * This creates all of the matches for the games to be played within a league season
+     */
 
-        for(int i = 0; i < vs1.size(); i++){
-           Match match = new Match(vs1.get(i),vs2.get(i), i);
-           matches.add(match);
+    public List<Match> generateLeagueMatches(List<Team> participants){
+        List<Match> leagueMatches;
+        if(participantsValid(participants)) {
+             leagueMatches = new ArrayList<>();
+            for (int i = 0; i < participants.size(); i++) {
+                for(int j =1; j < participants.size(); j++){
+                    Match match = new Match(participants.get(i), participants.get(j), i + j);
+                    leagueMatches.add(match);
+                }
+            }
         }
-
-
-
-
-
-
-
-
+        else {
+            throw new IllegalArgumentException("Participating teams does not have an even number");
+        }
+        return leagueMatches;
     }
+
+
 }
