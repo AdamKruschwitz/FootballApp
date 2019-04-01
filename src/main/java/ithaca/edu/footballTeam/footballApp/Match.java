@@ -46,4 +46,8 @@ public class Match {
         }
         return team2;
     }
+
+    public void print(){
+        System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
+    }
 }

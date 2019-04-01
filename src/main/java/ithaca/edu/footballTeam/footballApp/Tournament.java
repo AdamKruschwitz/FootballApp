@@ -1,13 +1,14 @@
 package ithaca.edu.footballTeam.footballApp;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Tournament {
 
-    private HashMap<String, Team> teams;
+    private List<Team> teams;
     private String tournamentName;
     private Round r1;
     private Round r2;
@@ -21,7 +22,7 @@ public class Tournament {
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
             if(team.getRank() <= 8){
-                this.teams.put(team.getTeamName(),team);
+                this.teams.add(team);
             }
         }
        // this.r1 = new Round(matches,r2);
@@ -32,15 +33,23 @@ public class Tournament {
     }
 
     public Tournament(String name, List<Team> teams) {
-        this.teams = new HashMap<String, Team>();
+        this.matches = new ArrayList<>();
+        this.teams = new ArrayList<>();
         if (teams.size() < 8) {
             throw new IllegalArgumentException("Not enough teams to start a tournament");
         } else {
             this.tournamentName = name;
             for (int i = 0; i < teams.size(); i++) {
                 Team toAdd = teams.get(i);
+                if (toAdd.getRank() <= 8) {
+                    this.teams.add(toAdd);
+                }
+            }
 
-                this.teams.put(toAdd.getTeamName(), toAdd);
+            for (int i = 0; i < this.teams.size()/2; i++) {
+                Match match = new Match(this.teams.get(i),this.teams.get(this.teams.size()-(i+1)),i);
+                match.print();
+                matches.add(match);
             }
 
 //            this.r1 = new Round(matches, r2);
@@ -53,7 +62,7 @@ public class Tournament {
 
     public Tournament(String name){
         this.tournamentName = name;
-        this.teams = new HashMap<String,Team>();
+        this.teams = new ArrayList<>();
        // this.r1 = new Round(matches,r2);
         //this.r2 = new Round(matches,r3);
         //this.r3 = new Round(matches,null);
@@ -81,7 +90,7 @@ public class Tournament {
      */
     public void addTeam(Team team){
         if(team.isTeamEligible()) {
-            teams.put(team.getTeamName(), team);
+            teams.add(team);
         }
         else{
             throw new IllegalArgumentException("Team is not eligible");
@@ -93,11 +102,17 @@ public class Tournament {
      * @param teamName
      */
     public void removeTeam(String teamName){
-        Team teamToRemove = teams.get(teamName);
-        if(teamToRemove!=null){
-            teams.remove(teamName);
-        }else{
-            throw new NullPointerException("This team does not exist in this tournament");
+        Team toRemove = new Team();
+        for (int i = 0; i < this.teams.size() ; i++) {
+            Team temp = this.teams.get(i);
+            if(temp.getTeamName().equals(teamName)){
+                teams.remove(i);
+                toRemove = temp;
+                break;
+            }
+        }
+        if(!toRemove.getTeamName().equals(teamName)){
+            throw new NullPointerException("This team does not exist in this tournament. ");
         }
     }
 
@@ -110,10 +125,16 @@ public class Tournament {
     }
 
     public Team getTeam(String teamName) {
-        if (teams.get(teamName) == null) {
-            throw new NullPointerException("Team does not exist");
-        } else {
-            Team toReturn = teams.get(teamName);
+        Team toReturn = new Team();
+        for (int i = 0; i < this.teams.size(); i++) {
+            Team temp = this.teams.get(i);
+            if (temp.getTeamName().equals(teamName)) {
+                toReturn = temp;
+            }
+        }
+        if(!toReturn.getTeamName().equals(teamName)){
+            throw new NullPointerException("This team does not exit in this tournament");
+        }else {
             return toReturn;
         }
     }
@@ -129,12 +150,11 @@ public class Tournament {
     public void updateLeaderboard() {}
 
     public void showTeams() {
-        for (Map.Entry<String, Team> entry : teams.entrySet()) {
-            Team team = entry.getValue();
+        for (int i = 0; i < this.teams.size(); i++) {
+            Team team = teams.get(i);
             System.out.println("Tournament Name: "+tournamentName+"\n"+"Team Name: " + team.getTeamName() + "\n" + "Team Rank: " + team.getRank());
+        }
+
         }
     }
 
-
-
-}
