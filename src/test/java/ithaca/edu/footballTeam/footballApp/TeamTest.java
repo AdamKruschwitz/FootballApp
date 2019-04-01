@@ -25,6 +25,23 @@ public class TeamTest {
         assertThrows(IllegalArgumentException.class, () -> new Team(inactiveRoster, "inactiveTeam"));
     }
 
+    @Test
+    void comparingTwoTeamsTest(){
+        Roster activeRoster = new Roster();
+        activeRoster.fillWithValidPlayers();
+        Team team1 = new Team(activeRoster,"Team 1");
+        Team team2 = new Team(activeRoster, "Team 2");
+
+        team1.addToScoredGoals(10);
+        team1.addToScoredOnGoals(2);
+
+        team2.addToScoredGoals(10);
+        team2.addToScoredOnGoals(5);
+
+        assertEquals(1, team1.compareTo(team2));
+        assertEquals(-1, team2.compareTo(team1));
+    }
+
 
 
 
