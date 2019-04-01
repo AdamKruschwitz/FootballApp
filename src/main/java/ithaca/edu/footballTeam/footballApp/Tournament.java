@@ -24,10 +24,10 @@ public class Tournament {
                 this.teams.put(team.getTeamName(),team);
             }
         }
-        this.r1 = new Round(matches,r2);
-        this.r2 = new Round(matches,r3);
-        this.r3 = new Round(matches,null);
-        this.currRound = r1;
+       // this.r1 = new Round(matches,r2);
+       // this.r2 = new Round(matches,r3);
+       // this.r3 = new Round(matches,null);
+       // this.currRound = r1;
         //this.leaderboard = new Leaderboard();
     }
 
