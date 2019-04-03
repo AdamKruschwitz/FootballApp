@@ -38,6 +38,11 @@ public class Player {
 
     public List<Card> getYellowCardsForMatch(int matchID){
         List<Card> matchYellowCards = new ArrayList<>();
+        for (int i = 0; i < this.yellowCards.size(); i++) {
+            if(this.yellowCards.get(i).getMatch() == matchID){
+                matchYellowCards.add(this.yellowCards.get(i));
+            }
+        }
         return matchYellowCards;
 
     }

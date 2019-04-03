@@ -17,6 +17,8 @@ public class Match {
         return this.id;
     }
 
+    public void setId(int id){this.id = id; }
+
     public void setTeam1(Team team1) {
         this.team1 = team1;
     }
@@ -24,6 +26,10 @@ public class Match {
     public void setTeam2(Team team2){
         this.team2 = team2;
     }
+
+    public Team getTeam1(){return this.team1;}
+
+    public Team getTeam2(){return this.team2;}
 
     public void setTeam1Score(int team1Score){
         this.team1Score = team1Score;
@@ -45,5 +51,9 @@ public class Match {
             return team1;
         }
         return team2;
+    }
+
+    public void print(){
+        System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
     }
 }
