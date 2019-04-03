@@ -5,14 +5,14 @@ import java.util.*;
 
 public class Leaderboard {
     //variables
-    private HashMap hs = new HashMap<String,Integer>();
+    private HashMap leaderBoard = new HashMap<String,Integer>();
 
 
     /**
      * @Hashmaps generate a constructor
      */
     //constructors
-    public Leaderboard(){
+    public Leaderboard(List<Team> ){
         hs = new HashMap<String,Integer>();
 //        hs.put("teamA", 42);
 //        hs.put("teamB", 60);

@@ -31,6 +31,10 @@
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+<<<<<<< HEAD
+=======
+*/target/**
+>>>>>>> master
 
 # CMake
 cmake-build-*/
@@ -93,4 +97,7 @@ Icon
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+
 .apdisk
+target/
+
