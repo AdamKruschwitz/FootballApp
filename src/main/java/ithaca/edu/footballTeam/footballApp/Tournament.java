@@ -16,6 +16,7 @@ public class Tournament {
 
     public Tournament(String name, HashMap<String, Team> teams){
         this.teams = new ArrayList<>();
+        this.matches = new ArrayList<>();
         this.tournamentName = name;
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
@@ -23,10 +24,18 @@ public class Tournament {
                 this.teams.add(team);
             }
         }
-        //this.r1 = new Round(matches,r2);
-        //this.r2 = new Round(matches,r3);
-        //this.r3 = new Round(matches,null);
-        //this.currRound = r1;
+
+        for (int i = 0; i < this.teams.size()/2; i++) {
+            Match match = new Match(this.teams.get(i),this.teams.get(this.teams.size()-(i+1)),i);
+            match.setId(i+1);
+            match.print();
+            matches.add(match);
+        }
+
+        this.r1 = new Round(matches,r2);
+        this.r2 = new Round(matches,r3);
+        this.r3 = new Round(matches,null);
+        this.currRound = r1;
         //this.leaderboard = new Leaderboard();
     }
 
@@ -51,10 +60,10 @@ public class Tournament {
                 matches.add(match);
             }
 
-            //this.r1 = new Round(matches, r2);
-            //this.r2 = new Round(matches, r3);
-            //this.r3 = new Round(matches, null);
-            //this.currRound = r1;
+            this.r1 = new Round(matches, r2);
+            this.r2 = new Round(matches, r3);
+            this.r3 = new Round(matches, null);
+            this.currRound = r1;
             //this.leaderboard = new Leaderboard();
         }
     }
@@ -157,6 +166,7 @@ public class Tournament {
         }
 
     public void runRound(){
+
         Scanner reader = new Scanner(System.in);
 
         for (int i = 0; i < matches.size(); i++) {

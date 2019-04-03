@@ -26,6 +26,7 @@ public class tournamentTest {
 
         for (int i = 0; i < 8; i++) {
             Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
             teams.add(team);
         }
         Tournament tournament = new Tournament("European Cup",teams);
@@ -51,8 +52,9 @@ public class tournamentTest {
             activeRoster.addPlayer(p);
         }
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 14; i++) {
             Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
             teams.add(team);
         }
 
