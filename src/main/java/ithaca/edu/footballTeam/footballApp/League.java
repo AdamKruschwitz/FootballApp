@@ -41,7 +41,7 @@ public class League {
 
     public static boolean participantsValid(List<Team> participants){
         for(int i = 0; i < participants.size(); i++){
-            if(participants.get(i).isTeamEligible()){
+            if(participants.get(i).isTeamEligible() == false){
                 return false;
             }
         }

@@ -32,6 +32,7 @@ public class LeagueTest {
         Team validTeam = new Team(initiallyActiveRoster, "invalid Team");
         List<Team> invalidTeamList = new ArrayList<Team>();
         invalidTeamList.add(validTeam);
+        invalidTeamList.add(validTeam);
         assertTrue(League.participantsValid(invalidTeamList));
         RedCard red = new RedCard(2,"attacked ref");
         initiallyActiveRoster.getPlayer(1).addRedCard(red);
