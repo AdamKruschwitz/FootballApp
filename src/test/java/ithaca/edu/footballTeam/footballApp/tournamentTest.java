@@ -78,6 +78,32 @@ public class tournamentTest {
 
     }
 
+    @Test
+    public void runRoundTest(){
+
+        List<Team> teams = new ArrayList<>();
+
+
+        Roster activeRoster = new Roster();
+        List<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<11; i++){
+            Player p = new Player("Player"+i,i);
+            activeRoster.addPlayer(p);
+        }
+
+        for (int i = 0; i < 14; i++) {
+            Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
+            teams.add(team);
+        }
+
+        Tournament t1 = new Tournament("American",teams);
+        Tournament t2 = new Tournament("International");
+        t1.runRound();
+        assertThrows(NullPointerException.class, ()-> t2.runRound());
+        assertEquals(2,t1.getCurrRound().getCurrentMatches().size());
+    }
+
     /*@Test
     public void runRoundTest(){
         List<Team> teams = new ArrayList<>();

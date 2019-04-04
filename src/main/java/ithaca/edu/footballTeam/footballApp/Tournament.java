@@ -152,33 +152,40 @@ public class Tournament {
         }
 
         }
+    public Round getCurrRound(){return this.currRound;}
 
     public void runRound(){
+        if(currRound.getCurrentMatches() == null){
+            throw new NullPointerException("There are no matches to run");
+        }
+        else {
+            List<Match> Matches = this.currRound.getCurrentMatches();
+            //Scanner reader = new Scanner(System.in);
 
-        List<Match> Matches = this.currRound.getCurrentMatches();
-        Scanner reader = new Scanner(System.in);
-
-        for (int i = 0; i < Matches.size(); i++) {
-            Match currMatch = Matches.get(i);
-            System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
-            while (!reader.hasNextInt()){
+            for (int i = 0; i < Matches.size(); i++) {
+                Match currMatch = Matches.get(i);
+                //System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
+            /*while (!reader.hasNextInt()){
                 System.out.println("please enter a valid number: ");
                 reader.next();
             }
             int option = reader.nextInt();
-            currMatch.setTeam1Score(option);
+            */
+                currMatch.setTeam1Score(3);
+            /*
             System.out.println("How many goals did "+currMatch.getTeam2().getTeamName()+" score?");
             while (!reader.hasNextInt()){
                 System.out.println("please enter a valid number: ");
                 reader.next();
             }
             option = reader.nextInt();
-            currMatch.setTeam2Score(option);
+            */
+                currMatch.setTeam2Score(1);
             }
 
-        goToNextRound(Matches);
-        System.out.println("Next Round of the "+ tournamentName+" Tounament will be: ");
-        currRound.print();
+            goToNextRound(Matches);
+            //System.out.println("Next Round of the "+ tournamentName+" Tounament will be: ");
+        }   //currRound.print();
     }
     }
 
