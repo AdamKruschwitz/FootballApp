@@ -18,7 +18,7 @@ public class Schedule {
         for(Round round : rounds) {
             List<Match> matches = round.getCurrentMatches();
             for(Match match : matches) {
-                out += match.teams.get(0).getTeamName() + " vs " + match.teams.get(1).getTeamName() + ", ";
+                out += match.getTeam1().getTeamName() + " vs " + match.getTeam2().getTeamName() + ", ";
                 out += match.startTime.toString();
                 out += "\n";
             }

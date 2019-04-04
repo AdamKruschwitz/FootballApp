@@ -12,20 +12,12 @@ public class ScheduleTest {
     void GetTournamentScheduleTest() {
         Roster roster = new Roster(true);
         for(int i=0; i<11; i++) {
-            roster.addPlayer(new Player());
+            roster.addPlayer(new Player("Player"+Integer.toString(i), i));
         }
 
-        List<Team> teams1 = new ArrayList<>();
-        teams1.add(new Team(roster, "team1"));
-        teams1.add(new Team(roster, "team2"));
-
-        List<Team> teams2 = new ArrayList<>();
-        teams2.add(new Team(roster, "team3"));
-        teams2.add(new Team(roster, "team4"));
-
         List<Match> matches = new ArrayList<>();
-        matches.add(new Match(teams1, new Date(10000)));
-        matches.add(new Match(teams2, new Date(20000)));
+        matches.add(new Match(new Team(roster, "team1"), new Team(roster, "team2"), new Date(10000), 0));
+        matches.add(new Match(new Team(roster, "team3"), new Team(roster, "team4"), new Date(20000), 0));
 
         List<Round> rounds = new ArrayList<>();
         rounds.add(new Round(matches, null));

@@ -37,7 +37,21 @@ public class FootballMain {
               helpCommand();
         }
         else if(command.equals("show schedule")){
-            //to do for showing a schedule
+            Roster roster = new Roster(true);
+            for(int i=0; i<11; i++) {
+                roster.addPlayer(new Player("Player"+Integer.toString(i), i));
+            }
+
+            List<Match> matches = new ArrayList<>();
+            matches.add(new Match(new Team(roster, "team1"), new Team(roster, "team2"), new Date(10000), 0));
+            matches.add(new Match(new Team(roster, "team3"), new Team(roster, "team4"), new Date(20000), 1));
+
+            List<Round> rounds = new ArrayList<>();
+            rounds.add(new Round(matches, null));
+
+            Tournament tournament = new Tournament(rounds);
+
+            System.out.println(Schedule.getTournamentSchedule(tournament));
         }
         else if(command.equals("run tournament")){
             Roster validRoster = new Roster(true);
@@ -58,7 +72,7 @@ public class FootballMain {
             int matchAmount = 3;
             int currentMatchAmount = 0;
 
-            Match match = new Match(team1, team2, 1);
+            Match match = new Match(team1, team2, new Date(1000), 1);
             io.printToConsole("Round 1");
             io.printToConsole("Select winner between "+ team1.getTeamName() + " " + " and " + team2.getTeamName());
             String teamName = io.getUserInput();
