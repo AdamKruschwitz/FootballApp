@@ -8,12 +8,13 @@ public class Match {
     private Team team2;
     private int team1Score;
     private int team2Score;
-    Date startTime;
+    public Date startTime;
 
     public Match(Team team1, Team team2, Date startTime, int id){
         this.team1 = team1;
         this.team2 = team2;
         this.id = id;
+        this.startTime = startTime;
     }
 
     public int getId(){
