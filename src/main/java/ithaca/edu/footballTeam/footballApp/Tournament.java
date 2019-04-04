@@ -7,26 +7,30 @@ public class Tournament {
 
     private List<Team> teams;
     private String tournamentName;
-    private Round r1;
-    private Round r2;
-    private Round r3;
     private Round currRound;
+    private Round nextRound;
    // private Leaderboard leaderboard;
     private List<Match> matches;
 
-    public Tournament(String name, HashMap<String, Team> teams){
+    public Tournament(String name, Map<String, Team> teams){
         this.teams = new ArrayList<>();
+        this.matches = new ArrayList<>();
         this.tournamentName = name;
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
-            if(team.getRank() <= 8){
+            if(team.getRank() <= 8 ){
                 this.teams.add(team);
             }
         }
-        //this.r1 = new Round(matches,r2);
-        //this.r2 = new Round(matches,r3);
-        //this.r3 = new Round(matches,null);
-        //this.currRound = r1;
+
+        for (int i = 0; i < this.teams.size()/2; i++) {
+            Match match = new Match(this.teams.get(i),this.teams.get(this.teams.size()-(i+1)),i);
+            match.setId(i+1);
+           // match.print();
+            matches.add(match);
+        }
+
+        this.currRound = new Round(matches,nextRound);
         //this.leaderboard = new Leaderboard();
     }
 
@@ -39,7 +43,7 @@ public class Tournament {
             this.tournamentName = name;
             for (int i = 0; i < teams.size(); i++) {
                 Team toAdd = teams.get(i);
-                if (toAdd.getRank() <= 8) {
+                if (toAdd.getRank() <= 8 && toAdd.getRank() == i+1) {
                     this.teams.add(toAdd);
                 }
             }
@@ -47,14 +51,12 @@ public class Tournament {
             for (int i = 0; i < this.teams.size()/2; i++) {
                 Match match = new Match(this.teams.get(i),this.teams.get(this.teams.size()-(i+1)),i);
                 match.setId(i+1);
-                match.print();
+                //match.print();
                 matches.add(match);
             }
 
-            //this.r1 = new Round(matches, r2);
-            //this.r2 = new Round(matches, r3);
-            //this.r3 = new Round(matches, null);
-            //this.currRound = r1;
+            this.currRound = new Round(matches, nextRound);
+
             //this.leaderboard = new Leaderboard();
         }
     }
@@ -73,14 +75,9 @@ public class Tournament {
     /**
      * Advances the tournament to the next round
      */
-    public void goToNextRound(){
-        if(currRound == r1){
-            currRound = r2;
-        }else if(currRound == r2){
-            currRound = r3;
-        }else{
-            throw new IllegalStateException("Tournament is already in final round");
-        }
+    public void goToNextRound(List<Match> matches){
+
+        this.currRound = currRound.setUpNextRound(matches, nextRound);
     }
 
     /**
@@ -155,32 +152,40 @@ public class Tournament {
         }
 
         }
+    public Round getCurrRound(){return this.currRound;}
 
     public void runRound(){
-        Scanner reader = new Scanner(System.in);
+        if(currRound.getCurrentMatches() == null){
+            throw new NullPointerException("There are no matches to run");
+        }
+        else {
+            List<Match> Matches = this.currRound.getCurrentMatches();
+            //Scanner reader = new Scanner(System.in);
 
-        for (int i = 0; i < matches.size(); i++) {
-            Match currMatch = matches.get(i);
-            System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
-            while (!reader.hasNextInt()){
+            for (int i = 0; i < Matches.size(); i++) {
+                Match currMatch = Matches.get(i);
+                //System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
+            /*while (!reader.hasNextInt()){
                 System.out.println("please enter a valid number: ");
                 reader.next();
             }
             int option = reader.nextInt();
-            currMatch.setTeam1Score(option);
+            */
+                currMatch.setTeam1Score(3);
+            /*
             System.out.println("How many goals did "+currMatch.getTeam2().getTeamName()+" score?");
             while (!reader.hasNextInt()){
                 System.out.println("please enter a valid number: ");
                 reader.next();
             }
             option = reader.nextInt();
-            currMatch.setTeam2Score(option);
+            */
+                currMatch.setTeam2Score(1);
             }
 
-        for (int i = 0; i < matches.size() ; i++) {
-            Match currMatch = matches.get(i);
-            System.out.println("Winner of match "+currMatch.getId()+": "+currMatch.getWinner().getTeamName());
-        }
+            goToNextRound(Matches);
+            //System.out.println("Next Round of the "+ tournamentName+" Tounament will be: ");
+        }   //currRound.print();
     }
     }
 

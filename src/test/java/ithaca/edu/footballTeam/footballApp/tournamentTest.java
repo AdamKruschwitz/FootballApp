@@ -5,7 +5,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,6 +28,7 @@ public class tournamentTest {
 
         for (int i = 0; i < 8; i++) {
             Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
             teams.add(team);
         }
         Tournament tournament = new Tournament("European Cup",teams);
@@ -43,6 +46,7 @@ public class tournamentTest {
     public void tournamentConstructorTest(){
         List<Team> teams = new ArrayList<>();
         List<Team> teams2 = new ArrayList<>();
+        Map<String, Team> teams3 = new HashMap<>();
 
         Roster activeRoster = new Roster();
         List<Player> players = new ArrayList<Player>();
@@ -51,9 +55,11 @@ public class tournamentTest {
             activeRoster.addPlayer(p);
         }
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 14; i++) {
             Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
             teams.add(team);
+            teams3.put(team.getTeamName(),team);
         }
 
         assertThrows(IllegalArgumentException.class, ()-> new Tournament("American Cup",teams2));
@@ -65,8 +71,37 @@ public class tournamentTest {
         assertEquals("International Cup",tournament2.getTournamentID());
 
         assertThrows(NullPointerException.class, ()-> tournament2.removeTeam("EvertonFC"));
+        Tournament tournament3 = new Tournament("World Cup",teams3);
+        System.out.println("Hash Map Teams");
+        tournament3.showTeams();
 
 
+    }
+
+    @Test
+    public void runRoundTest(){
+
+        List<Team> teams = new ArrayList<>();
+
+
+        Roster activeRoster = new Roster();
+        List<Player> players = new ArrayList<Player>();
+        for(int i = 0; i<11; i++){
+            Player p = new Player("Player"+i,i);
+            activeRoster.addPlayer(p);
+        }
+
+        for (int i = 0; i < 14; i++) {
+            Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
+            teams.add(team);
+        }
+
+        Tournament t1 = new Tournament("American",teams);
+        Tournament t2 = new Tournament("International");
+        t1.runRound();
+        assertThrows(NullPointerException.class, ()-> t2.runRound());
+        assertEquals(2,t1.getCurrRound().getCurrentMatches().size());
     }
 
     /*@Test
