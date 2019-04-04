@@ -5,7 +5,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -44,6 +46,7 @@ public class tournamentTest {
     public void tournamentConstructorTest(){
         List<Team> teams = new ArrayList<>();
         List<Team> teams2 = new ArrayList<>();
+        Map<String, Team> teams3 = new HashMap<>();
 
         Roster activeRoster = new Roster();
         List<Player> players = new ArrayList<Player>();
@@ -56,6 +59,7 @@ public class tournamentTest {
             Team team = new Team(activeRoster,"Team"+i);
             team.updateRank(i+1);
             teams.add(team);
+            teams3.put(team.getTeamName(),team);
         }
 
         assertThrows(IllegalArgumentException.class, ()-> new Tournament("American Cup",teams2));
@@ -67,6 +71,9 @@ public class tournamentTest {
         assertEquals("International Cup",tournament2.getTournamentID());
 
         assertThrows(NullPointerException.class, ()-> tournament2.removeTeam("EvertonFC"));
+        Tournament tournament3 = new Tournament("World Cup",teams3);
+        System.out.println("Hash Map Teams");
+        tournament3.showTeams();
 
 
     }
