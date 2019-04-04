@@ -30,4 +30,22 @@ public class RosterTest {
         assertEquals(false, invalidRoster.isEligible());
 
     }
+     @Test
+    void sortPlayerNamesTest(){
+        Roster validRoster = new Roster();
+        Player PlayerOne = new Player("Adrian", 1);
+        Player PlayerTwo = new Player("Brian", 2);
+        Player PlayerThree = new Player("Charlie", 3);
+
+        validRoster.addPlayer(PlayerOne);
+        validRoster.addPlayer(PlayerThree);
+        validRoster.addPlayer(PlayerTwo);
+
+        assertEquals(validRoster.players.indexOf(PlayerThree),1 );
+        validRoster.sortPlayerNames();
+         assertEquals(validRoster.players.indexOf(PlayerThree),2 );
+
+
+
+     }
 }

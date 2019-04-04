@@ -1,12 +1,13 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Player {
+public class Player  {
     private List<Card> redCards;
     private List<Card> yellowCards;
-    private String name;
+    public String name;
     private int number;
 
 
@@ -57,6 +58,4 @@ public class Player {
     public void removeRedCard(){
 
     }
-
-
 }
