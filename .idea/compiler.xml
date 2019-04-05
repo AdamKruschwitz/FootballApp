@@ -9,8 +9,5 @@
         <module name="FootballApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="FootballApp" target="1.10" />
-    </bytecodeTargetLevel>
   </component>
 </project>
