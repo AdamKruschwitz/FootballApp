@@ -7,7 +7,6 @@ import java.util.*;
 public class Leaderboard {
     //variables
     private HashMap<String, Integer> leaderBoard = new HashMap<String,Integer>();
-    private List<Match> playedMatches = new ArrayList<>();
 
 
     /**
