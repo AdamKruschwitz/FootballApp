@@ -3,6 +3,7 @@ package ithaca.edu.footballTeam.footballApp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class League {
     private String leagueName;
@@ -10,7 +11,7 @@ public class League {
     private List<Team> participants;
     private List<Round> leagueRounds;
     private boolean inSeason;
-    //private Leaderboard scoreboard;
+    private Leaderboard scoreboard;
 
     /**
      *
@@ -26,6 +27,7 @@ public class League {
             this.leagueID = leagueID;
             this.leagueName = leagueName;
             this.participants = participants;
+            this.scoreboard = new Leaderboard(participants);
         }
         else {
             throw new IllegalArgumentException("Invalid team in participants or invalid participants size");
@@ -103,6 +105,24 @@ public class League {
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @return this leagues scoreboard with updated team rankings
+     */
+    public Iterator<Map.Entry<String, Integer>> getUpdatedScoreboard(){
+        return this.scoreboard.getLeaderBoard();
+    }
+
+    /**
+     *
+     * @return this leagues leader board
+     * gives access to this leagues leaderboard in order to update the scores for teams and such
+     */
+    public Leaderboard accessLeaderBoard(){
+        return this.scoreboard;
+
     }
 
 
