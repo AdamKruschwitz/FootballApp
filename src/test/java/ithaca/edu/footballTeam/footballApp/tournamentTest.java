@@ -46,6 +46,7 @@ public class tournamentTest {
     public void tournamentConstructorTest(){
         List<Team> teams = new ArrayList<>();
         List<Team> teams2 = new ArrayList<>();
+        List<Team> teams4 = new ArrayList<>();
         Map<String, Team> teams3 = new HashMap<>();
 
         Roster activeRoster = new Roster();
@@ -62,18 +63,25 @@ public class tournamentTest {
             teams3.put(team.getTeamName(),team);
         }
 
+        for (int i = 0; i < 7; i++) {
+            Team team = new Team(activeRoster,"Team"+i);
+            team.updateRank(i+1);
+            teams4.add(team);
+        }
+
         assertThrows(IllegalArgumentException.class, ()-> new Tournament("American Cup",teams2));
         Tournament tournament1 = new Tournament("European Cup",teams);
         assertThrows(NullPointerException.class, ()-> tournament1.getTeam("EvetonFC"));
         Team team = tournament1.getTeam("Team1");
         assertEquals("Team1",team.getTeamName());
-        Tournament tournament2 = new Tournament("International Cup");
-        assertEquals("International Cup",tournament2.getTournamentID());
-
-        assertThrows(NullPointerException.class, ()-> tournament2.removeTeam("EvertonFC"));
         Tournament tournament3 = new Tournament("World Cup",teams3);
         System.out.println("Hash Map Teams");
         tournament3.showTeams();
+        System.out.println("Matches for current round of "+tournament3.getTournamentID()+" are: ");
+        tournament3.showMatchesForCurrentRound();
+        System.out.println("\n");
+        assertThrows(IllegalArgumentException.class, ()-> new Tournament("Jamaica Cup",teams4));
+
 
 
     }
@@ -98,10 +106,19 @@ public class tournamentTest {
         }
 
         Tournament t1 = new Tournament("American",teams);
-        Tournament t2 = new Tournament("International");
+        System.out.println("\nRound"+t1.getRoundNUm());
+        t1.showTeams();
+        t1.showMatchesForCurrentRound();
         t1.runRound();
-        assertThrows(NullPointerException.class, ()-> t2.runRound());
         assertEquals(2,t1.getCurrRound().getCurrentMatches().size());
+        System.out.println("\nRound"+t1.getRoundNUm());
+        t1.showTeams();
+        t1.showMatchesForCurrentRound();
+        t1.runRound();
+        System.out.println("\nRound"+t1.getRoundNUm());
+        t1.showTeams();
+        t1.showMatchesForCurrentRound();
+        t1.runRound();
     }
 
     /*@Test
