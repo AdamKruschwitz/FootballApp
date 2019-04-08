@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FootballApp" target="1.10" />
+      <module name="FootballScoreBoard" target="1.10" />
     </bytecodeTargetLevel>
   </component>
 </project>
