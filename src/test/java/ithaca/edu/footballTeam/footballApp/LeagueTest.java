@@ -9,21 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LeagueTest {
 
-    @Test
-    void leagueConstructorTest(){
-        Roster activeroster = new Roster();
-        activeroster.fillWithValidPlayers();
-        List<Team> validTeams = new ArrayList<Team>();
-        for(int i = 0; i < 3; i++){
-            Team newTeam = new Team(activeroster, "Valid Team");
-            validTeams.add(newTeam);
-        }
-        assertThrows(IllegalArgumentException.class, () ->  new League("Valid league", 1, validTeams));
 
-
-
-
-    }
 
     @Test
     void checkIfTeamIsValidAfterCardTest(){
@@ -37,6 +23,26 @@ public class LeagueTest {
         RedCard red = new RedCard(2,"attacked ref");
         initiallyActiveRoster.getPlayer(1).addRedCard(red);
         assertFalse(League.participantsValid(invalidTeamList));
+
+    }
+
+    @Test
+    void addRemoveTeamTest(){
+        Roster activeRoster = new Roster();
+        activeRoster.fillWithValidPlayers();
+        Team validTeam = new Team(activeRoster, "valid Team");
+        Team validTeam2 = new Team(activeRoster, "valid Team2");
+        List<Team> TeamList = new ArrayList<Team>();
+        TeamList.add(validTeam);
+        League newLeague = new League("League 1", 1, TeamList);
+
+        newLeague.addTeam(validTeam2);
+
+        assertEquals("valid Team2", newLeague.removeTeam("valid Team2").getTeamName());
+        assertEquals(null, newLeague.removeTeam("valid Team2"));
+
+
+
 
     }
 }
