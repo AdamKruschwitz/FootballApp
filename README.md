@@ -53,6 +53,9 @@ Be able to run a league then a champions tourney  for a season ending with a lea
 * [Use-Case Diagram](https://drive.google.com/file/d/1Uj2SwMh0pQaylAUbcmSgOZb3Etzxu0RR/view?usp=sharing)
 
 ## Sequence Diagrams 
+* [Create League matches](https://drive.google.com/file/d/1KTlH9ht9bB__kNsaM6OCwbkWwLRdiuEo/view?usp=sharing)
+* [Show standings](https://drive.google.com/file/d/18R6RnFzr5zV2cPc2TpnyvOM_9CGD6z2V/view?usp=sharing) 
+* 
 
 ## Sprint end 
 * [Sprint review](https://docs.google.com/document/d/1b4BQnYgwxP6m7yaWUFBPjvw-wAYksOG4yqns1TfdqZA/edit?usp=sharing)
