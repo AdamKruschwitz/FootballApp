@@ -7,11 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="FootballApp" />
+<<<<<<< HEAD
         <module name="FootballManager" />
+=======
+        <module name="FootballAppLeague" />
+>>>>>>> master
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FootballApp" target="1.10" />
+      <module name="FootballAppLeague" target="1.10" />
     </bytecodeTargetLevel>
   </component>
 </project>
