@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FootballAppLeague.iml" filepath="$PROJECT_DIR$/.idea/FootballAppLeague.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FootballApp.iml" filepath="$PROJECT_DIR$/FootballApp.iml" />
     </modules>
   </component>
 </project>
