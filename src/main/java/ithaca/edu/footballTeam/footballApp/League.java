@@ -9,8 +9,6 @@ public class League {
     private String leagueName;
     private int leagueID;
     private List<Team> participants;
-    private List<Round> leagueRounds;
-    private boolean inSeason;
     private Leaderboard scoreboard;
 
     /**
