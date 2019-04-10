@@ -1,6 +1,7 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,86 +14,83 @@ public class DatabaseTest {
         Database database = new Database();
 
         // Drop all tables in the database
-        database.query(
-                "SET @tables = NULL;\n" +
-                "SELECT GROUP_CONCAT('`', table_schema, '`.`', table_name,'`') INTO @tables FROM information_schema.tables \n" +
-                "  WHERE table_schema = 'myDatabase' AND table_name LIKE BINARY 'del%';\n" +
-                "\n" +
-                "SET @tables = CONCAT('DROP TABLE ', @tables);\n" +
-                "PREPARE stmt1 FROM @tables;\n" +
-                "EXECUTE stmt1;\n" +
-                "DEALLOCATE PREPARE stmt1;"
-        );
+        dropTable("Teams", database);
+        dropTable("Games", database);
+        dropTable("Goals", database);
+        dropTable("Players", database);
+        dropTable("PlayersToGoals", database);
+        dropTable("Tournaments", database);
 
         String addTeamsTableQuery =
                 "CREATE TABLE Teams (\n" +
-                        "ID int NOT NULL\n" +
-                        "TeamName varchar(255)\n" +
-                        "PRIMARY KEY (ID)\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "TeamName Varchar\n" +
                         ") ;";
-        database.query(addTeamsTableQuery);
+        database.execute(addTeamsTableQuery);
 
         String addGamesTableQuery =
                 "CREATE TABLE Games (\n" +
-                        "ID int NOT NULL\n" +
-                        "Team1ID int\n" +
-                        "Team2ID int\n" +
-                        "PRIMARY KEY (ID)\n" +
-                        "FOREIGN KEY (Team1ID) REFERENCES Teams(ID)\n" +
-                        "FOREIGN KEY (Team2ID) REFERENCES Teams(ID)\n) ;";
-        database.query(addGamesTableQuery);
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "Team1ID INTEGER,\n" +
+                        "Team2ID INTEGER,\n" +
+                        "FOREIGN KEY (Team1ID) REFERENCES Teams(ID),\n" +
+                        "FOREIGN KEY (Team2ID) REFERENCES Teams(ID)\n);";
+        database.execute(addGamesTableQuery);
 
         String addPlayersTableQuery =
                 "CREATE TABLE Players (\n" +
-                        "ID int NOT NULL\n" +
-                        "FirstName varchar(255)\n" +
-                        "lastName varchar(255)\n" +
-                        "TeamID int\n" +
-                        "PRIMARY KEY (ID)\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "FirstName varchar(255),\n" +
+                        "LastName varchar(255),\n" +
+                        "TeamID INTEGER,\n" +
                         "FOREIGN KEY (TeamID) REFERENCES Teams(ID)\n" +
-                        ") ;";
+                        ");";
+        database.execute(addPlayersTableQuery);
 
         String addGoalsTableQuery =
                 "CREATE TABLE Goals (\n" +
-                        "ID int NOT NULL\n" +
-                        "PlayerID int NOT NULL\n" +
-                        "PRIMARY KEY (ID)\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "PlayerID INTEGER NOT NULL,\n" +
                         "FOREIGN KEY (PlayerID) REFERENCES Players(ID)\n" +
-                        ") ;";
-        database.query(addGoalsTableQuery);
+                        ");";
+        database.execute(addGoalsTableQuery);
 
         String addPlayersToGoals =
                 "CREATE TABLE PlayersToGoals (\n" +
-                        "ID int NOT NULL\n" +
-                        "PlayerID int NOT NULL\n" +
-                        "GoalID int NOT NULL\n" +
-                        "PRIMARY KEY (ID)\n" +
-                        "FOREIGN KEY (PlayerID) REFERENCES Players(ID)\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "PlayerID INTEGER NOT NULL,\n" +
+                        "GoalID INTEGER NOT NULL,\n" +
+                        "FOREIGN KEY (PlayerID) REFERENCES Players(ID),\n" +
                         "FOREIGN KEY (GoalID) REFERENCES Goals(ID)\n" +
-                        ") ;";
-        database.query(addPlayersToGoals);
+                        ");";
+        database.execute(addPlayersToGoals);
 
         String addTournamentsTable =
                 "CREATE TABLE Tournaments (\n" +
-                        "ID int NOT NULL" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                         "TournamentName varchar(255)\n" +
-                        "PRIMARY KEY (ID)\n" +
-                        ") ;";
-        database.query(addTournamentsTable);
+                        ");";
+        database.execute(addTournamentsTable);
 
         for(int i=0; i<11; i++) {
             String playerIndex = Integer.toString(i);
             String addPlayer =
                     "INSERT INTO Players\n" +
+                            "(ID, FirstName, LastName, TeamID)" +
                             "VALUES(" +
                              playerIndex+", " +
-                            "firstName"+playerIndex+", " +
-                            "lastName"+playerIndex+", " +
-                            "0) ;";
-            database.query(addPlayer);
+                            "'firstName"+playerIndex+"', " +
+                            "'lastName"+playerIndex+"', " +
+                            "0);";
+            database.execute(addPlayer);
         }
 
         return database;
+    }
+
+    void dropTable(String table, Database database) {
+        String query = "DROP TABLE IF EXISTS " + table + ";";
+        database.execute(query);
     }
 
     @Test
@@ -100,13 +98,21 @@ public class DatabaseTest {
         Database database = new Database();
         resetDatabase();
 
-        ResultSet rs = database.query("SELECT * FROM PLAYER");
+        ResultSet rs = database.query("SELECT * FROM Players");
+        System.out.println("rs: " + rs);
         List<Player> result = new ArrayList<>();
-        int i = 1;
+        int i = 0;
         try {
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numOfColumns = metaData.getColumnCount();
             while (rs.next()) {
-                System.out.println(rs.getString(i++));
+                Assert.assertEquals(Integer.toString(i), rs.getString("ID"));
+                Assert.assertEquals("firstName"+Integer.toString(i), rs.getString("FirstName"));
+                Assert.assertEquals("lastName"+Integer.toString(i), rs.getString("LastName"));
+                Assert.assertEquals("0", rs.getString("TeamID"));
+                i++;
             }
+            Assert.assertEquals(i, 11);
         } catch(Exception e) {
             e.printStackTrace();
         }
