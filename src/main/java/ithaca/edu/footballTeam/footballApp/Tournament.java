@@ -166,6 +166,7 @@ public class Tournament {
     /**
      * Runs the current round of matches in the tournament
      */
+    //Values are currently hard coded. Change later
     public void runRound(){
         if(currRound.getCurrentMatches() == null){
             throw new NullPointerException("There are no matches to run");
@@ -196,8 +197,7 @@ public class Tournament {
             }
 
             goToNextRound(Matches);
-            //System.out.println("Next Round of the "+ tournamentName+" Tounament will be: ");
-        }   //currRound.print();
+        }
     }
 
     /**
