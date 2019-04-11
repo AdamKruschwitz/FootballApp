@@ -53,6 +53,22 @@ public class Match {
         return team2;
     }
 
+    /**
+     * Add a goal in this match.
+     * @param team
+     */
+    public void addGoal(int team) {
+        // TODO - implement addGoal
+    }
+
+    public int getTeam1Score() {
+        return team1Score;
+    }
+
+    public int getTeam2Score() {
+        return team2Score;
+    }
+
     public void print(){
         System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
     }
