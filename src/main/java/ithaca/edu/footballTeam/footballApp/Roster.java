@@ -1,14 +1,15 @@
 package ithaca.edu.footballTeam.footballApp;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-public class Roster {
+public class Roster{
     private boolean canPlay;
-    private List<Player> players = new ArrayList<Player>();
+    public List<Player> players = new ArrayList<Player>();
 
 
+    public void sortPlayerNames(){
+        Collections.sort(players, playerComparator);
+    }
 
     /**
      *
@@ -61,7 +62,7 @@ public class Roster {
      * Helper method to fill a roster with valid players
      */
     public void fillWithValidPlayers(){
-        for(int i = 0; i < 11; i++){
+        for(int i = 11; i > 0; i--){
             Player p = new Player(Integer.toString(i),i);
             addPlayer(p);
         }
@@ -71,4 +72,10 @@ public class Roster {
         return players.get(id);
 
     }
+    Comparator<Player> playerComparator = new Comparator<Player>() {
+        @Override
+        public int compare(Player o1, Player o2) {
+            return o1.name.compareTo(o2.name);
+        }
+    };
 }
