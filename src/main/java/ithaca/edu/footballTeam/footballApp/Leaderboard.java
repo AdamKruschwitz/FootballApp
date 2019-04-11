@@ -7,6 +7,7 @@ import java.util.*;
 public class Leaderboard {
     //variables
     private Map<String, Integer> leaderBoard = new HashMap<String, Integer>();
+    private List<Map.Entry<String, Integer>> orderedScores;
 
 
     /**
@@ -36,21 +37,19 @@ public class Leaderboard {
             }
             // 1. Convert Map to List of Map
             List<Map.Entry<String, Integer>> leagueScores =
-                    new LinkedList<Map.Entry<String, Integer>>(leaderBoard.entrySet());
+                    new ArrayList<Map.Entry<String, Integer>>(leaderBoard.entrySet());
 
             // 2. Sort list with Collections.sort(), provide a custom Comparator
             //    Try switch the o1 o2 position for a different order
             Collections.sort(leagueScores, new Comparator<Map.Entry<String, Integer>>() {
                 public int compare(Map.Entry<String, Integer> o1,
                                    Map.Entry<String, Integer> o2) {
-                    return (o1.getValue()).compareTo(o2.getValue());
+                    return o2.getValue().compareTo(o1.getValue());
                 }
             });
-            Map<String, Integer> mapFromSet = new HashMap<String, Integer>();
-            for (int i = 0; i < leagueScores.size(); i++) {
-                mapFromSet.put(leagueScores.get(i).getKey(), leagueScores.get(i).getValue());
-            }
-            this.leaderBoard = mapFromSet;
+            orderedScores = leagueScores;
+
+
 
         } else {
             throw new IllegalArgumentException("Teams in match are not on leaderboard");
@@ -68,5 +67,9 @@ public class Leaderboard {
         } else {
             throw new IllegalArgumentException("Team name not in leaderboard");
         }
+    }
+
+    public Iterator<Map.Entry<String, Integer>> getLeaderBoard() {
+        return orderedScores.iterator();
     }
 }

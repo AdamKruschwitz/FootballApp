@@ -27,7 +27,7 @@ public class TournamentMain {
         }
 
         Tournament t1 = new Tournament("American",teams);
-        t1.runRound();
+
     }
 }
 

@@ -61,7 +61,7 @@ public class League {
         if(participantsValid(participants)) {
              leagueMatches = new ArrayList<>();
             for (int i = 0; i < participants.size(); i++) {
-                for(int j =1; j < participants.size(); j++){
+                for(int j =i+1; j < participants.size(); j++){
                     Match match = new Match(participants.get(i), participants.get(j), i + j);
                     leagueMatches.add(match);
                 }
@@ -110,12 +110,12 @@ public class League {
      *
      * @return the leaderboard associated with this class with the updated scores and rankings
      */
-  public Leaderboard updateLeaderBoard(){
+  public Iterator<Map.Entry<String, Integer>> updateLeaderBoard(){
         Iterator<Match> itr = leagueMatches.iterator();
         while (itr.hasNext()){
             scoreboard.updateLeaderBoard(itr.next());
         }
-        return this.scoreboard;
+        return this.scoreboard.getLeaderBoard();
   }
 
 
