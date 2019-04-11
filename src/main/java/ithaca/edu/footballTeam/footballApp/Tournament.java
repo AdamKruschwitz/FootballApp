@@ -9,8 +9,9 @@ public class Tournament {
     private String tournamentName;
     private Round currRound;
     private Round nextRound;
-   // private Leaderboard leaderboard;
     private List<Match> matches;
+    private Team winner;
+    private int roundNUm;
 
     public Tournament(String name, Map<String, Team> teams){
         this.teams = new ArrayList<>();
@@ -31,14 +32,15 @@ public class Tournament {
         }
 
         this.currRound = new Round(matches,nextRound);
-        //this.leaderboard = new Leaderboard();
+        roundNUm =1;
+        teams.clear();
     }
 
     public Tournament(String name, List<Team> teams) {
         this.matches = new ArrayList<>();
         this.teams = new ArrayList<>();
-        if (teams.size() < 8) {
-            throw new IllegalArgumentException("Not enough teams to start a tournament");
+        if (teams.size() < 4 || teams.size()%2 != 0) {
+            throw new IllegalArgumentException("Invalid amount of teams ");
         } else {
             this.tournamentName = name;
             for (int i = 0; i < teams.size(); i++) {
@@ -56,30 +58,32 @@ public class Tournament {
             }
 
             this.currRound = new Round(matches, nextRound);
+            roundNUm = 1;
 
-            //this.leaderboard = new Leaderboard();
+        }
+        teams.clear();
+    }
+
+
+    /**
+     * Advances the tournament to the next round or ends tournament if there is no next round
+     */
+    public void goToNextRound(List<Match> matches) {
+        if (matches.size() == 1) {
+            winner= matches.get(0).getWinner();
+            endTournament();
+
+        } else {
+            roundNUm++;
+            this.currRound = currRound.setUpNextRound(matches, nextRound, teams);
         }
     }
 
-    public Tournament(String name){
-        this.tournamentName = name;
-        this.teams = new ArrayList<>();
-       // this.r1 = new Round(matches,r2);
-        //this.r2 = new Round(matches,r3);
-        //this.r3 = new Round(matches,null);
-        //this.currRound = r1;
-        //this.leaderboard = new Leaderboard();
-
-    }
-
     /**
-     * Advances the tournament to the next round
+     * Gets the number of current round
+     * @return int
      */
-    public void goToNextRound(List<Match> matches){
-
-        this.currRound = currRound.setUpNextRound(matches, nextRound);
-    }
-
+    public int getRoundNUm(){return this.roundNUm;}
     /**
      * Adds a team to the tournament
      * @param team
@@ -120,6 +124,11 @@ public class Tournament {
         return tournamentName;
     }
 
+    /**
+     * Finds and returns a team from the tournament
+     * @param teamName
+     * @return Team or NullPointerException  if not found
+     */
     public Team getTeam(String teamName) {
         Team toReturn = new Team();
         for (int i = 0; i < this.teams.size(); i++) {
@@ -138,22 +147,26 @@ public class Tournament {
     /**
      * Prints out a visual of the current leaderboard for the tournament
      */
-    public void showLeaderboard(){}
+    public void showMatchesForCurrentRound(){
+        currRound.print();
+    }
 
     /**
-     * Updates the leaderboard for the tournament
+     * Prints out the current list of teams in the tournament
      */
-    public void updateLeaderboard() {}
-
     public void showTeams() {
         for (int i = 0; i < this.teams.size(); i++) {
             Team team = teams.get(i);
-            System.out.println("Tournament Name: "+tournamentName+"\n"+"Team Name: " + team.getTeamName() + "\n" + "Team Rank: " + team.getRank());
+            System.out.println("Tournament Name: "+tournamentName+"\n"+"Team Name: " + team.getTeamName() + "\n" + "League Rank: " + team.getRank());
         }
 
         }
     public Round getCurrRound(){return this.currRound;}
 
+    /**
+     * Runs the current round of matches in the tournament
+     */
+    //Values are currently hard coded. Change later
     public void runRound(){
         if(currRound.getCurrentMatches() == null){
             throw new NullPointerException("There are no matches to run");
@@ -184,9 +197,15 @@ public class Tournament {
             }
 
             goToNextRound(Matches);
-            //System.out.println("Next Round of the "+ tournamentName+" Tounament will be: ");
-        }   //currRound.print();
+        }
     }
+
+    /**
+     * Prints out the winner of the tournament
+     */
+    private void endTournament(){
+        System.out.println("\nThe winner of the tournament is "+winner.getTeamName()+"!");
+        }
     }
 
 
