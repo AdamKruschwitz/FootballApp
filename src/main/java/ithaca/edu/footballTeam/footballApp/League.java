@@ -118,6 +118,14 @@ public class League {
         return this.scoreboard.getLeaderBoard();
   }
 
+    /**
+     *
+     * @return list of teams in the league
+     */
+  public List<Team> getParticipants(){
+      return this.participants;
+  }
+
 
 
 
