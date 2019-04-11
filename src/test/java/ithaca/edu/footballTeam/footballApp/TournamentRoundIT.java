@@ -28,7 +28,7 @@ public class TournamentRoundIT {
         }
 
         Tournament t1 = new Tournament("American", teams);
-        
+
 
         if (t1.getCurrRound().getCurrentMatches() == null) {
             throw new NullPointerException("There are no matches to run");
