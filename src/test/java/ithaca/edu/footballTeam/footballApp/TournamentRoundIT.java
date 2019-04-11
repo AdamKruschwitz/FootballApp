@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TournamentRoundIT {
 
+    //Represent the use case of running a round in the tournament
     @Test
     public void runRoundIT(){
 
