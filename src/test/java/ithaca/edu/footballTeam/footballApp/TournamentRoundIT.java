@@ -11,8 +11,9 @@ public class TournamentRoundIT {
 
     //Represent the use case of running a round in the tournament
     @Test
-    public void
-    runRoundIT() {
+
+    public void runRoundIT() {
+
 
         List<Team> teams = new ArrayList<>();
         Roster activeRoster = new Roster();
