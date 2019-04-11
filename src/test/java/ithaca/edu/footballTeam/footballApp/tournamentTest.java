@@ -42,7 +42,7 @@ public class tournamentTest {
 
     }
 
-/*    @Test
+   @Test
     public void tournamentConstructorTest() {
         List<Team> teams = new ArrayList<>();
         List<Team> teams2 = new ArrayList<>();
@@ -83,5 +83,5 @@ public class tournamentTest {
         assertThrows(IllegalArgumentException.class, () -> new Tournament("Jamaica Cup", teams4));
 
 
-    }*/
+    }
 }
