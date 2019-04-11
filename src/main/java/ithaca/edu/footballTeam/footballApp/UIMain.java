@@ -9,8 +9,12 @@ public class UIMain {
     public static void main(String[] args) throws InterruptedException{
         //Initialize UI
         JFrame f = new JFrame();
+
+        //Create all required components
         UIWelcome welcome = new UIWelcome();
         UIOption options = new UIOption();
+        UIAddTeam addTeam = new UIAddTeam(options);
+
         f.add(welcome);
         f.pack();
         f.setSize(1600, 900);
@@ -28,6 +32,7 @@ public class UIMain {
                 f.revalidate();
                 f.repaint();
                 while (!exit) {
+                    sleep(200);
                     //Go to chosen options
                     //Add player
                     if(options.getAddPlayer()){
@@ -39,6 +44,18 @@ public class UIMain {
                     //Match options
 
                     //Tournament options
+
+                    //Add team
+                    if(options.getAddteamButton()){
+                        String result = addTeam.display();
+                        options.setAllFalse();
+
+                    }
+
+                    //View teams
+                    if(options.getViewteamButton()){
+
+                    }
 
 
 

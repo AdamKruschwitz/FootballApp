@@ -3,6 +3,8 @@
 The football Organizer application is an application that will help players, refs and League organizers maintain a league. 
 It will distribute relevant information to players and refs, and handle the mechanics of league tournament play. 
 
+## CircleCI
+[![CircleCI](https://circleci.com/gh/AdamKruschwitz/FootballApp/tree/master.svg?style=svg&circle-token=c7cf3504c073e2bd74e8a20f671eab41ea3d423b)](https://circleci.com/gh/AdamKruschwitz/FootballApp/tree/master)
 
 ## [Waffle Board](https://waffle.io/AdamKruschwitz/FootballApp/join)
 ## [Narrative/Scenarios](https://docs.google.com/document/d/1pJjryltdAqhJ79q6lnIHu_jxpax6nsVEu5Zp9jSo44E/edit?usp=sharing)
