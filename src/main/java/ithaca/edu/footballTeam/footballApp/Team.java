@@ -1,6 +1,6 @@
 package ithaca.edu.footballTeam.footballApp;
 
-public class Team {
+public class Team implements Comparable<Team> {
 
     private Roster activeRoster;
     private Roster benchRoster;
@@ -8,8 +8,14 @@ public class Team {
     private int teamId;
     private String tournamentID;
     private teamOwner owner;
+    private int rank;
+    private int totalGoalsScored;
+    private int totalGoalsScoredOn;
 
-    public  Team(){}
+
+
+    public Team(){}
+
 
     /**
      *
@@ -124,22 +130,92 @@ public class Team {
         this.tournamentID = tournamentID;
     }
 
+
     /**
      *
      * @param teamOwner sets the team owner for this team
      */
+
 
     public void setOwner(teamOwner teamOwner){
         this.owner = teamOwner;
     }
 
     /**
-     *
-     * @return true if the team has an eligible active roster
+     * Updates rank for team based on leaderboard
+     * @param num
      */
-
-    public boolean isValid(){
-        return true;
+    public void updateRank(int num){
+        if(num>0) {
+            this.rank = num;
+        }
+        else{
+            throw new IllegalArgumentException("Value is invalid");
+        }
     }
 
+
+    /**
+     * Gets the rank of team
+     * @return int
+     */
+    public int getRank() {
+        return this.rank;
+    }
+
+    /**
+     *
+     * @return whether a team is eligible or not based on whether a teams's active roster is eligible or not
+     */
+    public boolean isValid(){
+        return activeRoster.isEligible();
+
+    }
+
+    /**
+     *
+     * @param id id for the player you are trying to get
+     * @return the player
+     * player id will just correspond to index in list
+     * later player id will be a unique identifier for a player
+     */
+    public  Player getPlayer(int id){
+        return this.activeRoster.getPlayer(id);
+    }
+
+    /**
+     *
+     * @param goalAmount total amount of goals scored at the end of a match
+     * adds the total amount of goals scored for a team in a match to a total amount scored for the life time of the team
+     */
+    public void addToScoredGoals(int goalAmount){
+        this.totalGoalsScored = this.totalGoalsScored + goalAmount;
+    }
+
+    /**
+     *
+     * @param goalAmount total amount of goals scored on this team at the end of a match
+     * adds the total amount of goals scored  on  a team in a match to the total lifetime goals scored on this team
+     */
+    public  void addToScoredOnGoals(int goalAmount){
+        this.totalGoalsScoredOn = this.totalGoalsScoredOn + goalAmount;
+    }
+
+
+    /**
+     *
+     * @param team another team
+     * @return whether this team is higher or lower ranked than the other team or if they are even
+     * this is here in the case of two teams with the same points value, you can simply comapare two teams to get which team is better
+     */
+    @Override
+    public int compareTo(Team team) {
+        if((this.totalGoalsScored/this.totalGoalsScoredOn) > (team.totalGoalsScored/team.totalGoalsScoredOn)){
+            return 1;
+        }
+        else if((this.totalGoalsScored/this.totalGoalsScoredOn) < (team.totalGoalsScored/team.totalGoalsScoredOn)){
+            return -1;
+        }
+        return 0;
+    }
 }
