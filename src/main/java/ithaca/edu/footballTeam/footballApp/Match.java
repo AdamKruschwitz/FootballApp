@@ -54,11 +54,25 @@ public class Match {
     }
 
     /**
-     * Add a goal in this match.
+     * Add a goal in this match and increase the .
      * @param team
      */
     public void addGoal(int team) {
-        // TODO - implement addGoal
+        Team temp = null;
+
+        // Get the team to work with
+        switch(team) {
+            case 0:
+                temp = team1;
+                team1Score++;
+                break;
+            case 1:
+                temp = team2;
+                team2Score++;
+                break;
+        }
+
+        temp.addToScoredGoals(1);
     }
 
     public int getTeam1Score() {
