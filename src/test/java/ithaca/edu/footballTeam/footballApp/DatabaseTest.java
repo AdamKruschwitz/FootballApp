@@ -20,11 +20,13 @@ public class DatabaseTest {
         dropTable("Players", database);
         dropTable("PlayersToGoals", database);
         dropTable("Tournaments", database);
+        dropTable("Leagues", database);
+        dropTable("Cards", database);
 
         String addTeamsTableQuery =
                 "CREATE TABLE Teams (\n" +
                         "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
-                        "TeamName Varchar\n" +
+                        "TeamName varchar(255)\n" +
                         ") ;";
         database.execute(addTeamsTableQuery);
 
@@ -33,6 +35,8 @@ public class DatabaseTest {
                         "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                         "Team1ID INTEGER,\n" +
                         "Team2ID INTEGER,\n" +
+                        "LeagueID INTEGER,\n" +
+                        "TournamentID INTEGER,\n" +
                         "FOREIGN KEY (Team1ID) REFERENCES Teams(ID),\n" +
                         "FOREIGN KEY (Team2ID) REFERENCES Teams(ID)\n);";
         database.execute(addGamesTableQuery);
@@ -72,6 +76,24 @@ public class DatabaseTest {
                         ");";
         database.execute(addTournamentsTable);
 
+        String addLeaguesTable =
+                "CREATE TABLE Leagues (\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "LeagueName varchar(255)\n" +
+                        ");";
+        database.execute(addLeaguesTable);
+
+        String addCardsTable =
+                "CREATE TABLE Cards (\n" +
+                        "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                        "Reason varchar(255),\n" +
+                        "GameID INTEGER NOT NULL,\n" +
+                        "Type INTEGER NOT NULL,\n" +
+                        "PlayerID INTEGER NOT NULL,\n" +
+                        ");";
+        database.execute(addCardsTable);
+
+        // Insert 11 Players
         for(int i=0; i<11; i++) {
             String playerIndex = Integer.toString(i);
             String addPlayer =
@@ -103,12 +125,12 @@ public class DatabaseTest {
         List<Player> result = new ArrayList<>();
         int i = 0;
         try {
-            ResultSetMetaData metaData = rs.getMetaData();
-            int numOfColumns = metaData.getColumnCount();
+            //ResultSetMetaData metaData = rs.getMetaData();
+            //int numOfColumns = metaData.getColumnCount();
             while (rs.next()) {
                 Assert.assertEquals(Integer.toString(i), rs.getString("ID"));
-                Assert.assertEquals("firstName"+Integer.toString(i), rs.getString("FirstName"));
-                Assert.assertEquals("lastName"+Integer.toString(i), rs.getString("LastName"));
+                Assert.assertEquals("firstName"+i, rs.getString("FirstName"));
+                Assert.assertEquals("lastName"+i, rs.getString("LastName"));
                 Assert.assertEquals("0", rs.getString("TeamID"));
                 i++;
             }

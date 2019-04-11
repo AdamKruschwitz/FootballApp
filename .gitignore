@@ -8,6 +8,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/**/misc.xml
+.idea/**/compiler.xml
+.idea/**/modules.xml
 
 **.iml
 
