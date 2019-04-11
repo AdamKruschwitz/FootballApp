@@ -25,6 +25,14 @@ public class UIWelcome extends JPanel {
         this.add(contButton);
         this.add(wLabel);
 
+        //Look and feel
+        BoxLayout grid = new BoxLayout(this,BoxLayout.Y_AXIS);
+        this.setLayout(grid);
+
+        contButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        wLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
         //Action listener for continue button
         contButton.addActionListener(new ActionListener(){
             @Override

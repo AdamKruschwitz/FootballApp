@@ -1,6 +1,7 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,6 +45,17 @@ public class UIOption extends JPanel {
         this.add(matchButton);
         this.add(tournamentButton);
         this.add(optionLabel);
+
+        //Look and feel
+        BoxLayout grid = new BoxLayout(this,BoxLayout.Y_AXIS);
+        this.setLayout(grid);
+
+        addPlayerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        roundButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        matchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        tournamentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        optionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         //Action listeners
         addPlayerButton.addActionListener(new ActionListener() {
