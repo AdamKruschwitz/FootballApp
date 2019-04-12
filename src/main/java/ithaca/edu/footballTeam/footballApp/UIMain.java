@@ -1,6 +1,8 @@
 package ithaca.edu.footballTeam.footballApp;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -14,6 +16,10 @@ public class UIMain {
         UIWelcome welcome = new UIWelcome();
         UIOption options = new UIOption();
         UIAddTeam addTeam = new UIAddTeam(options);
+        UIApi api = new UIApi();
+        UIViewTeams viewTeams = new UIViewTeams(api);
+        UIRunLeague runLeague = new UIRunLeague(api);
+        UIShowLeaderBoard showLeader = new UIShowLeaderBoard(api);
 
         f.add(welcome);
         f.pack();
@@ -48,12 +54,25 @@ public class UIMain {
                     //Add team
                     if(options.getAddteamButton()){
                         String result = addTeam.display();
+                        api.addTeam(result);
                         options.setAllFalse();
-
                     }
 
                     //View teams
                     if(options.getViewteamButton()){
+                        viewTeams.display();
+                        options.setAllFalse();
+                    }
+
+                    //Run league
+                    if(options.getRunLeagueButton()){
+                        runLeague.display();
+                        options.setAllFalse();
+                    }
+
+                    if(options.getLeaderButton()){
+                        showLeader.display();
+                        options.setAllFalse();
 
                     }
 

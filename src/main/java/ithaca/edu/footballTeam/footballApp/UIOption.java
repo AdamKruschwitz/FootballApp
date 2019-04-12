@@ -14,6 +14,8 @@ public class UIOption extends JPanel {
     private boolean tournamentButton;
     private boolean addTeamButton;
     private boolean viewTeamButton;
+    private boolean runLeagueButton;
+    private boolean leaderButton;
 
     //Control vars getters and setters
     public boolean getAddPlayer(){ return this.addPlayer; }
@@ -22,6 +24,8 @@ public class UIOption extends JPanel {
     public boolean gettournamentButton(){return this.tournamentButton;}
     public boolean getAddteamButton(){return this.addTeamButton;}
     public boolean getViewteamButton(){return this.viewTeamButton;}
+    public boolean getRunLeagueButton(){return this.runLeagueButton;}
+    public boolean getLeaderButton(){return this.leaderButton;}
     public void setAllFalse(){
         this.addPlayer = false;
         this.roundButton = false;
@@ -29,6 +33,8 @@ public class UIOption extends JPanel {
         this.tournamentButton = false;
         this.addTeamButton = false;
         this.viewTeamButton = false;
+        this.runLeagueButton = false;
+        this.leaderButton = false;
     }
 
     public UIOption(){
@@ -42,6 +48,8 @@ public class UIOption extends JPanel {
         JButton tournamentButton = new JButton("Tournament");
         JButton addTeamButton = new JButton("Add Team");
         JButton viewTeamButton = new JButton("View Teams");
+        JButton runLeagueButton = new JButton("Run League");
+        JButton leaderButton = new JButton("Get Leaderboard");
         JLabel optionLabel = new JLabel("Options");
 
         //Add components
@@ -52,17 +60,13 @@ public class UIOption extends JPanel {
         this.add(addTeamButton);
         this.add(viewTeamButton);
         this.add(optionLabel);
+        this.add(runLeagueButton);
+        this.add(leaderButton);
 
         //Look and feel
         BoxLayout grid = new BoxLayout(this,BoxLayout.Y_AXIS);
         this.setLayout(grid);
 
-        addPlayerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        roundButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        matchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tournamentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        optionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        optionLabel.setAlignmentY(Component.TOP_ALIGNMENT);
 
 
         //Action listeners
@@ -109,6 +113,18 @@ public class UIOption extends JPanel {
             }
         });
 
+        runLeagueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UIOption.this.runLeagueButton = true;
+            }
+        });
 
+        leaderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UIOption.this.leaderButton = true;
+            }
+        });
     }
 }
