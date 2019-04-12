@@ -19,14 +19,16 @@ public class Roster{
         Iterator<Player> iterator = players.iterator();
         while (iterator.hasNext()){
             if(iterator.next().isEligible() != true){
-                canPlay = false;
-                break;
+                //canPlay = false;
+                //break;
+                return false;
             }
             else {
                 canPlay = true;
             }
         }
-        return (canPlay == true && players.size() > 10);
+        //return (canPlay == true && players.size() > 10);
+        return true;
     }
 
     /**
