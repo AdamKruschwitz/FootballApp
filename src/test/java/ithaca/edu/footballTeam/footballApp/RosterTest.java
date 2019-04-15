@@ -28,7 +28,7 @@ public class RosterTest {
 
         Roster invalidRoster = new Roster();
         //Fix this test at some point
-        assertEquals(true, invalidRoster.isEligible());
+        assertEquals(false, invalidRoster.isEligible());
 
     }
      @Test
