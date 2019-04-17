@@ -65,4 +65,24 @@ Be able to run a league then a champions tourney  for a season ending with a lea
 * [Sprint retrospective](https://docs.google.com/document/d/1sinGr5Ifghxr05N5jGi1rZHK-zH822fDUZpebMxv7vA/edit?usp=sharing)
 
 
+# Sprint 3 
+## Sprint goal: 
+Be able to run a full league then a champions tourney for a season ending with a leader board ranking of the best teams with some player statistics.
+
+##
+
+* [Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
+* [Use-Case Diagram](https://drive.google.com/file/d/1CWMA8oa_rZrDITz79d6DqoNI9ZiRT9HE/view?usp=sharing)
+
+## Sequence Diagrams 
+* [Create League matches](https://drive.google.com/file/d/1KTlH9ht9bB__kNsaM6OCwbkWwLRdiuEo/view?usp=sharing)
+* [Show standings](https://drive.google.com/file/d/18R6RnFzr5zV2cPc2TpnyvOM_9CGD6z2V/view?usp=sharing) 
+* [Check if team is valid](https://drive.google.com/file/d/1I7shLwd87Kh29vYCa9PgK6w5QZUbLEZH/view?usp=sharing)
+* [Update Leader board](https://drive.google.com/file/d/1_asjjDe93eccEmo6CO2oDJzzMVTXrCXE/view?usp=sharing)
+
+
+## Sprint end 
+* [Sprint review](https://docs.google.com/document/d/1sW1sRqsMqNeyPW7WZcyCa2z73Ac9KQLD5imGSPUoOEs/edit)
+* [Sprint retrospective](https://docs.google.com/document/d/1-rpEgnPHFNymd4p9gpGCSTOvFezAY2tA4D7D6IcKSwI/edit?usp=sharing)
+
 
