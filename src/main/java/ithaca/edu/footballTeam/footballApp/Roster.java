@@ -26,7 +26,7 @@ public class Roster{
                 canPlay = true;
             }
         }
-        return (canPlay == true && players.size() > 10);
+        return (canPlay  && players.size() > 10);
     }
 
     /**
