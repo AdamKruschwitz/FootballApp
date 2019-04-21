@@ -21,12 +21,14 @@ public class Roster{
             if(iterator.next().isEligible() != true){
                 canPlay = false;
                 break;
+
             }
             else {
                 canPlay = true;
             }
         }
-        return (canPlay  && players.size() > 10);
+        return (canPlay && players.size() > 10);
+
     }
 
     /**

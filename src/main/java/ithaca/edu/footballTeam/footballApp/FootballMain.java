@@ -17,6 +17,7 @@ public class FootballMain {
     }
 
     public static void runRound(){
+        //
 
     }
 
@@ -26,6 +27,7 @@ public class FootballMain {
         io.printToConsole("Here is a list of commands");
         io.printToConsole("run tournament");
         io.printToConsole("card player");
+        io.printToConsole("run round");
     }
 
     public static void execution(String command){
@@ -147,6 +149,9 @@ public class FootballMain {
             io.printToConsole("Elvis: " + elvis.isEligible());
 
 
+
+        }
+        else if(command.equals("run round")){
 
         }
 
