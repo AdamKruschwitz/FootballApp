@@ -120,7 +120,7 @@ public class MatchTest {
 
         assertEquals(7,player0.getNumOfAssists());
         assertEquals(7,team1.getTotalAssists());
-        
+
     }
 
 }
