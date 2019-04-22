@@ -9,6 +9,9 @@ public class Player  {
     private List<Card> yellowCards;
     public String name;
     private int number;
+    private int goalsScored;
+    private int numOfAssists;
+
 
 
     public Player(String playerName, int number) {
@@ -58,4 +61,34 @@ public class Player  {
     public void removeRedCard(){
 
     }
+
+    /**
+     * Increments the total number of goals scored by the player by 1
+     */
+    public void addGoal(){this.goalsScored++;}
+
+    /**
+     * Increments the total number of assists the player has by 1
+     */
+    public void addAssist(){ this.numOfAssists++;}
+
+    /**
+     * Gets the total number of goals scored by the player
+     * @return int
+     */
+    public int getGoalsScored(){return this.goalsScored;}
+
+    /**
+     * Gets the total number of assists the player has
+     * @return int
+     */
+    public int getNumOfAssists(){return this.numOfAssists;}
+
+    /**
+     * Gets the player's name
+     * @return String
+     */
+    public String getPlayerName(){ return this.name; }
+
+    public int getNumber(){return this.number;}
 }
