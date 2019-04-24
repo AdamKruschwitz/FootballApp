@@ -1,15 +1,14 @@
 package ithaca.edu.footballTeam.footballApp;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class League {
     private String leagueName;
     private int leagueID;
     private List<Team> participants;
     private Leaderboard scoreboard;
+    private List<Match> leagueMatches;
+
 
     /**
      *
@@ -51,6 +50,23 @@ public class League {
 
     /**
      *
+     * @param array array of league matches
+     * @return array of league matches that have been randomized
+     */
+    public List<Match> randomizeArray(List<Match> array){
+        Random rgen = new Random();  // Random number generator
+
+        for (int i=0; i<array.size(); i++) {
+            int randomPosition = rgen.nextInt(array.size());
+            Match temp = array.get(i);
+            array.add(i,array.get(randomPosition));
+            array.add(randomPosition, temp);
+        }
+        return array;
+    }
+
+    /**
+     *
      *
      * Teams must be valid and team numbers have to be even
      * This creates all of the matches for the games to be played within a league season
@@ -61,16 +77,35 @@ public class League {
         if(participantsValid(participants)) {
              leagueMatches = new ArrayList<>();
             for (int i = 0; i < participants.size(); i++) {
-                for(int j =1; j < participants.size(); j++){
+                for(int j =i+1; j < participants.size(); j++){
                     Match match = new Match(participants.get(i), participants.get(j), i + j);
                     leagueMatches.add(match);
                 }
             }
+
         }
         else {
             throw new IllegalArgumentException("Participating teams does not have an even number");
         }
-        return leagueMatches;
+        List<Match> randMatches = randomizeArray(leagueMatches);
+        this.leagueMatches = randMatches;
+        return randMatches;
+    }
+
+    /**
+     * Generates a weekend set of matches
+     *
+     */
+
+    public List<Match> genWeekend(){
+       //create something to keep track of when a team has played
+        // create a copy of all the matches within the league
+        // create an empty array where set matches will be set
+        // go in and take a match out check to make sure that both teams haven't already played
+        // put the match into a round
+
+
+        return null;
     }
 
     /**
