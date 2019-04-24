@@ -43,8 +43,11 @@ public class LeagueTest {
         assertEquals(null, newLeague.removeTeam("valid Team2"));
 
 
+    }
 
 
+
+<<<<<<< HEAD
     }
 
     @Test
@@ -94,4 +97,6 @@ public class LeagueTest {
             count++;
         }
     }
+=======
+>>>>>>> master
 }

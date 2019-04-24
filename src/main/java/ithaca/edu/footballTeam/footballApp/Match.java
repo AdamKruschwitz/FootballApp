@@ -53,6 +53,36 @@ public class Match {
         return team2;
     }
 
+    /**
+     * Add a goal in this match and increase the .
+     * @param team
+     */
+    public void addGoal(int team) {
+        Team temp = null;
+
+        // Get the team to work with
+        switch(team) {
+            case 0:
+                temp = team1;
+                team1Score++;
+                break;
+            case 1:
+                temp = team2;
+                team2Score++;
+                break;
+        }
+
+        temp.addToScoredGoals(1);
+    }
+
+    public int getTeam1Score() {
+        return team1Score;
+    }
+
+    public int getTeam2Score() {
+        return team2Score;
+    }
+
     public void print(){
         System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
     }

@@ -72,8 +72,7 @@ public class League {
      * This creates all of the matches for the games to be played within a league season
      */
 
-    public List<Match> generateLeagueMatches(){
-        List<Match> leagueMatches;
+    public Iterator<Match> generateLeagueMatches(){
         if(participantsValid(participants)) {
              leagueMatches = new ArrayList<>();
             for (int i = 0; i < participants.size(); i++) {
@@ -87,9 +86,10 @@ public class League {
         else {
             throw new IllegalArgumentException("Participating teams does not have an even number");
         }
+
         List<Match> randMatches = randomizeArray(leagueMatches);
         this.leagueMatches = randMatches;
-        return randMatches;
+        return randMatches.iterator();
     }
 
     /**
@@ -140,23 +140,26 @@ public class League {
         return null;
     }
 
+
     /**
      *
-     * @return this leagues scoreboard with updated team rankings
+     * @return the leaderboard associated with this class with the updated scores and rankings
      */
-    public Iterator<Map.Entry<String, Integer>> getUpdatedScoreboard(){
+  public Iterator<Map.Entry<String, Integer>> updateLeaderBoard(){
+        Iterator<Match> itr = leagueMatches.iterator();
+        while (itr.hasNext()){
+            scoreboard.updateLeaderBoard(itr.next());
+        }
         return this.scoreboard.getLeaderBoard();
-    }
+  }
 
     /**
      *
-     * @return this leagues leader board
-     * gives access to this leagues leaderboard in order to update the scores for teams and such
+     * @return list of teams in the league
      */
-    public Leaderboard accessLeaderBoard(){
-        return this.scoreboard;
-
-    }
+  public List<Team> getParticipants(){
+      return this.participants;
+  }
 
 
 

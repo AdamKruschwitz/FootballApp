@@ -192,6 +192,10 @@ public class Team implements Comparable<Team> {
         this.totalGoalsScored = this.totalGoalsScored + goalAmount;
     }
 
+    public int getTotalGoalsScored() {
+        return totalGoalsScored;
+    }
+
     /**
      *
      * @param goalAmount total amount of goals scored on this team at the end of a match
