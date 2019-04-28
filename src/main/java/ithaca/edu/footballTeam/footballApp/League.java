@@ -8,6 +8,7 @@ public class League {
     private List<Team> participants;
     private Leaderboard scoreboard;
     private List<Match> leagueMatches;
+    private List<Iterator<Match>> weekends;
 
 
     /**
@@ -226,6 +227,7 @@ public class League {
                         playedMatches.add(match.getId());
                     }
                 }
+
         return weekend.iterator() ;
     }
 
@@ -248,6 +250,7 @@ public class League {
             weekendsForLeague.add(genWeekend(matchAmount,playedMatches,weekendCount));
             weekendCount++;
         }
+        this.weekends = weekendsForLeague;
         return weekendsForLeague.iterator();
     }
 
@@ -303,6 +306,8 @@ public class League {
   public List<Team> getParticipants(){
       return this.participants;
   }
+
+
 
 
 
