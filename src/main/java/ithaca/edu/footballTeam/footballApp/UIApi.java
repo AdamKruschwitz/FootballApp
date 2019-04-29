@@ -53,4 +53,20 @@ public class UIApi {
     public Iterator<Map.Entry<String, Integer>> getLeaderBoard(){
         return this.league.updateLeaderBoard();
     }
+
+    //Returns a list of players for a given team
+    public List<Player> getPlayers(String teamName){
+        List<Player> ret = new ArrayList<>();
+        List<Team> teams = league.getParticipants();
+        for (int i = 0; i < teams.size(); i++) {
+            if(teams.get(i).getTeamName() == teamName){
+                //Iterate over team roster and make add them to a list
+                for (int j = 0; j < teams.get(i).getActiveRoster().players.size(); j++) {
+                    ret.add(teams.get(i).getActiveRoster().players.get(j));
+                }
+                return ret;
+            }
+        }
+        return ret;
+    }
 }
