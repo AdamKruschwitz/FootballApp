@@ -247,4 +247,15 @@ public class Team implements Comparable<Team> {
     public void showPlayers(){
         activeRoster.showPlayer();
     }
+
+    protected void resetStats(){
+        this.totalAssists = 0;
+        this.totalGoalsScored = 0;
+        this.totalGoalsScoredOn = 0;
+
+        for (int i = 0; i < activeRoster.getPlayerCount(); i++) {
+            Player player = activeRoster.getPlayer(i);
+            player.resetStats();
+        }
+    }
 }

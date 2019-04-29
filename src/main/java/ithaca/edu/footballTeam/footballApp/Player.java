@@ -91,4 +91,9 @@ public class Player  {
     public String getPlayerName(){ return this.name; }
 
     public int getNumber(){return this.number;}
+
+    protected void resetStats(){
+        this.numOfAssists = 0;
+        this.goalsScored = 0;
+    }
 }
