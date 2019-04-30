@@ -2,6 +2,7 @@ package ithaca.edu.footballTeam.footballApp;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -89,23 +90,9 @@ public class DatabaseTest {
                         "Reason varchar(255),\n" +
                         "GameID INTEGER NOT NULL,\n" +
                         "Type INTEGER NOT NULL,\n" +
-                        "PlayerID INTEGER NOT NULL,\n" +
+                        "PlayerID INTEGER NOT NULL\n" +
                         ");";
         database.execute(addCardsTable);
-
-        // Insert 11 Players
-        for(int i=0; i<11; i++) {
-            String playerIndex = Integer.toString(i);
-            String addPlayer =
-                    "INSERT INTO Players\n" +
-                            "(ID, FirstName, LastName, TeamID)" +
-                            "VALUES(" +
-                             playerIndex+", " +
-                            "'firstName"+playerIndex+"', " +
-                            "'lastName"+playerIndex+"', " +
-                            "0);";
-            database.execute(addPlayer);
-        }
 
         return database;
     }
@@ -115,10 +102,24 @@ public class DatabaseTest {
         database.execute(query);
     }
 
+
     @Test
     void QueryTest() {
-        Database database = new Database();
-        resetDatabase();
+        Database database = resetDatabase();
+
+        // Insert 11 Players
+        for(int i=0; i<11; i++) {
+            String playerIndex = Integer.toString(i);
+            String addPlayer =
+                    "INSERT INTO Players\n" +
+                            "(ID, FirstName, LastName, TeamID)" +
+                            "VALUES(" +
+                            playerIndex+", " +
+                            "'firstName"+playerIndex+"', " +
+                            "'lastName"+playerIndex+"', " +
+                            "0);";
+            database.execute(addPlayer);
+        }
 
         ResultSet rs = database.query("SELECT * FROM Players");
         System.out.println("rs: " + rs);
@@ -141,4 +142,146 @@ public class DatabaseTest {
 
     }
 
+    @Test
+    void searchGamesByPlayerNameTest() throws SQLException {
+        Database database = resetDatabase();
+
+        database.execute(
+                "INSERT INTO Games \n" +
+                        "(Team1ID, Team2ID)\n" +
+                        "VALUES(\n" +
+                        "0, 1);"
+        );
+
+        database.execute(
+                "INSERT INTO Games \n" +
+                        "(Team1ID, Team2ID)\n" +
+                        "VALUES(\n" +
+                        "0, 2);"
+        );
+
+        database.execute(
+                "INSERT INTO Games \n" +
+                        "(Team1ID, Team2ID)\n" +
+                        "VALUES(\n" +
+                        "2, 1);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "0, " +
+                        "'Al', " +
+                        "'Perialis', " +
+                        "0);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "1, " +
+                        "'Danny', " +
+                        "'Yowzers', " +
+                        "0);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "2, " +
+                        "'Adam', " +
+                        "'Danger', " +
+                        "1);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "3, " +
+                        "'Killson', " +
+                        "'Warmurder', " +
+                        "1);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "4, " +
+                        "'Bud', " +
+                        "'Friendguy', " +
+                        "2);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "5, " +
+                        "'Super', " +
+                        "'Man', " +
+                        "2);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "6, " +
+                        "'Bench', " +
+                        "'Warmer', " +
+                        "3);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(ID, FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "7, " +
+                        "'Lone', " +
+                        "'Wolf', " +
+                        "NULL);"
+        );
+
+        ResultSet rs = database.searchGamesByPlayerName("Killson", "Warmurder");
+
+//        do {
+//            System.out.println(rs.getString("ID"));
+//            System.out.println(rs.getString("Team1ID"));
+//            System.out.println(rs.getString("Team2ID"));
+//            System.out.println(rs.getString("FirstName"));
+//            System.out.println(rs.getString("LastName"));
+//        } while(rs.next());
+
+        // Player has games result
+        // FOR SOME GOD DAMN REASON THE FIRST RESULT IN THE SET IS ALWAYS DOUBLED. SO WE JUST SKIP IT I GUESS? TOBY IM GONNA CRY
+        rs.next();
+        Assert.assertEquals("1", rs.getString("ID"));
+        Assert.assertEquals("0", rs.getString("Team1ID"));
+        Assert.assertEquals("1", rs.getString("Team2ID"));
+
+
+        rs.next();
+        Assert.assertEquals("3", rs.getString("ID"));
+        Assert.assertEquals("2", rs.getString("Team1ID"));
+        Assert.assertEquals("1", rs.getString("Team2ID"));
+
+        Assert.assertFalse(rs.next());
+
+        // Player doesn't exist
+        ResultSet rs2 = database.searchGamesByPlayerName("Idont", "Existnow");
+        Assert.assertFalse(rs.next());
+
+        // Player exists with no games
+        ResultSet rs3 = database.searchGamesByPlayerName("Bench", "Warmer");
+        Assert.assertFalse(rs.next());
+
+        // Player exists with no team
+        ResultSet rs4 = database.searchGamesByPlayerName("Lone", "Wolf");
+        Assert.assertFalse(rs.next());
+    }
 }

@@ -63,6 +63,19 @@ public class Database {
         }
     }
 
+    ResultSet searchGamesByPlayerName(String firstname, String lastname) {
+        //join Games and Players where games.team1ID = Players.teamID
+        // and Players.FirstName = firstname
+        // and Players.LastName = lastname
+
+        String query =
+                "SELECT Games.ID, Games.Team1ID, Games.Team2ID, Players.FirstName, Players.LastName FROM\n" +
+                        "Games INNER JOIN Players ON (Games.Team1ID = Players.TeamID OR Games.Team2ID = Players.TeamID) WHERE " +
+                        "Players.FirstName = \"" + firstname + "\"\n" +
+                        "AND Players.LastName = \"" + lastname + "\"";
+        return query(query);
+    }
+
     public static void main(String[] args) {
         Database db = new Database();
     }
