@@ -69,11 +69,10 @@ public class Database {
         // and Players.LastName = lastname
 
         String query =
-                "SELECT Games.ID, Games.Team1ID, Games.Team2ID FROM\n" +
-                        "Games JOIN Players WHERE ((Games.Team1ID = Players.TeamID)\n" +
-                        "OR (Games.Team2ID = Players.TeamID)) " +
-                        "AND (Players.FirstName = " + firstname + ")\n" +
-                        "AND (Players.LastName = " + lastname + ")";
+                "SELECT Games.ID, Games.Team1ID, Games.Team2ID, Players.FirstName, Players.LastName FROM\n" +
+                        "Games INNER JOIN Players ON (Games.Team1ID = Players.TeamID OR Games.Team2ID = Players.TeamID) WHERE " +
+                        "Players.FirstName = \"" + firstname + "\"\n" +
+                        "AND Players.LastName = \"" + lastname + "\"";
         return query(query);
     }
 
