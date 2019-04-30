@@ -80,4 +80,14 @@ public class Roster{
             return o1.name.compareTo(o2.name);
         }
     };
+
+    /**
+     * Prints a list of the players on the roster
+     */
+    public void showPlayer(){
+        for (int i = 0; i <players.size() ; i++) {
+            System.out.println("Player Name: "+players.get(i).getPlayerName()+", Player Number: "+
+                    players.get(i).getNumber());
+        }
+    }
 }

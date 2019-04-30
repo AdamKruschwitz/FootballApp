@@ -72,7 +72,7 @@ public class Match {
      * Add a goal in this match and increase the .
      * @param team
      */
-    public void addGoal(int team) {
+    public void addGoal(int team, int playerId) {
         Team temp = null;
 
         // Get the team to work with
@@ -80,15 +80,41 @@ public class Match {
             case 0:
                 temp = team1;
                 team1Score++;
+                team2.addToScoredOnGoals(1);
                 break;
             case 1:
                 temp = team2;
                 team2Score++;
+                team1.addToScoredOnGoals(1);
                 break;
         }
-
+        Player player = temp.getPlayer(playerId);
+        if(player == null){
+            throw new NullPointerException("Player does not exist");
+        }else{
+            player.addGoal();
+        }
         temp.addToScoredGoals(1);
+
     }
+
+    public void addAssist(int team, int player){
+        if(team >1 || team < 0 || player < 0){
+            throw new IllegalArgumentException("Invalid Team and/or player ID");
+        }
+        else{
+            if(team == 0){
+                Player temp = team1.getPlayer(player);
+                team1.addAssist();
+                temp.addAssist();
+            }else if(team == 1){
+                Player temp = team1.getPlayer(player);
+                team2.addAssist();
+                temp.addAssist();
+            }
+        }
+    }
+
 
     public int getTeam1Score() {
         return team1Score;
