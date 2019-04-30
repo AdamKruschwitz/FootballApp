@@ -1,5 +1,8 @@
 package ithaca.edu.footballTeam.footballApp;
 
+import java.util.Iterator;
+import java.util.Map;
+
 public class Match {
     private int id;
     private Team team1;
@@ -33,10 +36,14 @@ public class Match {
 
     public void setTeam1Score(int team1Score){
         this.team1Score = team1Score;
+        team1.addToScoredGoals(team1Score);
+        team2.addToScoredOnGoals(team1Score);
     }
 
     public void setTeam2Score(int team2Score){
         this.team2Score = team2Score;
+        team2.addToScoredGoals(team2Score);
+        team1.addToScoredOnGoals(team2Score);
     }
 
     public boolean isTie(){
@@ -51,6 +58,14 @@ public class Match {
             return team1;
         }
         return team2;
+    }
+
+    public Team getLoser(){
+        if(team1Score < team2Score){
+            return team1;
+        }
+        return team2;
+
     }
 
     /**
@@ -85,5 +100,21 @@ public class Match {
 
     public void print(){
         System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
+    }
+
+    public String showPlayersInMatch(){
+        String Teams = "";
+        Iterator<Player> team1Itr = team1.getActiveRoster().players.iterator();
+        Iterator<Player> team2Itr = team2.getActiveRoster().players.iterator();
+
+
+        while (team1Itr.hasNext() && team2Itr.hasNext()){
+
+            Teams = Teams + team1.getTeamName() + " player: " + team1Itr.next().name + " " +   team2.getTeamName() + " player: " + team2Itr.next().name  + "\n";
+
+
+        }
+        return Teams;
+
     }
 }

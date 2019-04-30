@@ -51,4 +51,15 @@ public class MatchTest {
 
     }
 
+    @Test
+    void printTeamsTest(){
+        Roster roster = new Roster();
+        roster.fillWithValidPlayers();
+        Team team1 = new Team( roster, "t1");
+        Team team2 = new Team(roster, "t2");
+        Match match = new Match(team1, team2, 1);
+
+        System.out.println(match.showPlayersInMatch());
+    }
+
 }

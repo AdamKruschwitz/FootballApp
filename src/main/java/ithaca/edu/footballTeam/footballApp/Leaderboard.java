@@ -31,9 +31,13 @@ public class Leaderboard {
                 && leaderBoard.containsKey(playedMatch.getTeam2().getTeamName())) {
             if (playedMatch.isTie()) {
                 leaderBoard.put(playedMatch.getTeam1().getTeamName(), leaderBoard.get(playedMatch.getTeam1().getTeamName()) + 1);
+                playedMatch.getTeam1().addTies(1);
                 leaderBoard.put(playedMatch.getTeam2().getTeamName(), leaderBoard.get(playedMatch.getTeam2().getTeamName()) + 1);
+                playedMatch.getTeam2().addTies(1);
             } else {
                 leaderBoard.put(playedMatch.getWinner().getTeamName(), leaderBoard.get(playedMatch.getWinner().getTeamName()) + 3);
+                playedMatch.getWinner().addWins(1);
+                playedMatch.getLoser().addLoss(1);
             }
             // 1. Convert Map to List of Map
             List<Map.Entry<String, Integer>> leagueScores =
@@ -72,4 +76,6 @@ public class Leaderboard {
     public Iterator<Map.Entry<String, Integer>> getLeaderBoard() {
         return orderedScores.iterator();
     }
+
+
 }

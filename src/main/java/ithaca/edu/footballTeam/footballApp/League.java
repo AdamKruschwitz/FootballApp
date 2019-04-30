@@ -126,6 +126,44 @@ public class League {
       return this.participants;
   }
 
+  public Team findTeamByName(String teamName){
+      for(int i = 0; i < participants.size(); i++){
+          if(participants.get(i).getTeamName() == teamName){
+              return participants.get(i);
+          }
+      }
+      return null;
+
+  }
+
+  public String getSocreBoardWinLossTie(){
+      Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
+      String scoreBoard = leagueName + " Team win-loss-ties and league points" + "\n";
+      while (scores.hasNext()){
+          Map.Entry<String, Integer> item = scores.next();
+          scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Wins "
+                  + findTeamByName(item.getKey()).getWins() + " ties " + findTeamByName(item.getKey()).getTie() +
+                    " losses " + findTeamByName(item.getKey()).getLoss() + "\n";
+
+
+      }
+      return scoreBoard;
+  }
+
+  public String getScoreBoardGoals(){
+      Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
+      String scoreBoard = leagueName + " Team goals and league points " + "\n";
+      while (scores.hasNext()){
+          Map.Entry<String, Integer> item = scores.next();
+          scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Goals "
+                  + findTeamByName(item.getKey()).getTotalGoalsScored() + "\n";
+
+
+      }
+      return scoreBoard;
+
+  }
+
 
 
 
