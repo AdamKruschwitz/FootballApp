@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.crypto.Data;
+
 public class DatabaseTest {
 
     private Database resetDatabase() {
@@ -282,6 +284,92 @@ public class DatabaseTest {
 
         // Player exists with no team
         ResultSet rs4 = database.searchGamesByPlayerName("Lone", "Wolf");
+        Assert.assertFalse(rs.next());
+    }
+
+    @Test
+    void searchPlayersByTeamTest() throws SQLException {
+        Database database = resetDatabase();
+
+        database.execute(
+                "INSERT INTO Teams \n" +
+                        "(TeamName)\n" +
+                        "VALUES(\n" +
+                        "'The Maroon Socks');"
+        );
+
+        database.execute(
+                "INSERT INTO Teams \n" +
+                        "(TeamName)\n" +
+                        "VALUES(\n" +
+                        "'The Meets');"
+        );
+
+        database.execute(
+                "INSERT INTO Teams \n" +
+                        "(TeamName)\n" +
+                        "VALUES(\n" +
+                        "'Brazil');"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "'Ruby', " +
+                        "'Rails', " +
+                        "1);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "'Richard', " +
+                        "'Largephallus', " +
+                        "2);"
+        );
+
+        database.execute(
+                "INSERT INTO Players\n" +
+                        "(FirstName, LastName, TeamID)" +
+                        "VALUES(" +
+                        "'Snoo', " +
+                        "'Snooo', " +
+                        "1);"
+        );
+
+        // Get results from a team with multiple players
+        ResultSet rs = database.searchPlayersByTeam("The Maroon Socks");
+
+        // I'm assuming the same problem from the above test will occur
+        rs.next();
+        Assert.assertEquals("Ruby", rs.getString("FirstName"));
+        Assert.assertEquals("Rails", rs.getString("LastName"));
+
+        rs.next();
+        Assert.assertEquals("Snoo", rs.getString("FirstName"));
+        Assert.assertEquals("Snooo", rs.getString("LastName"));
+
+        Assert.assertFalse(rs.next());
+
+        // Get results from a team with 1 player
+        rs = database.searchPlayersByTeam("The Meets");
+
+        rs.next();
+        Assert.assertEquals("Richard", rs.getString("FirstName"));
+        Assert.assertEquals("Largephallus", rs.getString("LastName"));
+
+        Assert.assertFalse(rs.next());
+
+        // Get results from a team with no players
+        rs = database.searchPlayersByTeam("Brazil");
+
+        Assert.assertFalse(rs.next());
+
+        // Get results from a team that doesn't exist
+        rs = database.searchPlayersByTeam("A team that can beat Thanos");
+
         Assert.assertFalse(rs.next());
     }
 }

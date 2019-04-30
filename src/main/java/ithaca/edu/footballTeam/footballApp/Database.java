@@ -76,6 +76,17 @@ public class Database {
         return query(query);
     }
 
+    /**
+     * Returns the result set of all players in given team
+     * @param teamname
+     * @return ResultSet
+     */
+    ResultSet searchPlayersByTeam(String teamname) {
+        // Select Players.FirstName, Players.LastName from Players INNER JOIN Teams ON Players.TeamID = Teams.ID
+        // WHERE Teams.TeamName = teamname;
+        return null;
+    }
+
     public static void main(String[] args) {
         Database db = new Database();
     }
