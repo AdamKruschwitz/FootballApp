@@ -21,12 +21,14 @@ public class Roster{
             if(iterator.next().isEligible() != true){
                 canPlay = false;
                 break;
+
             }
             else {
                 canPlay = true;
             }
         }
-        return (canPlay == true && players.size() > 10);
+        return (canPlay && players.size() > 10);
+
     }
 
     /**
@@ -78,4 +80,14 @@ public class Roster{
             return o1.name.compareTo(o2.name);
         }
     };
+
+    /**
+     * Prints a list of the players on the roster
+     */
+    public void showPlayer(){
+        for (int i = 0; i <players.size() ; i++) {
+            System.out.println("Player Name: "+players.get(i).getPlayerName()+", Player Number: "+
+                    players.get(i).getNumber());
+        }
+    }
 }

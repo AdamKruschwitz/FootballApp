@@ -8,11 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FootballApp" />
         <module name="footballApp" />
+        <module name="FootballApp" />
+        <module name="footballAppCode" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="FootballApp" target="1.10" />
       <module name="footballApp" target="1.10" />
+<<<<<<< HEAD
+=======
+      <module name="footballAppCode" target="1.10" />
+>>>>>>> master
     </bytecodeTargetLevel>
   </component>
 </project>

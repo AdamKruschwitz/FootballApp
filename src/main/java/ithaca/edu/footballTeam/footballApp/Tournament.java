@@ -20,6 +20,7 @@ public class Tournament {
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
             if(team.getRank() <= 8 ){
+                //team.resetStats();
                 this.teams.add(team);
             }
         }
@@ -46,6 +47,7 @@ public class Tournament {
             for (int i = 0; i < teams.size(); i++) {
                 Team toAdd = teams.get(i);
                 if (toAdd.getRank() <= 8 && toAdd.getRank() == i+1) {
+                    //toAdd.resetStats();
                     this.teams.add(toAdd);
                 }
             }
@@ -151,6 +153,8 @@ public class Tournament {
         currRound.print();
     }
 
+    public List<Team> getTeams(){return this.teams;}
+
     /**
      * Prints out the current list of teams in the tournament
      */
@@ -163,42 +167,6 @@ public class Tournament {
         }
     public Round getCurrRound(){return this.currRound;}
 
-    /**
-     * Runs the current round of matches in the tournament
-     */
-    //Values are currently hard coded. Change later
-    public void runRound(){
-        if(currRound.getCurrentMatches() == null){
-            throw new NullPointerException("There are no matches to run");
-        }
-        else {
-            List<Match> Matches = this.currRound.getCurrentMatches();
-            //Scanner reader = new Scanner(System.in);
-
-            for (int i = 0; i < Matches.size(); i++) {
-                Match currMatch = Matches.get(i);
-                //System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
-            /*while (!reader.hasNextInt()){
-                System.out.println("please enter a valid number: ");
-                reader.next();
-            }
-            int option = reader.nextInt();
-            */
-                currMatch.setTeam1Score(3);
-            /*
-            System.out.println("How many goals did "+currMatch.getTeam2().getTeamName()+" score?");
-            while (!reader.hasNextInt()){
-                System.out.println("please enter a valid number: ");
-                reader.next();
-            }
-            option = reader.nextInt();
-            */
-                currMatch.setTeam2Score(1);
-            }
-
-            goToNextRound(Matches);
-        }
-    }
 
     /**
      * Prints out the winner of the tournament
