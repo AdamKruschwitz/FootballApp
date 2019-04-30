@@ -1,10 +1,7 @@
 package ithaca.edu.footballTeam.footballApp;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -12,13 +9,9 @@ import static java.lang.Thread.sleep;
 public class UIMain {
 
     //Required classes for display to work
-    public static UIWelcome welcome;
+    public static UITeamCtrl teamCtrl;
     public static UIOption options;
-    public static UIAddTeam addTeam;
-    public static UIViewTeams viewTeams;
-    public static UIRunLeague runLeague;
-    public static UIShowLeaderBoard showLeader;
-    public static UIPlayer playerCtrl;
+    public static UIWelcome welcome;
     public static UIApi api;
     public static ActionListener mainListener;
 
@@ -42,55 +35,49 @@ public class UIMain {
                 }
 
                 //Option screen buttons
-                //Add player
-                if(source == options.addPlayerButton){
-                    f.remove(options);
-                    playerCtrl.showTeamPicks();
+                //Roster Mgmt
+                if(source == options.rosterMgmtButton){
+                    //Launch roster management
                 }
 
-                //Round
-                if(source == options.roundButton){
-                    System.out.println("Run Round");
+                //Add team
+                if(source == options.dropTeamButton){
+                    teamCtrl.userDropTeam();
+                    System.out.println("Drop Team");
                 }
 
-                //Match
-                if(source == options.matchButton){
-                    System.out.println("Run Match");
-                }
-
-                //Tournament
-                if(source == options.tournamentButton){
-                    System.out.println("Tournament");
-                }
-
-                //Add Team
+                //Drop Team
                 if(source == options.addTeamButton){
                     System.out.println("Add Team");
                 }
 
-                //View Team
-                if(source == options.viewTeamButton){
-                    //Show view team popup
-                    viewTeams.display();
+                //Tournament
+                if(source == options.runWeekendButton){
+                    System.out.println("Run Weekend");
                 }
 
-                //Run League
-                if(source == options.runLeagueButton){
-                    System.out.println("Run League");
+                //Win-Loss-Ties
+                if(source == options.showWltButton){
+                    System.out.println("Show Win-Loss-Ties");
                 }
 
-                //Show Leaderboard
-                if(source == options.leaderButton){
-                    System.out.println("Show Leaderboard");
+                //Show League Participants
+                if(source == options.showParticipantButton){
+                    System.out.println("Show Participants");
+
                 }
 
-                //Home button, remove and go to home screen
-                if(source == playerCtrl.homeButton){
-                    playerCtrl.clear();
-                    f.add(options);
-                    f.revalidate();
-                    f.repaint();
+                //Show Goals Points
+                if(source == options.showGoalPointsButton){
+                    System.out.println("Show Goals and Points");
                 }
+
+                //Run Tournament
+                if(source == options.runTournamentButton){
+                    System.out.println("Run Tournament");
+                }
+
+
 
 
 
@@ -100,12 +87,9 @@ public class UIMain {
         //Create all required components
         welcome = new UIWelcome(mainListener);
         options = new UIOption(mainListener);
-        addTeam = new UIAddTeam(options);
+        teamCtrl = new UITeamCtrl(api, f, mainListener);
         api = new UIApi();
-        viewTeams = new UIViewTeams(api);
-        runLeague = new UIRunLeague(api);
-        showLeader = new UIShowLeaderBoard(api);
-        playerCtrl = new UIPlayer(api, f, mainListener);
+
         f.add(welcome);
         f.pack();
         f.setSize(1600, 900);

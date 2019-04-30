@@ -46,13 +46,12 @@ public class UIApi {
     //View teams in the league
     //Return list of teams in the league
     public List<String> viewTeams(){
-        List<Team> teamTmp = new ArrayList<>();
-        List<String> ret = new ArrayList<>();
-        teamTmp =this.league.getParticipants();
-        for (int i = 0; i < teamTmp.size(); i++) {
-            ret.add(teamTmp.get(i).getTeamName());
+        List<Team> teams = league.getParticipants();
+        List<String> teamsString = new ArrayList<>();
+        for (int i = 0; i < teams.size(); i++) {
+            teamsString.add(teams.get(i).getTeamName());
         }
-        return ret;
+        return teamsString;
     }
 
     public Iterator<Match> getMatchesToSet(){
@@ -77,5 +76,9 @@ public class UIApi {
             }
         }
         return ret;
+    }
+
+    public void dropTeam(String teamName){
+        league.removeTeam(teamName);
     }
 }

@@ -6,25 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UIOption extends JPanel {
-    JButton addPlayerButton;
-    JButton roundButton;
-    JButton matchButton;
-    JButton tournamentButton;
+    JButton rosterMgmtButton;
+    JButton dropTeamButton;
     JButton addTeamButton;
-    JButton viewTeamButton;
-    JButton runLeagueButton;
-    JButton leaderButton;
+    JButton runWeekendButton;
+    JButton showWltButton;
+    JButton showParticipantButton;
+    JButton showGoalPointsButton;
+    JButton runTournamentButton;
 
     public UIOption(ActionListener parentListener){
         //Generate components
-        this.addPlayerButton = new JButton("Add Player");
-        this.roundButton = new JButton("Round");
-        this.matchButton = new JButton("Match");
-        this.tournamentButton = new JButton("Tournament");
+        this.rosterMgmtButton = new JButton("Roster Management");
+        this.dropTeamButton = new JButton("Drop Team");
         this.addTeamButton = new JButton("Add Team");
-        this.viewTeamButton = new JButton("View Teams");
-        this.runLeagueButton = new JButton("Run League");
-        this.leaderButton = new JButton("Get Leaderboard");
+        this.runWeekendButton = new JButton("Run Weekend");
+        this.showWltButton = new JButton("Show Win-Loss-Ties");
+        this.showParticipantButton = new JButton("Show League Participants");
+        this.showGoalPointsButton = new JButton("Show Goals and Points");
+        this.runTournamentButton = new JButton("Run Tournament");
         JLabel optionLabel = new JLabel("Options");
 
         //Add components/LAF
@@ -36,24 +36,23 @@ public class UIOption extends JPanel {
         constraints.fill = GridBagConstraints.VERTICAL;
 
         this.add(optionLabel, constraints);
-        this.add(addPlayerButton, constraints);
-        this.add(roundButton, constraints);
-        this.add(matchButton, constraints);
-        this.add(tournamentButton, constraints);
-        this.add(matchButton, constraints);
+        this.add(rosterMgmtButton, constraints);
+        this.add(dropTeamButton, constraints);
         this.add(addTeamButton, constraints);
-        this.add(viewTeamButton, constraints);
-        this.add(runLeagueButton, constraints);
-        this.add(leaderButton, constraints);
+        this.add(runWeekendButton, constraints);
+        this.add(showWltButton, constraints);
+        this.add(showParticipantButton, constraints);
+        this.add(showGoalPointsButton, constraints);
+        this.add(runTournamentButton, constraints);
 
         //Action listeners
-        this.addPlayerButton.addActionListener(parentListener);
-        this.roundButton.addActionListener(parentListener);
-        this.matchButton.addActionListener(parentListener);
-        this.tournamentButton.addActionListener(parentListener);
+        this.rosterMgmtButton.addActionListener(parentListener);
+        this.dropTeamButton.addActionListener(parentListener);
         this.addTeamButton.addActionListener(parentListener);
-        this.viewTeamButton.addActionListener(parentListener);
-        this.runLeagueButton.addActionListener(parentListener);
-        this.leaderButton.addActionListener(parentListener);
+        this.runWeekendButton.addActionListener(parentListener);
+        this.showWltButton.addActionListener(parentListener);
+        this.showParticipantButton.addActionListener(parentListener);
+        this.showGoalPointsButton.addActionListener(parentListener);
+        this.runTournamentButton.addActionListener(parentListener);
     }
 }

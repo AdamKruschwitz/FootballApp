@@ -33,7 +33,7 @@ public class UIPlayer extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton btn = (JButton)e.getSource();
-                showTeamPlayers(btn.getText());
+
 
             }
         };
@@ -50,45 +50,9 @@ public class UIPlayer extends JPanel {
 
 
     //List all the teams
-    public void showTeamPicks(){
-        //Give user a list of teams and let them pick
-        List<String> teams = api.viewTeams();
 
-        for (int i = 0; i < teams.size(); i++) {
-            //Generate buttons and add to panel
-            JButton newBtn = new JButton(teams.get(i));
-            this.add(newBtn, constraints);
-            newBtn.addActionListener(this.chosenTeam);
-        }
 
-        //Home button
-        frame.remove(this);
-        this.add(homeButton);
-        frame.add(this);
-        frame.revalidate();
-        frame.repaint();
-    }
 
-    public void showTeamPlayers(String teamName){
-        this.removeAll();
-        //Adds a list of players for selected team
-        List<Player> players = api.getPlayers(teamName);
-        for (int i = 0; i < players.size(); i++) {
-            JButton newBtn = new JButton(players.get(i).name);
-            this.add(newBtn, constraints);
-           // newBtn.addActionListener(this.chosenTeam);
-        }
-
-        //Home Button
-        frame.remove(this);
-        this.add(homeButton);
-        frame.add(this);
-        frame.revalidate();
-        frame.repaint();
-
-        //Get players for a given team
-
-    }
 
  //   public void yellowCardPlayer
 }

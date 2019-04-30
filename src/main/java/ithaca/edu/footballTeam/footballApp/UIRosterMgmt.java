@@ -2,7 +2,7 @@ package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
 
-public class UIAddTeam extends JOptionPane {
+public class UIRosterMgmt extends JOptionPane {
     //Popup allows user to enter a new team
     //Parameters
     private JPanel optionPanel;
@@ -11,7 +11,7 @@ public class UIAddTeam extends JOptionPane {
 
     //Will returna string for the team name
     //Active roster is defaulted for now
-    public UIAddTeam(JPanel optionPanel){
+    public UIRosterMgmt(JPanel optionPanel){
         this.optionPanel = optionPanel;
         //Setup text fields
         this.nameField = new JTextField(15);
