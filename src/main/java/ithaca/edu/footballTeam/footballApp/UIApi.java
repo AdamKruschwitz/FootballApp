@@ -18,6 +18,15 @@ public class UIApi {
         testRoster.addPlayer(new Player("p1",0));
         testRoster.addPlayer(new Player("p2",1));
         testRoster.addPlayer(new Player("p3",2));
+        testRoster.addPlayer(new Player("p4",3));
+        testRoster.addPlayer(new Player("p5",4));
+        testRoster.addPlayer(new Player("p6",5));
+        testRoster.addPlayer(new Player("p7",6));
+        testRoster.addPlayer(new Player("p8",7));
+        testRoster.addPlayer(new Player("p9",8));
+        testRoster.addPlayer(new Player("p10",9));
+        testRoster.addPlayer(new Player("p11",10));
+        testRoster.addPlayer(new Player("p12",11));
         List<Team> initTeamList = new ArrayList();
         for (int i = 0; i < 7; i++) {
             initTeamList.add(new Team(testRoster,"team" + i));
@@ -52,5 +61,21 @@ public class UIApi {
 
     public Iterator<Map.Entry<String, Integer>> getLeaderBoard(){
         return this.league.updateLeaderBoard();
+    }
+
+    //Returns a list of players for a given team
+    public List<Player> getPlayers(String teamName){
+        List<Player> ret = new ArrayList<>();
+        List<Team> teams = league.getParticipants();
+        for (int i = 0; i < teams.size(); i++) {
+            if(teams.get(i).getTeamName() == teamName){
+                //Iterate over team roster and make add them to a list
+                for (int j = 0; j < teams.get(i).getActiveRoster().players.size(); j++) {
+                    ret.add(teams.get(i).getActiveRoster().players.get(j));
+                }
+                return ret;
+            }
+        }
+        return ret;
     }
 }
