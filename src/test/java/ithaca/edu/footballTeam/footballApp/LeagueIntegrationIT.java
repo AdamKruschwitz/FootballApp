@@ -38,12 +38,11 @@ public class LeagueIntegrationIT {
             //Score board is an iterator ordered by best team to worst team in terms of points in descending order
             scoreBoard = league.updateLeaderBoard();
             score++;
-        }
 
-        while (scoreBoard.hasNext()){
-            Map.Entry<String, Integer> team = scoreBoard.next();
-            System.out.println("Team Name " + team.getKey() + " Score " + team.getValue());
         }
+        System.out.println(league.getScoreBoardGoals());
+        System.out.println(league.getSocreBoardWinLossTie());
+
 
 
     }
