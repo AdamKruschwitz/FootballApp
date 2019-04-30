@@ -84,7 +84,11 @@ public class Database {
     ResultSet searchPlayersByTeam(String teamname) {
         // Select Players.FirstName, Players.LastName from Players INNER JOIN Teams ON Players.TeamID = Teams.ID
         // WHERE Teams.TeamName = teamname;
-        return null;
+        String query =
+                "SELECT Players.FirstName, Players.LastName from " +
+                        "Players INNER JOIN Teams ON Players.TeamID = Teams.ID " +
+                        "WHERE Teams.TeamName = '" + teamname + "';";
+        return query(query);
     }
 
     public static void main(String[] args) {
