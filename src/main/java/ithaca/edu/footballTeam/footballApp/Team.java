@@ -11,6 +11,7 @@ public class Team implements Comparable<Team> {
     private int rank;
     private int totalGoalsScored;
     private int totalGoalsScoredOn;
+    private int totalAssists;
 
 
 
@@ -221,5 +222,40 @@ public class Team implements Comparable<Team> {
             return -1;
         }
         return 0;
+    }
+
+    /**
+     * Gets the total number of assists that the team has accumulated
+     * @return int
+     */
+    public int getTotalAssists(){return this.totalAssists;}
+
+    /**
+     * Increments the total number of assists that the team has by 1
+     */
+    public void addAssist(){this.totalAssists++;}
+
+    /**
+     * Gets the total number of goals that has been scored on the team
+     * @return int
+     */
+    public int getTotalGoalsScoredOn(){return this.totalGoalsScoredOn;}
+
+    /**
+     * Prints out a list of players in the team's roster
+     */
+    public void showPlayers(){
+        activeRoster.showPlayer();
+    }
+
+    protected void resetStats(){
+        this.totalAssists = 0;
+        this.totalGoalsScored = 0;
+        this.totalGoalsScoredOn = 0;
+
+        for (int i = 0; i < activeRoster.getPlayerCount(); i++) {
+            Player player = activeRoster.getPlayer(i);
+            player.resetStats();
+        }
     }
 }
