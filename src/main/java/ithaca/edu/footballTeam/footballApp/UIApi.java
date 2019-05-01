@@ -10,25 +10,15 @@ public class UIApi {
 
     //Initialize required classes for app to run
     //App needs a leaue with a few prefilled teams to work
-    private League league;
+    League league;
     public UIApi(){
         //Generate a few teams to put in the league
         //Generic roster for right now
+
         Roster testRoster = new Roster();
-        testRoster.addPlayer(new Player("p1",0));
-        testRoster.addPlayer(new Player("p2",1));
-        testRoster.addPlayer(new Player("p3",2));
-        testRoster.addPlayer(new Player("p4",3));
-        testRoster.addPlayer(new Player("p5",4));
-        testRoster.addPlayer(new Player("p6",5));
-        testRoster.addPlayer(new Player("p7",6));
-        testRoster.addPlayer(new Player("p8",7));
-        testRoster.addPlayer(new Player("p9",8));
-        testRoster.addPlayer(new Player("p10",9));
-        testRoster.addPlayer(new Player("p11",10));
-        testRoster.addPlayer(new Player("p12",11));
+        testRoster.fillWithValidPlayers();
         List<Team> initTeamList = new ArrayList();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 1; i < 5; i++) {
             initTeamList.add(new Team(testRoster,"team" + i));
         }
 
@@ -80,5 +70,34 @@ public class UIApi {
 
     public void dropTeam(String teamName){
         league.removeTeam(teamName);
+    }
+
+    public Iterator<Iterator<Match>> getWeekendMatches(){
+        league.generateLeagueMatches();
+        Iterator<Iterator<Match>> allWeekends = league.genAllWeekeds();
+        return allWeekends;
+    }
+
+    public String getWinLossTies(){
+        return league.getSocreBoardWinLossTie();
+    }
+
+    public String getScoreGoals(){
+        return league.getScoreBoardGoals();
+    }
+
+    public String getTeamsInLeague(){
+        List<Team> teams = league.getParticipants();
+        String teamsString = "";
+        for (int i = 0; i < teams.size(); i++) {
+            teamsString = teamsString + teams.get(i).getTeamName() + "\n";
+        }
+        return teamsString;
+    }
+
+
+
+    public void apiTest(){
+        System.out.println("Api Called");
     }
 }

@@ -13,22 +13,11 @@ public class UIShowLeaderBoard extends JOptionPane {
         this.api = api;
     }
 
-    public void display(){
-        Iterator<Map.Entry<String, Integer>> leaderboard = this.api.getLeaderBoard();
-        String leaderString = new String();
+    public void showGoalPoints(){
+        JOptionPane.showConfirmDialog(null, api.getScoreGoals());
+    }
 
-        Map.Entry<String, Integer> currEntry;
-
-        while(leaderboard.hasNext()){
-            currEntry = leaderboard.next();
-            leaderString = leaderString + currEntry.getKey();
-            leaderString = leaderString + " : ";
-            leaderString = leaderString + currEntry.getValue();
-            leaderString = leaderString + '\n';
-
-        }
-        UIShowLeaderBoard.this.showMessageDialog(null, leaderString);
-
-        //Iterate through leaderboard and show popup
+    public void showWinLossTies(){
+        JOptionPane.showConfirmDialog(null, api.getWinLossTies());
     }
 }

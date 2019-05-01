@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UITeamCtrl extends JOptionPane {
-    private UIApi api;
     JFrame parentFrame;
     GridBagLayout layout;
     GridBagConstraints constraints;
@@ -17,7 +16,7 @@ public class UITeamCtrl extends JOptionPane {
     ActionListener parentListener;
 
     //Requires access to an api and parent frame
-    public UITeamCtrl(UIApi api, JFrame parentFrame, ActionListener parentListener){
+    public UITeamCtrl(UIApi api, JFrame parentFrame, ActionListener parentListener) {
         this.parentListener = parentListener;
         this.layout = new GridBagLayout();
         this.setLayout(layout);
@@ -26,9 +25,10 @@ public class UITeamCtrl extends JOptionPane {
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.fill = GridBagConstraints.VERTICAL;
         this.parentFrame = parentFrame;
-        this.api = api;
         homeButton = new JButton("GO HOME");
         homeButton.addActionListener(parentListener);
+
+
 
         this.chosenTeam = new ActionListener() {
             @Override
@@ -36,6 +36,7 @@ public class UITeamCtrl extends JOptionPane {
                 //Remove chosen team from the league
                 JButton source = (JButton)e.getSource();
                 api.dropTeam(source.getText());
+                homeButton.doClick();
             }
         };
     }
@@ -45,7 +46,7 @@ public class UITeamCtrl extends JOptionPane {
         this.removeAll();
     }
 
-    public void userDropTeam(){
+    public void userDropTeam(UIApi api){
         //Show jbuttons for all current teams
         //User clicks on one to drop
         List<String> teams = api.viewTeams();
@@ -58,7 +59,6 @@ public class UITeamCtrl extends JOptionPane {
         }
 
         //Home button
-        parentFrame.remove(this);
         this.add(homeButton);
         parentFrame.add(this);
         parentFrame.revalidate();
@@ -70,4 +70,5 @@ public class UITeamCtrl extends JOptionPane {
     public void userAddTeam(){
         //Gets input from user and adds team with valid players
     }
+
 }

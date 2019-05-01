@@ -10,12 +10,17 @@ public class UIMain {
 
     //Required classes for display to work
     public static UITeamCtrl teamCtrl;
+    public static UIRunWeekend weekendCtrl;
     public static UIOption options;
     public static UIWelcome welcome;
-    public static UIApi api;
     public static ActionListener mainListener;
+    public static UIShowLeaderBoard leaderBoardCtrl;
+    public static UILeagueCtrl leagueCtrl;
 
     public static void main(String[] args) throws InterruptedException{
+        //Required api
+        UIApi api = new UIApi();
+
         //Initialize UI
         JFrame f = new JFrame();
 
@@ -42,8 +47,11 @@ public class UIMain {
 
                 //Add team
                 if(source == options.dropTeamButton){
-                    teamCtrl.userDropTeam();
-                    System.out.println("Drop Team");
+                    f.remove(options);
+                    f.revalidate();
+                    f.repaint();
+                    teamCtrl.userDropTeam(api);
+
                 }
 
                 //Drop Team
@@ -53,22 +61,26 @@ public class UIMain {
 
                 //Tournament
                 if(source == options.runWeekendButton){
-                    System.out.println("Run Weekend");
+                    weekendCtrl.runWeekend(api);
                 }
 
                 //Win-Loss-Ties
                 if(source == options.showWltButton){
+                    leaderBoardCtrl.showWinLossTies();
                     System.out.println("Show Win-Loss-Ties");
                 }
 
                 //Show League Participants
                 if(source == options.showParticipantButton){
+                    leagueCtrl.showUserParticipants();
                     System.out.println("Show Participants");
 
                 }
 
                 //Show Goals Points
                 if(source == options.showGoalPointsButton){
+                    leaderBoardCtrl.showGoalPoints();
+
                     System.out.println("Show Goals and Points");
                 }
 
@@ -77,18 +89,25 @@ public class UIMain {
                     System.out.println("Run Tournament");
                 }
 
-
-
-
-
+                //Home button clicked, go back to option screen
+                if(source == teamCtrl.homeButton){
+                    teamCtrl.clear();
+                    f.remove(teamCtrl);
+                    f.add(options);
+                    f.revalidate();
+                    f.repaint();
+                }
             }
         };
 
         //Create all required components
+        weekendCtrl = new UIRunWeekend(api);
         welcome = new UIWelcome(mainListener);
         options = new UIOption(mainListener);
+        leagueCtrl = new UILeagueCtrl(api);
+        leaderBoardCtrl = new UIShowLeaderBoard(api);
         teamCtrl = new UITeamCtrl(api, f, mainListener);
-        api = new UIApi();
+
 
         f.add(welcome);
         f.pack();
