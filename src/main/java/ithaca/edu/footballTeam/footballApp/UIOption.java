@@ -6,125 +6,53 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UIOption extends JPanel {
+    JButton rosterMgmtButton;
+    JButton dropTeamButton;
+    JButton addTeamButton;
+    JButton runWeekendButton;
+    JButton showWltButton;
+    JButton showParticipantButton;
+    JButton showGoalPointsButton;
+    JButton runTournamentButton;
 
-    //Control vars
-    private boolean addPlayer;
-    private boolean roundButton;
-    private boolean matchButton;
-    private boolean tournamentButton;
-    private boolean addTeamButton;
-    private boolean viewTeamButton;
-    private boolean runLeagueButton;
-    private boolean leaderButton;
-
-    //Control vars getters and setters
-    public boolean getAddPlayer(){ return this.addPlayer; }
-    public boolean getRoundButton(){return this.roundButton;}
-    public boolean getMatchButton(){return this.matchButton;}
-    public boolean gettournamentButton(){return this.tournamentButton;}
-    public boolean getAddteamButton(){return this.addTeamButton;}
-    public boolean getViewteamButton(){return this.viewTeamButton;}
-    public boolean getRunLeagueButton(){return this.runLeagueButton;}
-    public boolean getLeaderButton(){return this.leaderButton;}
-    public void setAllFalse(){
-        this.addPlayer = false;
-        this.roundButton = false;
-        this.matchButton = false;
-        this.tournamentButton = false;
-        this.addTeamButton = false;
-        this.viewTeamButton = false;
-        this.runLeagueButton = false;
-        this.leaderButton = false;
-    }
-
-    public UIOption(){
-        //Set control vars
-        this.addPlayer = false;
-
+    public UIOption(ActionListener parentListener){
         //Generate components
-        JButton addPlayerButton = new JButton("Add Player");
-        JButton roundButton = new JButton("Round");
-        JButton matchButton = new JButton("Match");
-        JButton tournamentButton = new JButton("Tournament");
-        JButton addTeamButton = new JButton("Add Team");
-        JButton viewTeamButton = new JButton("View Teams");
-        JButton runLeagueButton = new JButton("Run League");
-        JButton leaderButton = new JButton("Get Leaderboard");
+        this.rosterMgmtButton = new JButton("Roster Management");
+        this.dropTeamButton = new JButton("Drop Team");
+        this.addTeamButton = new JButton("Add Team");
+        this.runWeekendButton = new JButton("Run Weekend");
+        this.showWltButton = new JButton("Show Win-Loss-Ties");
+        this.showParticipantButton = new JButton("Show League Participants");
+        this.showGoalPointsButton = new JButton("Show Goals and Points");
+        this.runTournamentButton = new JButton("Run Tournament");
         JLabel optionLabel = new JLabel("Options");
 
-        //Add components
-        this.add(addPlayerButton);
-        this.add(roundButton);
-        this.add(matchButton);
-        this.add(tournamentButton);
-        this.add(addTeamButton);
-        this.add(viewTeamButton);
-        this.add(optionLabel);
-        this.add(runLeagueButton);
-        this.add(leaderButton);
+        //Add components/LAF
+        GridBagLayout layout = new GridBagLayout();
+        this.setLayout(layout);
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.fill = GridBagConstraints.VERTICAL;
 
-        //Look and feel
-        BoxLayout grid = new BoxLayout(this,BoxLayout.Y_AXIS);
-        this.setLayout(grid);
-
-
+        this.add(optionLabel, constraints);
+        this.add(rosterMgmtButton, constraints);
+        this.add(dropTeamButton, constraints);
+        this.add(addTeamButton, constraints);
+        this.add(runWeekendButton, constraints);
+        this.add(showWltButton, constraints);
+        this.add(showParticipantButton, constraints);
+        this.add(showGoalPointsButton, constraints);
+        this.add(runTournamentButton, constraints);
 
         //Action listeners
-        addPlayerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.addPlayer = true;
-            }
-        });
-
-        roundButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.roundButton = true;
-
-            }
-        });
-
-        matchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        tournamentButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        addTeamButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.addTeamButton = true;
-            }
-        });
-
-        viewTeamButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.viewTeamButton = true;
-            }
-        });
-
-        runLeagueButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.runLeagueButton = true;
-            }
-        });
-
-        leaderButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UIOption.this.leaderButton = true;
-            }
-        });
+        this.rosterMgmtButton.addActionListener(parentListener);
+        this.dropTeamButton.addActionListener(parentListener);
+        this.addTeamButton.addActionListener(parentListener);
+        this.runWeekendButton.addActionListener(parentListener);
+        this.showWltButton.addActionListener(parentListener);
+        this.showParticipantButton.addActionListener(parentListener);
+        this.showGoalPointsButton.addActionListener(parentListener);
+        this.runTournamentButton.addActionListener(parentListener);
     }
 }

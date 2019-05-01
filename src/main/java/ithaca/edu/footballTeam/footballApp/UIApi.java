@@ -10,16 +10,15 @@ public class UIApi {
 
     //Initialize required classes for app to run
     //App needs a leaue with a few prefilled teams to work
-    private League league;
+    League league;
     public UIApi(){
         //Generate a few teams to put in the league
         //Generic roster for right now
+
         Roster testRoster = new Roster();
-        testRoster.addPlayer(new Player("p1",0));
-        testRoster.addPlayer(new Player("p2",1));
-        testRoster.addPlayer(new Player("p3",2));
+        testRoster.fillWithValidPlayers();
         List<Team> initTeamList = new ArrayList();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 1; i < 5; i++) {
             initTeamList.add(new Team(testRoster,"team" + i));
         }
 
@@ -37,13 +36,12 @@ public class UIApi {
     //View teams in the league
     //Return list of teams in the league
     public List<String> viewTeams(){
-        List<Team> teamTmp = new ArrayList<>();
-        List<String> ret = new ArrayList<>();
-        teamTmp =this.league.getParticipants();
-        for (int i = 0; i < teamTmp.size(); i++) {
-            ret.add(teamTmp.get(i).getTeamName());
+        List<Team> teams = league.getParticipants();
+        List<String> teamsString = new ArrayList<>();
+        for (int i = 0; i < teams.size(); i++) {
+            teamsString.add(teams.get(i).getTeamName());
         }
-        return ret;
+        return teamsString;
     }
 
     public Iterator<Match> getMatchesToSet(){
@@ -52,5 +50,58 @@ public class UIApi {
 
     public Iterator<Map.Entry<String, Integer>> getLeaderBoard(){
         return this.league.updateLeaderBoard();
+    }
+
+    //Returns a list of players for a given team
+    public List<Player> getPlayers(String teamName){
+        List<Player> ret = new ArrayList<>();
+        List<Team> teams = league.getParticipants();
+        for (int i = 0; i < teams.size(); i++) {
+            if(teams.get(i).getTeamName() == teamName){
+                //Iterate over team roster and make add them to a list
+                for (int j = 0; j < teams.get(i).getActiveRoster().players.size(); j++) {
+                    ret.add(teams.get(i).getActiveRoster().players.get(j));
+                }
+                return ret;
+            }
+        }
+        return ret;
+    }
+
+    public void dropTeam(String teamName){
+        league.removeTeam(teamName);
+    }
+
+    public Iterator<Iterator<Match>> getWeekendMatches(){
+        league.generateLeagueMatches();
+        Iterator<Iterator<Match>> allWeekends = league.genAllWeekeds();
+        return allWeekends;
+    }
+
+    public String getWinLossTies(){
+        return league.getSocreBoardWinLossTie();
+    }
+
+    public String getScoreGoals(){
+        return league.getScoreBoardGoals();
+    }
+
+    public String getTeamsInLeague(){
+        List<Team> teams = league.getParticipants();
+        String teamsString = "";
+        for (int i = 0; i < teams.size(); i++) {
+            teamsString = teamsString + teams.get(i).getTeamName() + "\n";
+        }
+        return teamsString;
+    }
+
+    public void updateLeaderBoard(){
+        league.updateLeaderBoard();
+    }
+
+
+
+    public void apiTest(){
+        System.out.println("Api Called");
     }
 }

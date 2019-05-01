@@ -1,99 +1,117 @@
 package ithaca.edu.footballTeam.footballApp;
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static java.lang.Thread.sleep;
 
 
 public class UIMain {
+
+    //Required classes for display to work
+    public static UITeamCtrl teamCtrl;
+    public static UIRunWeekend weekendCtrl;
+    public static UIOption options;
+    public static UIWelcome welcome;
+    public static ActionListener mainListener;
+    public static UIShowLeaderBoard leaderBoardCtrl;
+    public static UILeagueCtrl leagueCtrl;
+
     public static void main(String[] args) throws InterruptedException{
+        //Required api
+        UIApi api = new UIApi();
+
         //Initialize UI
         JFrame f = new JFrame();
 
+        //Main action listener
+        mainListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Find out which button was clicked
+                Object source = e.getSource();
+
+                //Welcome screen continue button, go to main menu
+                if(source == welcome.contButton){
+                    f.remove(welcome);
+                    f.add(options);
+                    f.revalidate();
+                    f.repaint();
+                }
+
+                //Option screen buttons
+                //Roster Mgmt
+                if(source == options.rosterMgmtButton){
+                    //Launch roster management
+                }
+
+                //Add team
+                if(source == options.dropTeamButton){
+                    f.remove(options);
+                    f.revalidate();
+                    f.repaint();
+                    teamCtrl.userDropTeam(api);
+
+                }
+
+                //Drop Team
+                if(source == options.addTeamButton){
+                    System.out.println("Add Team");
+                }
+
+                //Tournament
+                if(source == options.runWeekendButton){
+                    weekendCtrl.runWeekend(api);
+                }
+
+                //Win-Loss-Ties
+                if(source == options.showWltButton){
+                    leaderBoardCtrl.showWinLossTies();
+                    System.out.println("Show Win-Loss-Ties");
+                }
+
+                //Show League Participants
+                if(source == options.showParticipantButton){
+                    leagueCtrl.showUserParticipants();
+                    System.out.println("Show Participants");
+
+                }
+
+                //Show Goals Points
+                if(source == options.showGoalPointsButton){
+                    leaderBoardCtrl.showGoalPoints();
+
+                    System.out.println("Show Goals and Points");
+                }
+
+                //Run Tournament
+                if(source == options.runTournamentButton){
+                    System.out.println("Run Tournament");
+                }
+
+                //Home button clicked, go back to option screen
+                if(source == teamCtrl.homeButton){
+                    teamCtrl.clear();
+                    f.remove(teamCtrl);
+                    f.add(options);
+                    f.revalidate();
+                    f.repaint();
+                }
+            }
+        };
+
         //Create all required components
-        UIWelcome welcome = new UIWelcome();
-        UIOption options = new UIOption();
-        UIAddTeam addTeam = new UIAddTeam(options);
-        UIApi api = new UIApi();
-        UIViewTeams viewTeams = new UIViewTeams(api);
-        UIRunLeague runLeague = new UIRunLeague(api);
-        UIShowLeaderBoard showLeader = new UIShowLeaderBoard(api);
+        weekendCtrl = new UIRunWeekend(api);
+        welcome = new UIWelcome(mainListener);
+        options = new UIOption(mainListener);
+        leagueCtrl = new UILeagueCtrl(api);
+        leaderBoardCtrl = new UIShowLeaderBoard(api);
+        teamCtrl = new UITeamCtrl(api, f, mainListener);
+
 
         f.add(welcome);
         f.pack();
         f.setSize(1600, 900);
         f.setVisible(true);
-
-
-        //Main loop for UI control
-        boolean exit = false;
-        while(!exit){
-            sleep(200);
-            if(welcome.getWelcome()) {
-                //Option screen
-                f.remove(welcome);
-                f.add(options);
-                f.revalidate();
-                f.repaint();
-                while (!exit) {
-                    sleep(200);
-                    //Go to chosen options
-                    //Add player
-                    if(options.getAddPlayer()){
-
-                    }
-
-                    //Round options
-
-                    //Match options
-
-                    //Tournament options
-
-                    //Add team
-                    if(options.getAddteamButton()){
-                        String result = addTeam.display();
-                        api.addTeam(result);
-                        options.setAllFalse();
-                    }
-
-                    //View teams
-                    if(options.getViewteamButton()){
-                        viewTeams.display();
-                        options.setAllFalse();
-                    }
-
-                    //Run league
-                    if(options.getRunLeagueButton()){
-                        runLeague.display();
-                        options.setAllFalse();
-                    }
-
-                    if(options.getLeaderButton()){
-                        showLeader.display();
-                        options.setAllFalse();
-
-                    }
-
-
-
-
-                }
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

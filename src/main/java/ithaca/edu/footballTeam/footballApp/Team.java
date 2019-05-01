@@ -98,6 +98,14 @@ public class Team implements Comparable<Team> {
 
     /**
      *
+     * @return the team's active roster
+     */
+    public Roster getActiveRoster(){
+        return this.activeRoster;
+    }
+
+    /**
+     *
      * @return the team name
      */
     public String getTeamName(){
@@ -246,11 +254,6 @@ public class Team implements Comparable<Team> {
             return -1;
         }
         return 0;
-    }
-
-
-    public Roster getActiveRoster() {
-        return this.activeRoster;
     }
 
     /**
