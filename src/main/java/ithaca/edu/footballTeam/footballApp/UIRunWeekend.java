@@ -66,5 +66,6 @@ public class UIRunWeekend extends JPanel {
             //Increment to next set of matches
             matchSet = wMatches.next();
         }
+        api.updateLeaderBoard();
     }
 }

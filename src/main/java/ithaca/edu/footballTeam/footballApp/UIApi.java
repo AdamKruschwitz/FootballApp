@@ -95,6 +95,10 @@ public class UIApi {
         return teamsString;
     }
 
+    public void updateLeaderBoard(){
+        league.updateLeaderBoard();
+    }
+
 
 
     public void apiTest(){
