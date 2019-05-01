@@ -51,6 +51,7 @@ public class UIMain {
                     f.revalidate();
                     f.repaint();
                     teamCtrl.userDropTeam(api);
+                    api.getWeekendMatches();
 
                 }
 
