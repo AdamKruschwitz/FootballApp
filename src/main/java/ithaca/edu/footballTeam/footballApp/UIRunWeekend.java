@@ -42,12 +42,13 @@ public class UIRunWeekend extends JPanel {
 
     //Popup a JConfirm for each weekend match
     public void runWeekend(UIApi api){
-        Iterator<Match> matchSet = this.wMatches.next();
+        Iterator<Match> matchSet;
         Match currMatch;
         boolean stop = false;
         int option;
 
         while(wMatches.hasNext() && !stop){
+            matchSet = wMatches.next();
             while (matchSet.hasNext() && !stop){
                 currMatch = matchSet.next();
                 //Popup a dialog box to enter scores

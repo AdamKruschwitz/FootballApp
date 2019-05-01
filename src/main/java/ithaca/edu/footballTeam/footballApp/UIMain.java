@@ -10,6 +10,7 @@ public class UIMain {
 
     //Required classes for display to work
     public static UITeamCtrl teamCtrl;
+    public static UIRosterMgmt rosterCtrl;
     public static UIRunWeekend weekendCtrl;
     public static UIOption options;
     public static UIWelcome welcome;
@@ -42,6 +43,10 @@ public class UIMain {
                 //Option screen buttons
                 //Roster Mgmt
                 if(source == options.rosterMgmtButton){
+                    f.remove(options);
+                    f.revalidate();
+                    f.repaint();
+                    rosterCtrl.showTeamPicks();
                     //Launch roster management
                 }
 
@@ -97,10 +102,19 @@ public class UIMain {
                     f.revalidate();
                     f.repaint();
                 }
+
+                if (source == rosterCtrl.homeButton){
+                    rosterCtrl.clear();
+                    f.remove(rosterCtrl);
+                    f.add(options);
+                    f.revalidate();
+                    f.repaint();
+                }
             }
         };
 
         //Create all required components
+        rosterCtrl = new UIRosterMgmt(api, f, mainListener);
         weekendCtrl = new UIRunWeekend(api);
         welcome = new UIWelcome(mainListener);
         options = new UIOption(mainListener);
