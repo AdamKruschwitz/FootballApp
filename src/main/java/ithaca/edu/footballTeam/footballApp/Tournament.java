@@ -20,7 +20,8 @@ public class Tournament {
         for (Map.Entry<String,Team> entry : teams.entrySet()){
             Team team = entry.getValue();
             if(team.getRank() <= 8 ){
-                //team.resetStats();
+                //rest team & player stats for tournament
+                team.resetStats();
                 this.teams.add(team);
             }
         }
@@ -47,7 +48,8 @@ public class Tournament {
             for (int i = 0; i < teams.size(); i++) {
                 Team toAdd = teams.get(i);
                 if (toAdd.getRank() <= 8 && toAdd.getRank() == i+1) {
-                    //toAdd.resetStats();
+                    //reset team & player stats for tournament
+                    toAdd.resetStats();
                     this.teams.add(toAdd);
                 }
             }
@@ -63,6 +65,7 @@ public class Tournament {
             roundNUm = 1;
 
         }
+        //clears league team list to save space
         teams.clear();
     }
 
