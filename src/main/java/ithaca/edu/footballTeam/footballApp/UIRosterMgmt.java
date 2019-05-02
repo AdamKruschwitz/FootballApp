@@ -166,13 +166,16 @@ public class UIRosterMgmt extends JPanel {
         this.removeAll();
         //User can drop player, add cards
         //If user has red/yellow cards
+
         List<Player> toSearch = currTeam.getActiveRoster().players;
-        Player currPlayer = null;
+        Player currPlayer;
         for (int i = 0; i < toSearch.size(); i++) {
             if(toSearch.get(i).getPlayerName().equals(this.currPlayer)){
                 currPlayer = toSearch.get(i);
+                //this.yCards = currPlayer.getYellowCardsForMatch()
             }
         }
+
         //this.yCards = currPlayer.getPlayerName()
         this.add(dropButton, constraints);
         this.add(addYCard, constraints);
