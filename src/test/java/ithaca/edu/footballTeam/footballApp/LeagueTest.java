@@ -60,14 +60,14 @@ public class LeagueTest {
 
     @Test
     void hasBeenPlayedValidationCheck(){
-        List<Integer> played = new ArrayList<>();
+        List<Match> played = new ArrayList<>();
         Roster roster = new Roster();
         roster.fillWithValidPlayers();
         Team team = new Team(roster, "team1");
         Team team2 = new Team(roster, "team2");
         Match currentMatch = new Match(team, team2,10);
         assertFalse(League.hasBeenPlayed(played,currentMatch));
-        played.add(currentMatch.getId());
+        played.add(currentMatch);
         assertTrue(League.hasBeenPlayed(played,currentMatch));
     }
 
@@ -79,7 +79,7 @@ public class LeagueTest {
         Team team2 = new Team(roster, "team2");
 
         Match match = new Match(team, team2,10);
-        List<Integer> playedMatches = new ArrayList<>();
+        List<Match> playedMatches = new ArrayList<>();
         Map<String, Integer> playedCount = new HashMap<>();
         playedCount.put(team.getTeamName(),0);
         playedCount.put(team2.getTeamName(), 0);
@@ -88,7 +88,7 @@ public class LeagueTest {
 
         playedCount.put(team.getTeamName(),count);
         playedCount.put(team2.getTeamName(), count);
-        playedMatches.add(match.getId());
+        playedMatches.add(match);
         assertFalse(League.isEligible(match,playedMatches,playedCount,count));
 
     }
@@ -141,7 +141,7 @@ public class LeagueTest {
         testLeague.generateLeagueMatches();
 
         Map<String, Integer> playedCount = new HashMap<>();
-        List<Integer> playedMatches = new ArrayList<>();
+        List<Match> playedMatches = new ArrayList<>();
         int weekendCount = 1;
 
         playedCount = testLeague.fillWithTeams(playedCount);
@@ -220,10 +220,16 @@ public class LeagueTest {
         teamList.add(team3);
         teamList.add(team4);
 
+
         League testLeague = new League("League 1", 1, teamList);
         testLeague.generateLeagueMatches();
         String matchUps = testLeague.showLeagueMatchUps();
         System.out.print(matchUps);
+
+    }
+
+    @Test
+    void createLeagueTest(){
 
     }
 
