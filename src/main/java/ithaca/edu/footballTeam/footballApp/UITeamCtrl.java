@@ -14,9 +14,11 @@ public class UITeamCtrl extends JOptionPane {
     JButton homeButton;
     ActionListener chosenTeam;
     ActionListener parentListener;
+    UIApi api;
 
     //Requires access to an api and parent frame
     public UITeamCtrl(UIApi api, JFrame parentFrame, ActionListener parentListener) {
+        this.api = api;
         this.parentListener = parentListener;
         this.layout = new GridBagLayout();
         this.setLayout(layout);
@@ -57,18 +59,21 @@ public class UITeamCtrl extends JOptionPane {
             this.add(newBtn, constraints);
             newBtn.addActionListener(this.chosenTeam);
         }
-
         //Home button
         this.add(homeButton);
         parentFrame.add(this);
         parentFrame.revalidate();
         parentFrame.repaint();
-
-
     }
 
     public void userAddTeam(){
-        //Gets input from user and adds team with valid players
+        //Popup for user to add team to the league
+        //Create a team object
+        //Use a default roster
+        String result = JOptionPane.showInputDialog(null,"Enter Team Name", "FootballTeam");
+        Roster defaultRoster = new Roster();
+        defaultRoster.fillWithValidPlayers();
+        Team newTeam = new Team(defaultRoster, result);
+        api.addTeam(newTeam);
     }
-
 }

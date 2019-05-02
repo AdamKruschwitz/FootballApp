@@ -12,6 +12,7 @@ public class UIMain {
     public static UITeamCtrl teamCtrl;
     public static UIRosterMgmt rosterCtrl;
     public static UIRunWeekend weekendCtrl;
+    public static UITournament tCtrl;
     public static UIOption options;
     public static UIWelcome welcome;
     public static ActionListener mainListener;
@@ -50,7 +51,7 @@ public class UIMain {
                     //Launch roster management
                 }
 
-                //Add team
+                //Drop team
                 if(source == options.dropTeamButton){
                     f.remove(options);
                     f.revalidate();
@@ -59,8 +60,9 @@ public class UIMain {
 
                 }
 
-                //Drop Team
+                //Add Team
                 if(source == options.addTeamButton){
+                    teamCtrl.userAddTeam();
                     System.out.println("Add Team");
                 }
 
@@ -91,6 +93,7 @@ public class UIMain {
 
                 //Run Tournament
                 if(source == options.runTournamentButton){
+                    tCtrl.runTournament();
                     System.out.println("Run Tournament");
                 }
 
@@ -116,6 +119,7 @@ public class UIMain {
         //Create all required components
         rosterCtrl = new UIRosterMgmt(api, f, mainListener);
         weekendCtrl = new UIRunWeekend(api);
+        tCtrl = new UITournament(api);
         welcome = new UIWelcome(mainListener);
         options = new UIOption(mainListener);
         leagueCtrl = new UILeagueCtrl(api);

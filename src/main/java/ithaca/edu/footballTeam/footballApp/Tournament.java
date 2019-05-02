@@ -9,7 +9,7 @@ public class Tournament {
     private String tournamentName;
     private Round currRound;
     private Round nextRound;
-    private List<Match> matches;
+    List<Match> matches;
     private Team winner;
     private int roundNUm;
 
@@ -32,7 +32,7 @@ public class Tournament {
             matches.add(match);
         }
 
-        this.currRound = new Round(matches,nextRound);
+        this.currRound = new Round(matches, nextRound);
         roundNUm =1;
         teams.clear();
     }
@@ -40,6 +40,7 @@ public class Tournament {
     public Tournament(String name, List<Team> teams) {
         this.matches = new ArrayList<>();
         this.teams = new ArrayList<>();
+        //Require even number of teams
         if (teams.size() < 4 || teams.size()%2 != 0) {
             throw new IllegalArgumentException("Invalid amount of teams ");
         } else {
@@ -146,6 +147,10 @@ public class Tournament {
         }
     }
 
+    //We cannot use print statments!!
+    //These two methods cannot be used
+    //Outside classes have no way of accessing any
+    //data contained within this class
     /**
      * Prints out a visual of the current leaderboard for the tournament
      */
@@ -171,8 +176,11 @@ public class Tournament {
     /**
      * Prints out the winner of the tournament
      */
-    private void endTournament(){
-        System.out.println("\nThe winner of the tournament is "+winner.getTeamName()+"!");
+    public String endTournament(){
+        //We cannot use print statements!
+        //Modified to return a string
+        //System.out.println("\nThe winner of the tournament is "+winner.getTeamName()+"!");
+        return winner.getTeamName();
         }
     }
 

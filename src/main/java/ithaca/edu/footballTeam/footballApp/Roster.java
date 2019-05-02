@@ -64,7 +64,7 @@ public class Roster{
      * Helper method to fill a roster with valid players
      */
     public void fillWithValidPlayers(){
-        for(int i = 11; i > 0; i--){
+        for(int i = 15; i > 0; i--){
             Player p = new Player(Integer.toString(i),i);
             addPlayer(p);
         }

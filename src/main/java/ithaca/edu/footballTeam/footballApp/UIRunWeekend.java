@@ -2,7 +2,7 @@ package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
 import java.util.Iterator;
-
+//todo has the user entered more teams since running the weekend has stopped?
 public class UIRunWeekend extends JPanel {
     //Gives user control over running the weekend
     //User enters scores for each match

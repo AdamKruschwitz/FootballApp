@@ -27,10 +27,8 @@ public class UIApi {
 
 
     //Add a team
-    //Generates new team with generic roster and adds
-    public void addTeam(String teamName){
-        Team teamToAdd = new Team(new Roster(), teamName);
-        this.league.addTeam(teamToAdd);
+    public void addTeam(Team team){
+        league.addTeam(team);
     }
 
     //View teams in the league
