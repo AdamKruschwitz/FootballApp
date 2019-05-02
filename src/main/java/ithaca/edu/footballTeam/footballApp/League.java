@@ -335,10 +335,11 @@ public class League {
       String scoreBoard = leagueName + " Team win-loss-ties and league points" + "\n";
       while (scores.hasNext()){
           Map.Entry<String, Integer> item = scores.next();
-          scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Wins "
-                  + findTeamByName(item.getKey()).getWins() + " ties " + findTeamByName(item.getKey()).getTie() +
-                    " losses " + findTeamByName(item.getKey()).getLoss() + "\n";
-
+          if(findTeamByName(item.getKey()) != null) {
+              scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Wins "
+                      + findTeamByName(item.getKey()).getWins() + " ties " + findTeamByName(item.getKey()).getTie() +
+                      " losses " + findTeamByName(item.getKey()).getLoss() + "\n";
+          }
 
       }
       return scoreBoard;
@@ -349,9 +350,10 @@ public class League {
       String scoreBoard = leagueName + " Team goals and league points " + "\n";
       while (scores.hasNext()){
           Map.Entry<String, Integer> item = scores.next();
-          scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Goals "
-                  + findTeamByName(item.getKey()).getTotalGoalsScored() + "\n";
-
+          if(findTeamByName(item.getKey()) != null) {
+              scoreBoard = scoreBoard + " Team: " + item.getKey() + " League Points " + item.getValue() + " Goals "
+                      + findTeamByName(item.getKey()).getTotalGoalsScored() + "\n";
+          }
 
       }
       return scoreBoard;

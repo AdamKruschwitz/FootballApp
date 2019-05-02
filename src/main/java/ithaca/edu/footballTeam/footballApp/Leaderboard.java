@@ -20,6 +20,8 @@ public class Leaderboard {
         while (itr.hasNext()) {
             leaderBoard.put(itr.next().getTeamName(), 0);
         }
+        orderedScores = new ArrayList<Map.Entry<String, Integer>>(leaderBoard.entrySet());
+
     }
 
     /**
@@ -74,6 +76,7 @@ public class Leaderboard {
     }
 
     public Iterator<Map.Entry<String, Integer>> getLeaderBoard() {
+
         return orderedScores.iterator();
     }
 
