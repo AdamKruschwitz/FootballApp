@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="FootballApp" />
         <module name="footballApp" />
         <module name="FootballApp" />
       </profile>
@@ -14,6 +15,7 @@
       <module name="FootballApp" target="1.10" />
       <module name="footballApp" target="1.10" />
       <module name="footballAppCode" target="1.10" />
+
     </bytecodeTargetLevel>
   </component>
 </project>
