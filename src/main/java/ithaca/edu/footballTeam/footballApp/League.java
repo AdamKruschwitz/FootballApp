@@ -243,7 +243,7 @@ public class League {
      * Generates the entire weekend schedule for the league
      * @return weekened schedule iterator that has the individual weekends inside as iterators
      */
-    public Iterator<Iterator<Match>> genAllWeekeds(){
+    public List<Iterator<Match>> genAllWeekeds(){
         //create something to keep track of when a team has played
         Map<String, Integer>  matchAmount = new HashMap<>();
         fillWithTeams(matchAmount);
@@ -253,13 +253,13 @@ public class League {
         //make something to hold all the weekend match iterators
         List<Iterator<Match>> weekendsForLeague = new ArrayList<>();
 
-        //while all matches haven't been played
+        //while all matches haven't been played construct a weekend
         while (playedMatches.size() < leagueMatches.size()){
             weekendsForLeague.add(genWeekend(matchAmount,playedMatches,weekendCount));
             weekendCount++;
         }
         this.weekends = weekendsForLeague;
-        return weekendsForLeague.iterator();
+        return weekendsForLeague;
     }
 
     /**
@@ -288,12 +288,9 @@ public class League {
             Team team = itr.next();
             if(team.getTeamName() == teamName){
                 itr.remove();
-                if(participants.size() % 2 != 0){
-                    itr.next();
-                    itr.remove();
                 }
                 return team;
-            }
+
 
         }
         return null;

@@ -183,10 +183,11 @@ public class LeagueTest {
 
         League testLeague = new League("League 1", 1, teamList);
         testLeague.generateLeagueMatches();
-        Iterator<Iterator<Match>> allWeekends = testLeague.genAllWeekeds();
+        List<Iterator<Match>> allWeekends = testLeague.genAllWeekeds();
+        Iterator<Iterator<Match>> allGames = allWeekends.iterator();
 
-        while (allWeekends.hasNext()){
-            Iterator<Match> itr = allWeekends.next();
+        while (allGames.hasNext()){
+            Iterator<Match> itr = allGames.next();
             Map<Team, Integer> teamTest = new HashMap<>();
             while (itr.hasNext()){
                 Match match = itr.next();

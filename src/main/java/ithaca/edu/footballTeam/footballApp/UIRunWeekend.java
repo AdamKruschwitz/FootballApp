@@ -2,6 +2,7 @@ package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
 import java.util.Iterator;
+import java.util.List;
 
 public class UIRunWeekend extends JPanel {
     //Gives user control over running the weekend
@@ -17,7 +18,7 @@ public class UIRunWeekend extends JPanel {
     //Generate weekends upon construct to allow resume
     public UIRunWeekend(UIApi api){
 
-        this.wMatches = api.getWeekendMatches();
+        this.wMatches = api.getWeekendMatches().iterator();
 
         //Initialize JPanel for entries
         this.entryPanel = new JPanel();

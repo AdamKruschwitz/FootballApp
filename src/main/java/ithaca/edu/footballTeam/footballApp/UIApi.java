@@ -72,9 +72,9 @@ public class UIApi {
         league.removeTeam(teamName);
     }
 
-    public Iterator<Iterator<Match>> getWeekendMatches(){
+    public List<Iterator<Match>> getWeekendMatches(){
         league.generateLeagueMatches();
-        Iterator<Iterator<Match>> allWeekends = league.genAllWeekeds();
+        List<Iterator<Match>> allWeekends = league.genAllWeekeds();
         return allWeekends;
     }
 
