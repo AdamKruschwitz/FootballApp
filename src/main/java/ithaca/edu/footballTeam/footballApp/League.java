@@ -288,8 +288,9 @@ public class League {
             Team team = itr.next();
             if(team.getTeamName() == teamName){
                 itr.remove();
-                }
                 return team;
+                }
+
 
 
         }
