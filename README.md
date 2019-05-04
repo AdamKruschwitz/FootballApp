@@ -72,7 +72,7 @@ Be able to run a full league then a champions tourney for a season ending with a
 ##
 
 * [Class Diagram](https://drive.google.com/file/d/1xI5tj7aKw5cLxRraRWxoZSeRstNM5cX4/view?usp=sharing)
-* [Use-Case Diagram](https://drive.google.com/file/d/1CWMA8oa_rZrDITz79d6DqoNI9ZiRT9HE/view?usp=sharing)
+* [Use-Case Diagram](https://drive.google.com/file/d/1Hoc0EsW8f1Iz-x9Wll8X4dtNCecJRkG9/view?usp=sharing)
 
 ## Sequence Diagrams 
 * [Create League matches](https://drive.google.com/file/d/1KTlH9ht9bB__kNsaM6OCwbkWwLRdiuEo/view?usp=sharing)
