@@ -36,7 +36,7 @@ public class LeagueIntegrationIT {
             match.setTeam1Score(score);
             match.setTeam2Score(score+1);
             //Score board is an iterator ordered by best team to worst team in terms of points in descending order
-            scoreBoard = league.updateLeaderBoard();
+            league.updateLeaderBoard();
             score++;
 
         }

@@ -318,6 +318,11 @@ public class League {
       return this.participants;
   }
 
+    /**
+     *
+     * @param teamName team name of the team you want to find
+     * @return the team object that was searched for
+     */
   public Team findTeamByName(String teamName){
       for(int i = 0; i < participants.size(); i++){
           if(participants.get(i).getTeamName() == teamName){
@@ -328,6 +333,10 @@ public class League {
 
   }
 
+    /**
+     * Gets the win loss tie designations for each team
+     * @return string representation of win loss ties
+     */
   public String getSocreBoardWinLossTie(){
       Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
       String scoreBoard = leagueName + " Team win-loss-ties and league points" + "\n";
@@ -343,6 +352,11 @@ public class League {
       return scoreBoard;
   }
 
+    /**
+     * Gets the goals and league points
+     * @return string representation of the goals and league points
+     */
+
   public String getScoreBoardGoals(){
       Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
       String scoreBoard = leagueName + " Team goals and league points " + "\n";
@@ -357,6 +371,13 @@ public class League {
       return scoreBoard;
 
   }
+
+    /**
+     *
+     * @param matchAmount number of times each team has played
+     * @param count current expected amount of times teams should have played
+     * final check for teams that have played the maximum two matches against each other
+     */
 
   public static void fullyPlayed(Map<String, Integer> matchAmount, int count){
       Iterator it = matchAmount.entrySet().iterator();

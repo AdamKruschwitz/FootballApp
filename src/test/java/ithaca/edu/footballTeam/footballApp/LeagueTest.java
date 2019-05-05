@@ -229,10 +229,7 @@ public class LeagueTest {
 
     }
 
-    @Test
-    void createLeagueTest(){
 
-    }
 
 
 
