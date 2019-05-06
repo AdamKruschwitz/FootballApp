@@ -1,8 +1,11 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
-//todo has the user entered more teams since running the weekend has stopped?
+import java.util.List;
+
 public class UIRunWeekend extends JPanel {
     //Gives user control over running the weekend
     //User enters scores for each match
@@ -13,11 +16,16 @@ public class UIRunWeekend extends JPanel {
     JLabel tl2;
     JTextField t1Score;
     JTextField t2Score;
+    ActionListener chosenWeekend;
+    List<Iterator<Match>> weekMatches;
 
     //Generate weekends upon construct to allow resume
     public UIRunWeekend(UIApi api){
 
-        this.wMatches = api.getWeekendMatches();
+        this.wMatches = api.getWeekendMatches().iterator();
+        while(wMatches.hasNext()){
+            this.weekMatches.add(wMatches.next());
+        }
 
         //Initialize JPanel for entries
         this.entryPanel = new JPanel();
@@ -35,6 +43,23 @@ public class UIRunWeekend extends JPanel {
         entryPanel.add(t1Score);
         entryPanel.add(tl2);
         entryPanel.add(t2Score);
+
+        chosenWeekend = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //When user clicks on chosen weekend, prompt scores for each match
+
+            }
+        };
+    }
+
+    public void showWeekends(){
+        //New JButton for each weekend
+        for (int i = 0; i < weekMatches.size(); i++) {
+            JButton newBtn = new JButton("Weekend " + (i+1));
+            newBtn.addActionListener(this.chosenWeekend);
+
+        }
     }
 
 

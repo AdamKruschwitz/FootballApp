@@ -98,9 +98,9 @@ public class League {
             throw new IllegalArgumentException("Participating teams does not have an even number");
         }
 
-        List<Match> randMatches = randomizeArray(leagueMatches);
-        this.leagueMatches = randMatches;
-        return randMatches.iterator();
+       List<Match> randMatches = randomizeArray(leagueMatches);
+       this.leagueMatches = randMatches;
+        return leagueMatches.iterator();
     }
 
     public String showLeagueMatchUps(){
@@ -139,8 +139,8 @@ public class League {
      * @return if this match is good to be used for a weekend true false
      */
 
-    public static boolean hasBeenPlayed(List<Integer> played, Match currentMatch){
-        if(played.contains(currentMatch.getId())){
+    public static boolean hasBeenPlayed(List<Match> played, Match currentMatch){
+        if(played.contains(currentMatch)){
             return true;
         }
         else{
@@ -157,7 +157,7 @@ public class League {
      * @return whether this match is eligible to be placed into a weekend in the form of a boolean
      */
 
-    public static boolean isEligible(Match match, List<Integer> playedMatches,Map<String, Integer> playedCount,int count ){
+    public static boolean isEligible(Match match, List<Match> playedMatches,Map<String, Integer> playedCount,int count ){
         if(hasBeenPlayed(playedMatches,match) == false){
             if(hasPlayed(playedCount,match.getTeam1(),count) == false
                     && hasPlayed(playedCount, match.getTeam2(), count) == false ){
@@ -206,7 +206,7 @@ public class League {
      *
      */
 
-    public Iterator<Match> genWeekend(Map<String, Integer>  matchAmount, List<Integer> playedMatches, int weekendCount ){
+    public Iterator<Match> genWeekend(Map<String, Integer>  matchAmount, List<Match> playedMatches, int weekendCount ){
 
         // create an empty array where set matches will be set
         Iterator<Match> itr = leagueMatches.iterator();
@@ -215,18 +215,26 @@ public class League {
 
         //iterate over all each of the league matches
         while (checkAllGamesPlayed(matchAmount,weekendCount)== false) {
-                //generate a single weekend holder and get the first match
-
+            //generate a single weekend holder and get the first matc
+            if (itr.hasNext()) {
                 Match match = itr.next();
-                    //check to see if  the match have is eligible for this weekend in that the teams haven't played yet and
-                    //the match wasn't a part of a previous weekend
-                    if (isEligible(match, playedMatches, matchAmount, weekendCount)) {
-                        weekend.add(match);
-                        matchAmount.put(match.getTeam1().getTeamName(), matchAmount.get(match.getTeam1().getTeamName()) + 1);
-                        matchAmount.put(match.getTeam2().getTeamName(), matchAmount.get(match.getTeam2().getTeamName()) + 1);
-                        playedMatches.add(match.getId());
-                    }
+                //check to see if  the match have is eligible for this weekend in that the teams haven't played yet and
+                //the match wasn't a part of a previous weekend
+                if (isEligible(match, playedMatches, matchAmount, weekendCount)) {
+                    weekend.add(match);
+                    matchAmount.put(match.getTeam1().getTeamName(), matchAmount.get(match.getTeam1().getTeamName()) + 1);
+                    matchAmount.put(match.getTeam2().getTeamName(), matchAmount.get(match.getTeam2().getTeamName()) + 1);
+                    playedMatches.add(match);
+
+
                 }
+            }
+            else{
+                fullyPlayed(matchAmount,weekendCount);
+
+            }
+        }
+
 
         return weekend.iterator() ;
     }
@@ -235,23 +243,23 @@ public class League {
      * Generates the entire weekend schedule for the league
      * @return weekened schedule iterator that has the individual weekends inside as iterators
      */
-    public Iterator<Iterator<Match>> genAllWeekeds(){
+    public List<Iterator<Match>> genAllWeekeds(){
         //create something to keep track of when a team has played
         Map<String, Integer>  matchAmount = new HashMap<>();
         fillWithTeams(matchAmount);
-        List<Integer> playedMatches = new ArrayList<>();
+        List<Match> playedMatches = new ArrayList<>();
         int weekendCount = 1;
 
         //make something to hold all the weekend match iterators
         List<Iterator<Match>> weekendsForLeague = new ArrayList<>();
 
-        //while all matches haven't been played
+        //while all matches haven't been played construct a weekend
         while (playedMatches.size() < leagueMatches.size()){
             weekendsForLeague.add(genWeekend(matchAmount,playedMatches,weekendCount));
             weekendCount++;
         }
         this.weekends = weekendsForLeague;
-        return weekendsForLeague.iterator();
+        return weekendsForLeague;
     }
 
     /**
@@ -281,7 +289,10 @@ public class League {
             if(team.getTeamName() == teamName){
                 itr.remove();
                 return team;
-            }
+                }
+
+
+
         }
         return null;
     }
@@ -307,6 +318,11 @@ public class League {
       return this.participants;
   }
 
+    /**
+     *
+     * @param teamName team name of the team you want to find
+     * @return the team object that was searched for
+     */
   public Team findTeamByName(String teamName){
       for(int i = 0; i < participants.size(); i++){
           if(participants.get(i).getTeamName() == teamName){
@@ -317,6 +333,10 @@ public class League {
 
   }
 
+    /**
+     * Gets the win loss tie designations for each team
+     * @return string representation of win loss ties
+     */
   public String getSocreBoardWinLossTie(){
       Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
       String scoreBoard = leagueName + " Team win-loss-ties and league points" + "\n";
@@ -332,6 +352,11 @@ public class League {
       return scoreBoard;
   }
 
+    /**
+     * Gets the goals and league points
+     * @return string representation of the goals and league points
+     */
+
   public String getScoreBoardGoals(){
       Iterator<Map.Entry<String, Integer>> scores = scoreboard.getLeaderBoard();
       String scoreBoard = leagueName + " Team goals and league points " + "\n";
@@ -344,6 +369,36 @@ public class League {
 
       }
       return scoreBoard;
+
+  }
+
+    /**
+     *
+     * @param matchAmount number of times each team has played
+     * @param count current expected amount of times teams should have played
+     * final check for teams that have played the maximum two matches against each other
+     */
+
+  public static void fullyPlayed(Map<String, Integer> matchAmount, int count){
+      Iterator it = matchAmount.entrySet().iterator();
+      while (it.hasNext()) {
+          Map.Entry pair = (Map.Entry)it.next();
+          if(pair.getValue() != (Integer)count){
+              matchAmount.put(pair.getKey().toString(), count);
+          }
+      }
+  }
+
+  public static boolean sameOrReciprical(Match match, String team1, String team2 ){
+       if(match.getTeam1().getTeamName() == team1 ||
+       match.getTeam1().getTeamName() == team2){
+           if( match.getTeam2().getTeamName() == team1
+                   || match.getTeam2().getTeamName() == team2) {
+               return true;
+           }
+
+       }
+       return false;
 
   }
 

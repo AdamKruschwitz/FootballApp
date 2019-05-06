@@ -34,25 +34,42 @@ public class UITournament {
     public void runTournament(){
         //Gen Matches for 1st and last team, drop the loser
         List<Team> teams = api.league.getParticipants();
-        int option;
+        //Pass teams into tournament constructor
+        Tournament tn = new Tournament("Tournament", teams);
+        Round cRound;
+        Match currMatch;
+        int t1;
+        int t2;
+        boolean done = false;
 
-        while (teams.size() > 1){
-            //Set labels
-            this.tl1.setText(teams.get(0).getTeamName());
-            this.tl2.setText(teams.get(teams.size()-1).getTeamName());
+        //Get round gets current round
+        //Iterate over matches in round and set scores
 
-            option = JOptionPane.showConfirmDialog(null, this.entryPanel, "Enter Team Scores", JOptionPane.OK_CANCEL_OPTION);
+        //Call gotonextround
+        //end tournament if true
+        //keep going if false
 
-            if(Integer.parseInt(t1Score.getText()) > Integer.parseInt(t2Score.getText())){
-                teams.remove(teams.size() - 1);
+
+        //End tournament gets winner
+
+        for (int i = 0; i < tn.getCurrRound().getCurrentMatches().size(); i++) {
+            currMatch = tn.getCurrRound().getCurrentMatches().get(i);
+            t1 = 4;
+            t2 = 4;
+            while(t1 == t2){
+                this.tl1.setText(currMatch.getTeam1().getTeamName());
+                this.tl2.setText(currMatch.getTeam2().getTeamName());
+                JOptionPane.showConfirmDialog(null, this.entryPanel, "Enter Team Scores", JOptionPane.OK_OPTION);
+                t1 = Integer.parseInt(this.t1Score.getText());
+                t2 = Integer.parseInt(this.t2Score.getText());
             }
-            else{
-                teams.remove(0);
-            }
-            //Cancel button hit, end tournament
+            currMatch.setTeam1Score(t1);
+            currMatch.setTeam2Score(t2);
+
+
         }
-        //Print remaining team after running tournament
-        JOptionPane.showConfirmDialog(null, "Tournament Winner: " + teams.get(0).getTeamName());
+
+
 
     }
 }

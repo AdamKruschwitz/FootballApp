@@ -18,7 +18,7 @@ public class UIApi {
         Roster testRoster = new Roster();
         testRoster.fillWithValidPlayers();
         List<Team> initTeamList = new ArrayList();
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 7; i++) {
             initTeamList.add(new Team(testRoster,"team" + i));
         }
 
@@ -70,9 +70,9 @@ public class UIApi {
         league.removeTeam(teamName);
     }
 
-    public Iterator<Iterator<Match>> getWeekendMatches(){
+    public List<Iterator<Match>> getWeekendMatches(){
         league.generateLeagueMatches();
-        Iterator<Iterator<Match>> allWeekends = league.genAllWeekeds();
+        List<Iterator<Match>> allWeekends = league.genAllWeekeds();
         return allWeekends;
     }
 
