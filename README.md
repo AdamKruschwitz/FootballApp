@@ -85,7 +85,7 @@ Be able to run a full league then a champions tourney for a season ending with a
 ## Sequence Diagrams 
 * [Generate all weekends](https://drive.google.com/file/d/1ReJat7m_HPZXhNuFY2E2ltUNm7AlByGC/view?usp=sharing)
 * [Generate win loss tie](https://drive.google.com/file/d/1zKEYKLQnIdSPUfbC5lEJaeAgg0QK4EuC/view?usp=sharing) 
-* [runRound()] (https://drive.google.com/file/d/1momB6ZWaltTZ6uBEZ0XjKe9rRLXcUziY/view?usp=sharing)
+* [runRound()](https://drive.google.com/file/d/1momB6ZWaltTZ6uBEZ0XjKe9rRLXcUziY/view?usp=sharing)
 
 ## Sprint end 
 * [Sprint retrospective](https://docs.google.com/document/d/1-rpEgnPHFNymd4p9gpGCSTOvFezAY2tA4D7D6IcKSwI/edit?usp=sharing)
