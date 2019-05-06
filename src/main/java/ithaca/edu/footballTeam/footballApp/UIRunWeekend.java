@@ -107,6 +107,8 @@ public class UIRunWeekend extends JPanel {
         while(matches.hasNext()){
             currMatch = matches.next();
             //Popup to enter scores
+            s1 = 5;
+            s2 = 5;
             while(s1 == s2){
                 s1 = 5;
                 s2 = 5;
@@ -121,6 +123,7 @@ public class UIRunWeekend extends JPanel {
             currMatch.setTeam2Score(s2);
 
         }
+        api.league.updateLeaderBoard();
 
     }
 }
