@@ -69,7 +69,10 @@ public class UIMain {
 
                 //Tournament
                 if(source == options.runWeekendButton){
-                    weekendCtrl.runWeekend(api);
+                    f.remove(options);
+                    f.revalidate();
+                    f.repaint();
+                    weekendCtrl.showWeekends();
                 }
 
                 //Win-Loss-Ties
@@ -114,12 +117,20 @@ public class UIMain {
                     f.revalidate();
                     f.repaint();
                 }
+
+                if(source == weekendCtrl.homeButton){
+                    weekendCtrl.clear();
+                    f.remove(weekendCtrl);
+                    f.add(options);
+                    f.revalidate();
+                    f.repaint();
+                }
             }
         };
 
         //Create all required components
         rosterCtrl = new UIRosterMgmt(api, f, mainListener);
-        weekendCtrl = new UIRunWeekend(api);
+        weekendCtrl = new UIRunWeekend(api, f, mainListener);
         tCtrl = new UITournament(api);
         welcome = new UIWelcome(mainListener);
         options = new UIOption(mainListener);

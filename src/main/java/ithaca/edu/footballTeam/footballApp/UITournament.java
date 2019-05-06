@@ -1,6 +1,7 @@
 package ithaca.edu.footballTeam.footballApp;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public class UITournament {
@@ -10,64 +11,80 @@ public class UITournament {
     JLabel tl2;
     JTextField t1Score;
     JTextField t2Score;
+    JTextField t1Score1;
+    JTextField t2Score1;
+    JTextField t1Score3;
+    JTextField t2Score3;
 
     public UITournament(UIApi api){
         this.api = api;
         //Initialize JPanel for entries
         this.entryPanel = new JPanel();
+        this.entryPanel.setLayout(new GridLayout(4,2));
 
         //Team Labels
         this.tl1 = new JLabel("Team1");
         this.tl2 = new JLabel("Team2");
 
         //Entry fields
-        this.t1Score = new JTextField(5);
-        this.t2Score = new JTextField(5);
+        this.t1Score = new JTextField("Team Score 1",5);
+        this.t2Score = new JTextField("Team Score 1",5);
+        this.t1Score1 = new JTextField("Team Score 2",5);
+        this.t2Score1 = new JTextField("Team Score 2",5);
+        this.t1Score3 = new JTextField("Team Score 3",5);
+        this.t2Score3 = new JTextField("Team Score 3",5);
 
         //Add
         entryPanel.add(tl1);
-        entryPanel.add(t1Score);
         entryPanel.add(tl2);
+        entryPanel.add(t1Score);
         entryPanel.add(t2Score);
+        entryPanel.add(t1Score1);
+        entryPanel.add(t2Score1);
+        entryPanel.add(t1Score3);
+        entryPanel.add(t2Score3);
     }
 
     public void runTournament(){
-        //Gen Matches for 1st and last team, drop the loser
-        List<Team> teams = api.league.getParticipants();
         //Pass teams into tournament constructor
-        Tournament tn = new Tournament("Tournament", teams);
+        List<Team> teams = api.league.getParticipants();
         Round cRound;
         Match currMatch;
-        int t1;
-        int t2;
+        int i = 0;
+        int j = teams.size() - 1;
         boolean done = false;
+        float t1Avg = 5;
+        float t2Avg = 5;
 
-        //Get round gets current round
-        //Iterate over matches in round and set scores
+        while(j-i != 0){
+            t1Avg = 5;
+            t2Avg = 5;
+            //Keep asking until non-tie is entered
+            while(t1Avg == t2Avg){
+                this.tl1.setText(teams.get(i).getTeamName());
+                this.tl2.setText(teams.get(j).getTeamName());
+                JOptionPane.showConfirmDialog(null, this.entryPanel, "Enter scores for each round", JOptionPane.OK_OPTION);
 
-        //Call gotonextround
-        //end tournament if true
-        //keep going if false
 
+                //Set averages
+                t1Avg = (Integer.parseInt(this.t1Score.getText()) + Integer.parseInt(this.t1Score1.getText()) + Integer.parseInt(this.t1Score3.getText())/3);
+                t2Avg = (Integer.parseInt(this.t2Score.getText()) + Integer.parseInt(this.t2Score1.getText()) + Integer.parseInt(this.t2Score3.getText())/3);
 
-        //End tournament gets winner
+                //Dec/inc winner
+                if(t1Avg > t2Avg){
+                    j--;
+                }
+                else{
+                    i++;
+                }
 
-        for (int i = 0; i < tn.getCurrRound().getCurrentMatches().size(); i++) {
-            currMatch = tn.getCurrRound().getCurrentMatches().get(i);
-            t1 = 4;
-            t2 = 4;
-            while(t1 == t2){
-                this.tl1.setText(currMatch.getTeam1().getTeamName());
-                this.tl2.setText(currMatch.getTeam2().getTeamName());
-                JOptionPane.showConfirmDialog(null, this.entryPanel, "Enter Team Scores", JOptionPane.OK_OPTION);
-                t1 = Integer.parseInt(this.t1Score.getText());
-                t2 = Integer.parseInt(this.t2Score.getText());
             }
-            currMatch.setTeam1Score(t1);
-            currMatch.setTeam2Score(t2);
-
 
         }
+        //pointer now set to winner
+        JOptionPane.showConfirmDialog(null,"Tournament Winner is: " + teams.get(j).getTeamName());
+
+
 
 
 
