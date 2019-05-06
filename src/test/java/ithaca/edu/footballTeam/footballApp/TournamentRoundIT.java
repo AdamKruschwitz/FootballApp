@@ -35,26 +35,12 @@ public class TournamentRoundIT {
         if (t1.getCurrRound().getCurrentMatches() == null) {
             throw new NullPointerException("There are no matches to run");
         } else {
-            //Scanner reader = new Scanner(System.in);
 
             for (int i = 0; i < t1.getCurrRound().getCurrentMatches().size(); i++) {
                 Match currMatch = t1.getCurrRound().getCurrentMatches().get(i);
-                //System.out.println("How many goals did "+currMatch.getTeam1().getTeamName()+" score?");
-            /*while (!reader.hasNextInt()){
-                System.out.println("please enter a valid number: ");
-                reader.next();
-            }
-            int option = reader.nextInt();
-            */
+
                 currMatch.setTeam1Score(3);
-            /*
-            System.out.println("How many goals did "+currMatch.getTeam2().getTeamName()+" score?");
-            while (!reader.hasNextInt()){
-                System.out.println("please enter a valid number: ");
-                reader.next();
-            }
-            option = reader.nextInt();
-            */
+
                 currMatch.setTeam2Score(1);
             }
 

@@ -27,8 +27,11 @@ public class UIRosterMgmt extends JPanel {
     JButton addRCard;
     Team currTeam;
     String currPlayer;
-    JTextField yCards;
-    JTextField rCards;
+    Player currPlayerObject;
+    JTextArea yCards;
+    JTextArea rCards;
+    Integer rI;
+    Integer yI;
 
     public UIRosterMgmt(UIApi api, JFrame parentFrame, ActionListener parentListener){
         //Initialize outside requirements
@@ -41,8 +44,14 @@ public class UIRosterMgmt extends JPanel {
 
         this.addYCard = new JButton("Yellow Card This Player");
         this.addRCard = new JButton("Red Card This Player");
-        this.yCards = new JTextField();
-        this.rCards = new JTextField();
+        this.yCards = new JTextArea();
+        this.rCards = new JTextArea();
+        this.yCards.setEditable(false);
+        this.rCards.setEditable(false);
+        this.yCards.setText("Yellow Cards:\n");
+        this.rCards.setText("Red Cards:\n");
+        this.yI = 0;
+        this.rI = 0;
 
         //Initialize class frame and components
         this.layout = new GridBagLayout();
@@ -69,7 +78,15 @@ public class UIRosterMgmt extends JPanel {
                 //Show the options for a given player
                 JButton source = (JButton)e.getSource();
                 currPlayer = source.getText();
+                List<Player> toSearch = currTeam.getActiveRoster().players;
+                for (int i = 0; i < toSearch.size(); i++) {
+                    if(toSearch.get(i).getPlayerName().equals(currPlayer)){
+                        currPlayerObject = toSearch.get(i);
+                    }
+
+                }
                 showPlayerOptions(source.getText());
+
             }
         };
 
@@ -104,6 +121,7 @@ public class UIRosterMgmt extends JPanel {
                             players.get(i).addYellowCard(new RedCard(1, reason));
                         }
                     }
+                    showPlayerOptions(currPlayer);
                 }
 
                 if(source == addRCard){
@@ -114,6 +132,7 @@ public class UIRosterMgmt extends JPanel {
                             players.get(i).addRedCard(new RedCard(1, reason));
                         }
                     }
+                    showPlayerOptions(currPlayer);
                 }
             }
         };
@@ -165,18 +184,39 @@ public class UIRosterMgmt extends JPanel {
     private void showPlayerOptions(String player){
         this.removeAll();
         //User can drop player, add cards
-        //If user has red/yellow cards
+        //Create string for red/yellow cards
+        List<Card> reds = currPlayerObject.getRedCards();
+        List<Card> yellows = currPlayerObject.getYellowCards();
+        String rString = "";
+        String yString = "";
 
-        List<Player> toSearch = currTeam.getActiveRoster().players;
-        Player currPlayer;
-        for (int i = 0; i < toSearch.size(); i++) {
-            if(toSearch.get(i).getPlayerName().equals(this.currPlayer)){
-                currPlayer = toSearch.get(i);
-                //this.yCards = currPlayer.getYellowCardsForMatch()
+        if(reds != null && yellows != null) {
+
+            for (int i = this.rI; i < reds.size(); i++) {
+                rString = rString +  i + ": " + reds.get(i).getReason() + '\n';
+                this.rI++;
             }
+            this.rCards.append(rString);
+
+            for (int i = this.yI; i < yellows.size(); i++) {
+                yString = yString + i + ": " + yellows.get(i).getReason() + '\n';
+                this.yI++;
+            }
+            this.yCards.append(yString);
+
+            List<Player> toSearch = currTeam.getActiveRoster().players;
+            Player currPlayer;
+            for (int i = 0; i < toSearch.size(); i++) {
+                if (toSearch.get(i).getPlayerName().equals(this.currPlayer)) {
+                    currPlayer = toSearch.get(i);
+                    //this.yCards = currPlayer.getYellowCardsForMatch()
+                }
+            }
+
+            this.add(rCards, constraints);
+            this.add(yCards, constraints);
         }
 
-        //this.yCards = currPlayer.getPlayerName()
         this.add(dropButton, constraints);
         this.add(addYCard, constraints);
         this.add(addRCard, constraints);

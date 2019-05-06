@@ -40,6 +40,14 @@ public class Player  {
         return matchRedCards;
     }
 
+    public List<Card> getYellowCards(){
+        return this.yellowCards;
+    }
+
+    public List<Card> getRedCards(){
+        return this.redCards;
+    }
+
     public List<Card> getYellowCardsForMatch(int matchID){
         List<Card> matchYellowCards = new ArrayList<>();
         for (int i = 0; i < this.yellowCards.size(); i++) {

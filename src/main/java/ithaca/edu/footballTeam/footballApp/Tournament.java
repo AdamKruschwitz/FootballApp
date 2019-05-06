@@ -79,6 +79,7 @@ public class Tournament {
         } else {
             roundNUm++;
             this.currRound = currRound.setUpNextRound(matches, nextRound, teams);
+
         }
     }
 

@@ -18,7 +18,7 @@ public class UIApi {
         Roster testRoster = new Roster();
         testRoster.fillWithValidPlayers();
         List<Team> initTeamList = new ArrayList();
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 7; i++) {
             initTeamList.add(new Team(testRoster,"team" + i));
         }
 
