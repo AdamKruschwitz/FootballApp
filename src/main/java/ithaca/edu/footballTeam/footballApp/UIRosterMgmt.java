@@ -77,6 +77,12 @@ public class UIRosterMgmt extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 //Show the options for a given player
                 JButton source = (JButton)e.getSource();
+                if(currPlayer != null) {
+                    if (!currPlayer.equals(source.getText())) {
+                        yCards.setText("Yellow Cards:\n");
+                        rCards.setText("Red Cards:\n");
+                    }
+                }
                 currPlayer = source.getText();
                 List<Player> toSearch = currTeam.getActiveRoster().players;
                 for (int i = 0; i < toSearch.size(); i++) {
