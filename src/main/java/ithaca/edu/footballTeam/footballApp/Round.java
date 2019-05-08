@@ -69,10 +69,6 @@ public class Round {
         return this.nextRound;
     }
 
-    /**
-     *
-     * @return list of current matches for the round
-     */
     public List<Match> getCurrentMatches(){
         return this.currentMatches;
     }

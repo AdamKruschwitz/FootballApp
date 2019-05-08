@@ -63,6 +63,12 @@ public class Database {
         }
     }
 
+    /**
+     * Returns the result set of all games played by a given player
+     * @param firstname
+     * @param lastname
+     * @return
+     */
     ResultSet searchGamesByPlayerName(String firstname, String lastname) {
         //join Games and Players where games.team1ID = Players.teamID
         // and Players.FirstName = firstname

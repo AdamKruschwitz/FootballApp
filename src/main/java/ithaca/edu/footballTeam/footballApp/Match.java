@@ -69,7 +69,7 @@ public class Match {
     }
 
     /**
-     * Add a goal in this match and increase the .
+     * Add a goal in this match and record the goal in the team object.
      * @param team
      */
     public void addGoal(int team, int playerId) {
@@ -98,6 +98,11 @@ public class Match {
 
     }
 
+    /**
+     * Records an assist in the player object.
+     * @param team
+     * @param player
+     */
     public void addAssist(int team, int player){
         if(team >1 || team < 0 || player < 0){
             throw new IllegalArgumentException("Invalid Team and/or player ID");
@@ -128,6 +133,10 @@ public class Match {
         System.out.println(team1.getTeamName() + " VS"+ team2.getTeamName());
     }
 
+    /**
+     * Returns a list of players in the active roster
+     * @return
+     */
     public String showPlayersInMatch(){
         String Teams = "";
         Iterator<Player> team1Itr = team1.getActiveRoster().players.iterator();
