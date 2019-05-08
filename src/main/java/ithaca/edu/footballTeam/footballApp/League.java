@@ -305,9 +305,20 @@ public class League {
   public Iterator<Map.Entry<String, Integer>> updateLeaderBoard(){
         Iterator<Match> itr = leagueMatches.iterator();
         while (itr.hasNext()){
-            scoreboard.updateLeaderBoard(itr.next());
+            Match match = itr.next();
+            if(matchBeenPlayed(match)) {
+                scoreboard.updateLeaderBoard(match);
+            }
         }
         return this.scoreboard.getLeaderBoard();
+  }
+  public  boolean matchBeenPlayed(Match match){
+      if(match.getTeam1Score() == 0 && match.getTeam2Score() == 0){
+          return false;
+      }
+      else{
+          return true;
+      }
   }
 
     /**

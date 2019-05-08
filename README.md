@@ -37,7 +37,8 @@ The goal is to be able to manage a team within a league on the leaderboard and i
 ##
 
 * [Use Case Diagram](https://drive.google.com/file/d/1_CDMW8pMBoVqUtl-oI18abHUYpedIa6q/view)
-* [Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
+* [App Class Diagram](https://drive.google.com/file/d/1CBSagColzr5jZ8oJluKk3GO3EgYAO4wk/view?usp=sharing)
+* [GUI Class Diagram](https://drive.google.com/open?id=14p6YJHgTRwgW8DsRPqsi20M9bD2v_7Bu)
 
 ## Sequence Diagrams
 * [New Goal](https://drive.google.com/file/d/1TQptkJJeQt51qWgRr-5HdQZA1_wFQ8Sf/view?usp=sharing)
@@ -51,6 +52,9 @@ The goal is to be able to manage a team within a league on the leaderboard and i
 ## Sprint end 
 * [Sprint review](https://docs.google.com/document/d/11f6nJzbSAUNfdDp4GlQwS9Mi5-Ba_cL7NF94_ZH6vRs/edit)
 * [Sprint retrospective](https://docs.google.com/document/d/1FefEawx5QKX-E9mh0L_7NKYVdfd6L5HjogNOGQyZPps/edit)
+
+## State Chart
+* [GUI State Chart](https://drive.google.com/open?id=13Ip9XsJiyeoiXUYIxOEE6fsZMs9N4CC_)
 
 
 # Sprint 2  
@@ -85,6 +89,7 @@ Be able to run a full league then a champions tourney for a season ending with a
 ## Sequence Diagrams 
 * [Generate all weekends](https://drive.google.com/file/d/1ReJat7m_HPZXhNuFY2E2ltUNm7AlByGC/view?usp=sharing)
 * [Generate win loss tie](https://drive.google.com/file/d/1zKEYKLQnIdSPUfbC5lEJaeAgg0QK4EuC/view?usp=sharing) 
+* [runRound()](https://drive.google.com/file/d/1momB6ZWaltTZ6uBEZ0XjKe9rRLXcUziY/view?usp=sharing)
 
 ## Sprint end 
 * [Sprint retrospective](https://docs.google.com/document/d/1-rpEgnPHFNymd4p9gpGCSTOvFezAY2tA4D7D6IcKSwI/edit?usp=sharing)
